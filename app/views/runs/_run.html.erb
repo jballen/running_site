@@ -1,0 +1,12 @@
+<li>
+  <span class="distance">Distance: <%= run.distance %>.</span>
+  <span class="duration">Time: <%= format_duration(run.duration) %>.</span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(run.created_at) %> ago.
+  </span>
+  <% if current_user?(run.user) %>
+    <%= link_to "delete", run, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: run.created_at %>
+  <% end %>
+</li>

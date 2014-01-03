@@ -1,0 +1,7 @@
+<%= simple_form_for @run do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+    <%= f.input :distance %>
+    <%= f.input :duration %>
+    <%= f.input :comment  %>
+    <%= f.button :submit, label_html: { class: "btn btn-large btn-primary" } %>
+<% end %>

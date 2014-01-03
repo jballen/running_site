@@ -11,15 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224175536) do
+ActiveRecord::Schema.define(version: 20140103043528) do
 
   create_table "runs", force: true do |t|
-    t.integer  "user_id"
     t.decimal  "distance"
-    t.string   "duration"
+    t.integer  "duration",   limit: 255
+    t.integer  "user_id"
+    t.text     "comment",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "runs", ["user_id", "created_at"], name: "index_runs_on_user_id_and_created_at"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -29,6 +32,7 @@ ActiveRecord::Schema.define(version: 20131224175536) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           default: false
+    t.integer  "duration"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

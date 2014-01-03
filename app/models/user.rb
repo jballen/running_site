@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :runs, dependent: :destroy
 	before_save {self.email = email.downcase}
   before_create :create_remember_token
 
@@ -16,6 +17,11 @@ class User < ActiveRecord::Base
 
   def User.encrypt(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+  
+  def feed
+    # The ? ensures that id is properly escaped to avoid SQL injection
+    Run.where("user_id = ?", id)
   end
 
   private
