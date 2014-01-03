@@ -1,102 +1,101 @@
-2013-12-24T15:03:53.136502+00:00 app[web.1]: Processing by SessionsController#create as HTML
-2013-12-24T15:03:53.136502+00:00 app[web.1]: Processing by SessionsController#create as HTML
-2013-12-24T15:03:53.135363+00:00 app[web.1]: Started POST "/sessions" for 96.245.229.71 at 2013-12-24 15:03:53 +0000
-2013-12-24T15:03:53.136502+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"bpJi3f36rJCiLtXuBoa0rYLZy4mJt6OzxyM41DoDxB4=", "session"=>{"email"=>"jballen92@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
-2013-12-24T15:03:53.136612+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"bpJi3f36rJCiLtXuBoa0rYLZy4mJt6OzxyM41DoDxB4=", "session"=>{"email"=>"jballen92@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
-2013-12-24T15:03:53.146801+00:00 app[web.1]:   Rendered layouts/_header.html.erb (1.9ms)
-2013-12-24T15:03:53.146801+00:00 app[web.1]:   Rendered layouts/_header.html.erb (1.9ms)
-2013-12-24T15:03:53.147161+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:03:53.144166+00:00 app[web.1]:   Rendered sessions/new.html.erb within layouts/application (1.2ms)
-2013-12-24T15:03:53.144166+00:00 app[web.1]:   Rendered sessions/new.html.erb within layouts/application (1.2ms)
-2013-12-24T15:03:53.144728+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.0ms)
-2013-12-24T15:03:53.144728+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.0ms)
-2013-12-24T15:03:53.147161+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:03:53.147403+00:00 app[web.1]: Completed 200 OK in 11ms (Views: 3.7ms | ActiveRecord: 5.7ms)
-2013-12-24T15:03:53.147403+00:00 app[web.1]: Completed 200 OK in 11ms (Views: 3.7ms | ActiveRecord: 5.7ms)
-2013-12-24T15:03:53.160142+00:00 heroku[router]: at=info method=POST path=/sessions host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=16ms service=46ms status=200 bytes=2116
-2013-12-24T15:04:00.215213+00:00 app[web.1]: Started POST "/sessions" for 96.245.229.71 at 2013-12-24 15:04:00 +0000
-2013-12-24T15:04:00.215213+00:00 app[web.1]: Started POST "/sessions" for 96.245.229.71 at 2013-12-24 15:04:00 +0000
-2013-12-24T15:04:00.216178+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"bpJi3f36rJCiLtXuBoa0rYLZy4mJt6OzxyM41DoDxB4=", "session"=>{"email"=>"jballen92@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
-2013-12-24T15:04:00.216178+00:00 app[web.1]: Processing by SessionsController#create as HTML
-2013-12-24T15:04:00.216178+00:00 app[web.1]: Processing by SessionsController#create as HTML
-2013-12-24T15:04:00.216178+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"bpJi3f36rJCiLtXuBoa0rYLZy4mJt6OzxyM41DoDxB4=", "session"=>{"email"=>"jballen92@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
-2013-12-24T15:04:00.220701+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.0ms)
-2013-12-24T15:04:00.222488+00:00 app[web.1]:   Rendered layouts/_header.html.erb (1.7ms)
-2013-12-24T15:04:00.222488+00:00 app[web.1]:   Rendered layouts/_header.html.erb (1.7ms)
-2013-12-24T15:04:00.222873+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:04:00.220155+00:00 app[web.1]:   Rendered sessions/new.html.erb within layouts/application (1.2ms)
-2013-12-24T15:04:00.220155+00:00 app[web.1]:   Rendered sessions/new.html.erb within layouts/application (1.2ms)
-2013-12-24T15:04:00.220701+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.0ms)
-2013-12-24T15:04:00.227574+00:00 heroku[router]: at=info method=POST path=/sessions host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=2ms service=16ms status=200 bytes=2116
-2013-12-24T15:04:00.222873+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:04:00.223061+00:00 app[web.1]: Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 2.4ms)
-2013-12-24T15:04:00.223061+00:00 app[web.1]: Completed 200 OK in 7ms (Views: 3.2ms | ActiveRecord: 2.4ms)
-2013-12-24T15:04:02.919526+00:00 app[web.1]: Started GET "/" for 96.245.229.71 at 2013-12-24 15:04:02 +0000
-2013-12-24T15:04:02.919526+00:00 app[web.1]: Started GET "/" for 96.245.229.71 at 2013-12-24 15:04:02 +0000
-2013-12-24T15:04:02.920620+00:00 app[web.1]: Processing by StaticPagesController#home as HTML
-2013-12-24T15:04:02.920620+00:00 app[web.1]: Processing by StaticPagesController#home as HTML
-2013-12-24T15:04:02.921816+00:00 app[web.1]:   Rendered static_pages/home.html.erb within layouts/application (0.3ms)
-2013-12-24T15:04:02.922787+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.1ms)
-2013-12-24T15:04:02.921816+00:00 app[web.1]:   Rendered static_pages/home.html.erb within layouts/application (0.3ms)
-2013-12-24T15:04:02.922787+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.1ms)
-2013-12-24T15:04:02.925256+00:00 app[web.1]:   Rendered layouts/_header.html.erb (2.4ms)
-2013-12-24T15:04:02.925256+00:00 app[web.1]:   Rendered layouts/_header.html.erb (2.4ms)
-2013-12-24T15:04:02.925633+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:04:02.925633+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:04:02.925895+00:00 app[web.1]: Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 1.5ms)
-2013-12-24T15:04:02.925895+00:00 app[web.1]: Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 1.5ms)
-2013-12-24T15:04:03.289615+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=1ms service=6ms status=304 bytes=0
-2013-12-24T15:04:03.952229+00:00 app[web.1]:   Rendered shared/_error_messages.html.erb (0.1ms)
-2013-12-24T15:04:03.949525+00:00 app[web.1]: Started GET "/signup" for 96.245.229.71 at 2013-12-24 15:04:03 +0000
-2013-12-24T15:04:03.949525+00:00 app[web.1]: Started GET "/signup" for 96.245.229.71 at 2013-12-24 15:04:03 +0000
-2013-12-24T15:04:03.950646+00:00 app[web.1]: Processing
- by UsersController#new as HTML
-2013-12-24T15:04:03.950646+00:00 app[web.1]: Processing by UsersController#new as HTML
-2013-12-24T15:04:03.952229+00:00 app[web.1]:   Rendered shared/_error_messages.html.erb (0.1ms)
-2013-12-24T15:04:03.954527+00:00 app[web.1]:   Rendered users/new.html.erb within layouts/application (2.9ms)
-2013-12-24T15:04:03.955089+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.0ms)
-2013-12-24T15:04:03.954527+00:00 app[web.1]:   Rendered users/new.html.erb within layouts/application (2.9ms)
-2013-12-24T15:04:03.955089+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.0ms)
-2013-12-24T15:04:03.961356+00:00 heroku[router]: at=info method=GET path=/signup host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=5ms service=15ms status=304 bytes=0
-2013-12-24T15:04:03.957777+00:00 app[web.1]:   Rendered layouts/_header.html.erb (2.5ms)
-2013-12-24T15:04:03.957777+00:00 app[web.1]:   Rendered layouts/_header.html.erb (2.5ms)
-2013-12-24T15:04:03.958169+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:04:03.958169+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:04:03.958416+00:00 app[web.1]: Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 1.6ms)
-2013-12-24T15:04:03.958416+00:00 app[web.1]: Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 1.6ms)
-2013-12-24T15:04:04.015929+00:00 app[web.1]: Started GET "/signup" for 96.245.229.71 at 2013-12-24 15:04:04 +0000
-2013-12-24T15:04:04.015929+00:00 app[web.1]: Started GET "/signup" for 96.245.229.71 at 2013-12-24 15:04:04 +0000
-2013-12-24T15:04:04.018721+00:00 app[web.1]:   Rendered shared/_error_messages.html.erb (0.1ms)
-2013-12-24T15:04:04.017013+00:00 app[web.1]: Processing by UsersController#new as HTML
-2013-12-24T15:04:04.017013+00:00 app[web.1]: Processing by UsersController#new as HTML
-2013-12-24T15:04:04.018721+00:00 app[web.1]:   Rendered shared/_error_messages.html.erb (0.1ms)
-2013-12-24T15:04:04.021570+00:00 app[web.1]:   Rendered users/new.html.erb within layouts/application (3.5ms)
-2013-12-24T15:04:04.021570+00:00 app[web.1]:   Rendered users/new.html.erb within layouts/application (3.5ms)
-2013-12-24T15:04:04.022134+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.0ms)
-2013-12-24T15:04:04.022134+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.0ms)
-2013-12-24T15:04:04.024610+00:00 app[web.1]:   Rendered layouts/_header.html.erb (2.2ms)
-2013-12-24T15:04:04.024610+00:00 app[web.1]:   Rendered layouts/_header.html.erb (2.2ms)
-2013-12-24T15:04:04.024987+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:04:04.024987+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (0.2ms)
-2013-12-24T15:04:04.025238+00:00 app[web.1]: Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 1.3ms)
-2013-12-24T15:04:04.025238+00:00 app[web.1]: Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 1.3ms)
-2013-12-24T15:04:04.119653+00:00 heroku[router]: at=info method=GET path=/assets/application-779af4756500b2c5e7790e2d6b4b1540.js host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=1ms service=7ms status=304 bytes=0
-2013-12-24T15:04:10.607867+00:00 app[web.1]: Started POST "/users" for 96.245.229.71 at 2013-12-24 15:04:10 +0000
-2013-12-24T15:04:10.609004+00:00 app[web.1]: Processing by UsersController#create as HTML
-2013-12-24T15:04:10.609004+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"bpJi3f36rJCiLtXuBoa0rYLZy4mJt6OzxyM41DoDxB4=", "user"=>{"name"=>"Brock Allen", "email"=>"jballen92@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
-2013-12-24T15:04:10.607867+00:00 app[web.1]: Started POST "/users" for 96.245.229.71 at 2013-12-24 15:04:10 +0000
-2013-12-24T15:04:10.609004+00:00 app[web.1]: Processing by UsersController#create as HTML
-2013-12-24T15:04:10.609004+00:00 app[web.1]:   Parameters: {"utf8"=>"✓", "authenticity_token"=>"bpJi3f36rJCiLtXuBoa0rYLZy4mJt6OzxyM41DoDxB4=", "user"=>{"name"=>"Brock Allen", "email"=>"jballen92@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create my account"}
-2013-12-24T15:04:10.689961+00:00 app[web.1]: Completed 500 Internal Server Error in 81ms
-2013-12-24T15:04:10.689961+00:00 app[web.1]: Completed 500 Internal Server Error in 81ms
-2013-12-24T15:04:10.691027+00:00 app[web.1]: 
-2013-12-24T15:04:10.691027+00:00 app[web.1]: NoMethodError (undefined method `password_digest=' for #<User:0x007fa40a006d78>):
-2013-12-24T15:04:10.691027+00:00 app[web.1]:   app/controllers/users_controller.rb:12:in `create'
-2013-12-24T15:04:10.691027+00:00 app[web.1]: 
-2013-12-24T15:04:10.691027+00:00 app[web.1]: NoMethodError (undefined method `password_digest=' for #<User:0x007fa40a006d78>):
-2013-12-24T15:04:10.691027+00:00 app[web.1]:   app/controllers/users_controller.rb:12:in `create'
-2013-12-24T15:04:10.691027+00:00 app[web.1]: 
-2013-12-24T15:04:10.691027+00:00 app[web.1]: 
-2013-12-24T15:04:10.691027+00:00 app[web.1]: 
-2013-12-24T15:04:10.691027+00:00 app[web.1]: 
-2013-12-24T15:04:04.027011+00:00 heroku[router]: at=info method=GET path=/signup host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=1ms service=20ms status=304 bytes=0
+2014-01-03T14:42:16.386823+00:00 app[web.1]: [2014-01-03 14:42:16] INFO  WEBrick::HTTPServer#start: pid=2 port=5060
+2014-01-03T14:42:16.386215+00:00 app[web.1]: [2014-01-03 14:42:16] INFO  WEBrick 1.3.1
+2014-01-03T14:42:16.697987+00:00 heroku[web.1]: State changed from starting to up
+2014-01-03T14:42:08.330252+00:00 heroku[api]: Deploy 11720a0 by jballen92@gmail.com
+2014-01-03T14:42:08.356798+00:00 heroku[api]: Release v15 created by jballen92@gmail.com
+2014-01-03T14:42:31.919318+00:00 heroku[api]: Starting process with command `bundle exec rake db:migrate` by jballen92@gmail.com
+2014-01-03T14:42:35.648995+00:00 heroku[run.4833]: Awaiting client
+2014-01-03T14:42:35.689764+00:00 heroku[run.4833]: Starting process with command `bundle exec rake db:migrate`
+2014-01-03T14:42:35.802401+00:00 heroku[run.4833]: State changed from starting to up
+2014-01-03T14:42:39.770164+00:00 heroku[run.4833]: State changed from up to complete
+2014-01-03T14:42:39.758845+00:00 heroku[run.4833]: Process exited with status 0
+2014-01-03T14:42:51.090831+00:00 app[web.1]: => Booting WEBrick
+2014-01-03T14:42:51.090831+00:00 app[web.1]: => Rails 4.0.2 application starting in production on http://0.0.0.0:5060
+2014-01-03T14:42:51.090831+00:00 app[web.1]: => Ctrl-C to shutdown server
+2014-01-03T14:42:51.090831+00:00 app[web.1]: Started GET "/" for 96.245.229.71 at 2014-01-03 14:42:51 +0000
+2014-01-03T14:42:51.090831+00:00 app[web.1]: Started GET "/" for 96.245.229.71 at 2014-01-03 14:42:51 +0000
+2014-01-03T14:42:51.090831+00:00 app[web.1]: => Run `rails server -h` for more startup options
+2014-01-03T14:42:51.162820+00:00 app[web.1]: Processing by StaticPagesController#home as HTML
+2014-01-03T14:42:51.166129+00:00 app[web.1]: Processing by StaticPagesController#home as HTML
+2014-01-03T14:42:51.199487+00:00 app[web.1]:   Rendered static_pages/home.html.erb within layouts/application (2.4ms)
+2014-01-03T14:42:51.199487+00:00 app[web.1]:   Rendered static_pages/home.html.erb within layouts/application (2.4ms)
+2014-01-03T14:42:51.236913+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.6ms)
+2014-01-03T14:42:51.236913+00:00 app[web.1]:   Rendered layouts/_shim.html.erb (0.6ms)
+2014-01-03T14:42:51.239793+00:00 app[web.1]:   Rendered layouts/_header.html.erb (2.0ms)
+2014-01-03T14:42:51.239793+00:00 app[web.1]:   Rendered layouts/_header.html.erb (2.0ms)
+2014-01-03T14:42:51.276863+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (1.3ms)
+2014-01-03T14:42:51.276863+00:00 app[web.1]:   Rendered layouts/_footer.html.erb (1.3ms)
+2014-01-03T14:42:51.277458+00:00 app[web.1]: Completed 200 OK in 111ms (Views: 94.2ms | ActiveRecord: 11.9ms)
+2014-01-03T14:42:51.277458+00:00 app[web.1]: Completed 200 OK in 111ms (Views: 94.2ms | ActiveRecord: 11.9ms)
+2014-01-03T14:42:51.480567+00:00 heroku[router]: at=info method=GET path=/assets/application-779af4756500b2c5e7790e2d6b4b1540.js host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=18ms service=56ms status=200 bytes=134476
+2014-01-03T14:42:51.901538+00:00 heroku[router]: at=info method=GET path=/favicon.ico host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=1ms service=7ms status=200 bytes=0
+2014-01-03T14:42:54.972737+00:00 app[web.1]: Started GET "/signup" for 96.245.229.71 at 2014-01-03 14:42:54 +0000
+2014-01-03T14:42:54.972737+00:00 app[web.1]: Started GET "/signup" for 96.245.229.71 at 2014-01-03 14:42:54 +0000
+2014-01-03T14:42:54.975081+00:00 app[web.1]: Processing by UsersController#new as HTML
+2014-01-03T14:42:54.975081+00:00 app[web.1]: Processing by UsersController#new as HTML
+2014-01-03T14:42:55.031969+00:00 app[web.1]:   Rendered shared/_error_messages.html.erb (1.9ms)
+2014-01-03T14:42:55.031969+00:00 app[web.1]:   Rendered shared/_error_messages.html.erb (1.9ms)
+2014-01-03T14:42:55.057593+00:00 app[web.1]:   Rendered shared/_user_form.html.erb (24.7ms)
+2014-01-03T14:42:55.057593+00:00 app[web.1]:   Rendered shared/_user_form.html.erb (24.7ms)
+2014-01-03T14:42:55.057593+00:00 app[web.1]:   Rendered users/new.html.erb within layouts/application (68.3ms)
+2014-01-03T14:42:55.057718+00:00 app[web.1]:   Rendered users/new.html.erb within layouts/application (68.3ms)
+2014-01-03T14:42:55.057938+00:00 app[web.1]: Completed 500 Internal Server Error in 83ms
+2014-01-03T14:42:55.057938+00:00 app[web.1]: Completed 500 Internal Server Error in 83ms
+2014-01-03T14:42:55.059833+00:00 app[web.1]: 
+2014-01-03T14:42:55.059833+00:00 app[web.1]: ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007fc86f89b018>:0x007fc86f89e178>):
+2014-01-03T14:42:55.059833+00:00 app[web.1]:     1: <%= render 'shared/error_messages', object: f.object %>
+2014-01-03T14:42:55.059833+00:00 app[web.1]:     2: 
+2014-01-03T14:42:55.059833+00:00 app[web.1]:     4: <%= f.text_field :name %>
+2014-01-03T14:42:55.059833+00:00 app[web.1]:     3: <%= f.label :name %>
+2014-01-03T14:42:55.059833+00:00 app[web.1]:   app/views/shared/_user_form.html.erb:1:in `_app_views_shared__user_form_html_erb___2974079106690259695_70249430379680'
+2014-01-03T14:42:55.059833+00:00 app[web.1]: 
+2014-01-03T14:42:55.060032+00:00 app[web.1]: 
+2014-01-03T14:42:55.060032+00:00 app[web.1]: 
+2014-01-03T14:42:55.060032+00:00 app[web.1]: ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007fc86f89b018>:0x007fc86f89e178>):
+2014-01-03T14:42:55.060032+00:00 app[web.1]:     1: <%= render 'shared/error_messages', object: f.object %>
+2014-01-03T14:42:55.060032+00:00 app[web.1]:     2: 
+2014-01-03T14:42:55.060032+00:00 app[web.1]:     3: <%= f.label :name %>
+2014-01-03T14:42:55.060032+00:00 app[web.1]:   app/views/users/new.html.erb:8:in `block in _app_views_users_new_html_erb__285162730583139364_70249424291880'
+2014-01-03T14:42:55.060193+00:00 app[web.1]: 
+2014-01-03T14:42:55.060193+00:00 app[web.1]: 
+2014-01-03T14:42:55.059833+00:00 app[web.1]:   app/views/users/new.html.erb:8:in `block in _app_views_users_new_html_erb__285162730583139364_70249424291880'
+2014-01-03T14:42:55.059833+00:00 app[web.1]:   app/views/users/new.html.erb:6:in `_app_views_users_new_html_erb__285162730583139364_70249424291880'
+2014-01-03T14:42:55.060032+00:00 app[web.1]:     4: <%= f.text_field :name %>
+2014-01-03T14:42:55.060032+00:00 app[web.1]:   app/views/shared/_user_form.html.erb:1:in `_app_views_shared__user_form_html_erb___2974079106690259695_70249430379680'
+2014-01-03T14:42:55.060032+00:00 app[web.1]:   app/views/users/new.html.erb:6:in `_app_views_users_new_html_erb__285162730583139364_70249424291880'
+2014-01-03T14:42:55.155854+00:00 heroku[router]: at=info method=GET path=/signup host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=1ms service=34ms status=500 bytes=1266
+2014-01-03T14:42:55.129767+00:00 app[web.1]: Started GET "/signup" for 96.245.229.71 at 2014-01-03 14:42:55 +0000
+2014-01-03T14:42:55.129767+00:00 app[web.1]: Started GET "/signup" for 96.245.229.71 at 2014-01-03 14:42:55 +0000
+2014-01-03T14:42:55.135594+00:00 app[web.1]: Processing by UsersController#new as HTML
+2014-01-03T14:42:55.135594+00:00 app[web.1]: Processing by UsersController#new as HTML
+2014-01-03T14:42:55.139747+00:00 app[web.1]:   Rendered shared/_error_messages.html.erb (0.5ms)
+2014-01-03T14:42:55.139747+00:00 app[web.1]:   Rendered shared/_error_messages.html.erb (0.5ms)
+2014-01-03T14:42:55.154085+00:00 app[web.1]:   Rendered shared/_user_form.html.erb (13.6ms)
+2014-01-03T14:42:55.154085+00:00 app[web.1]:   Rendered shared/_user_form.html.erb (13.6ms)
+2014-01-03T14:42:55.154260+00:00 app[web.1]:   Rendered users/new.html.erb within layouts/application (16.9ms)
+2014-01-03T14:42:55.154260+00:00 app[web.1]:   Rendered users/new.html.erb within layouts/application (16.9ms)
+2014-01-03T14:42:55.154355+00:00 app[web.1]: Completed 500 Internal Server Error in 19ms
+2014-01-03T14:42:55.154355+00:00 app[web.1]: Completed 500 Internal Server Error in 19ms
+2014-01-03T14:42:55.156349+00:00 app[web.1]: 
+2014-01-03T14:42:55.156349+00:00 app[web.1]: ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007fc86f89b018>:0x007fc8711b9a18>):
+2014-01-03T14:42:55.156349+00:00 app[web.1]:     1: <%= render 'shared/error_messages', object: f.object %>
+2014-01-03T14:42:55.156349+00:00 app[web.1]:     2: 
+2014-01-03T14:42:55.156349+00:00 app[web.1]:     3: <%= f.label :name %>
+2014-01-03T14:42:55.156349+00:00 app[web.1]:     4: <%= f.text_field :name %>
+2014-01-03T14:42:55.156349+00:00 app[web.1]:   app/views/shared/_user_form.html.erb:1:in `_app_views_shared__user_form_html_erb___2974079106690259695_70249434083460'
+2014-01-03T14:42:55.156349+00:00 app[web.1]:   app/views/users/new.html.erb:8:in `block in _app_views_users_new_html_erb__285162730583139364_70249433920940'
+2014-01-03T14:42:55.156349+00:00 app[web.1]:   app/views/users/new.html.erb:6:in `_app_views_users_new_html_erb__285162730583139364_70249433920940'
+2014-01-03T14:42:55.156349+00:00 app[web.1]: 
+2014-01-03T14:42:55.156524+00:00 app[web.1]: 
+2014-01-03T14:42:55.156524+00:00 app[web.1]: 
+2014-01-03T14:42:55.156524+00:00 app[web.1]: ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x007fc86f89b018>:0x007fc8711b9a18>):
+2014-01-03T14:42:55.156524+00:00 app[web.1]:     1: <%= render 'shared/error_messages', object: f.object %>
+2014-01-03T14:42:55.156524+00:00 app[web.1]:     2: 
+2014-01-03T14:42:55.156524+00:00 app[web.1]:     3: <%= f.label :name %>
+2014-01-03T14:42:55.156524+00:00 app[web.1]:     4: <%= f.text_field :name %>
+2014-01-03T14:42:55.156524+00:00 app[web.1]:   app/views/shared/_user_form.html.erb:1:in `_app_views_shared__user_form_html_erb___2974079106690259695_70249434083460'
+2014-01-03T14:42:55.156524+00:00 app[web.1]:   app/views/users/new.html.erb:8:in `block in _app_views_users_new_html_erb__285162730583139364_70249433920940'
+2014-01-03T14:42:55.156524+00:00 app[web.1]:   app/views/users/new.html.erb:6:in `_app_views_users_new_html_erb__285162730583139364_70249433920940'
+2014-01-03T14:42:55.156693+00:00 app[web.1]: 
+2014-01-03T14:42:55.156693+00:00 app[web.1]: 
+2014-01-03T14:42:55.058519+00:00 heroku[router]: at=info method=GET path=/signup host=brockallenrunningsite.herokuapp.com fwd="96.245.229.71" dyno=web.1 connect=2ms service=94ms status=500 bytes=1266
