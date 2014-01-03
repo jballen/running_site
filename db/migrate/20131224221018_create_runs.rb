@@ -2,9 +2,9 @@ class CreateRuns < ActiveRecord::Migration
   def change
     create_table :runs do |t|
       t.decimal :distance
-      t.string :duration
+      t.integer :duration
       t.integer :user_id
-      t.string :comment
+      t.text :comment
 
       t.timestamps
     end
