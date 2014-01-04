@@ -1,5 +1,5 @@
 RunningSite::Application.routes.draw do
-  resources :runs, only: [:create, :destroy]
+  resources :exercises, only: [:create, :destroy]
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   root 'static_pages#home'

@@ -1,5 +1,5 @@
-module RunsHelper
-  def format_duration(duration)
+module ExercisesHelper
+   def format_duration(duration)
     hours = duration/3600
     minutes = duration/60
     seconds = duration%60
