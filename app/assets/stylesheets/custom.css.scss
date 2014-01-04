@@ -187,6 +187,19 @@ input {
     padding-left: 1em
   }
 }
+.exercise_duration {
+  float: left;
+  width: 3em;
+  display: inline;
+}
+.exercise_comment {
+  clear: left;
+}
+.duration p {
+  display: inline;
+  float: left;
+  margin-top: 1em;
+}
 .content {
   display: block;
 }

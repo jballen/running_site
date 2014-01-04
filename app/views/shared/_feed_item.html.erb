@@ -2,8 +2,15 @@
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
   </span>
-  <span class="distance"><%= feed_item.distance %> miles. </span>
+  <span class="distance">
+    <%= conjugate_verb_to_past_tense feed_item.activity %>
+    <% if !feed_item.distance.nil? %>
+      <%= feed_item.distance.round(2) %> miles in </span>
+    <% else %>
+      for
+    <% end %>
   <span class="duration"><%= format_duration(feed_item.duration)%></span>
+  <span class="activity_date"><%= format_activity_date(feed_item.activity_date) %>.</span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
   </span>

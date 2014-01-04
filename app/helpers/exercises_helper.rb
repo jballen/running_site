@@ -1,8 +1,8 @@
 module ExercisesHelper
-   def format_duration(duration)
-    hours = duration/3600
-    minutes = duration/60
-    seconds = duration%60
+  def format_duration(duration)
+    hours = duration.to_i/3600
+    minutes = duration.to_i/60
+    seconds = duration.to_i%60
 
     if hours > 0
       minutes = minutes%60 
@@ -24,8 +24,32 @@ module ExercisesHelper
       return minutes_string + ':' + seconds_string
     end
   end
+
   def wrap(content)
     sanitize(raw(content.split.map{ |s| wrap_long_string(s) }.join(' ')))
+  end
+
+  def conjugate_verb_to_past_tense(verb)
+    case verb
+    when 'run'
+      return 'ran'
+    when 'swim'
+      return 'swam'
+    else
+      return Verbs::Conjugator.conjugate verb,
+                                         :tense => :past, 
+                                         :person => :third, 
+                                         :aspect => :perfective, 
+                                         :plurality => :singular
+    end
+  end
+
+  def format_activity_date(activity_date)
+    if Date.today() - activity_date == 0
+      return 'today'
+    else
+      return pluralize((Date.today() - activity_date).to_i, 'day') + ' ago'
+    end
   end
 
   private

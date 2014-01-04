@@ -1,5 +1,8 @@
 <li>
-  <span class="distance">Distance: <%= exercise.distance %>.</span>
+  <span class="activity">Activity: <%= exercise.activity.capitalize %>.</span>
+  <% if !exercise.distance.nil? %>
+    <span class="distance">Distance: <%= exercise.distance %>.</span>
+  <% end %>
   <span class="duration">Time: <%= format_duration(exercise.duration) %>.</span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(exercise.created_at) %> ago.
