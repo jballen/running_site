@@ -14,8 +14,20 @@
     </div>
   </div>
 <% else %>
-  <div class="center hero-unit">
-  	<h1>LogAJog</h1>
-  	<%= link_to "Sign up", signup_path, class: "btn btn-large btn-primary" %>
+  <div class="headWrapper">
+    <div class="center signupWrapper">
+    	<h1>Welcome</h1>
+    	<%= link_to "Sign up", signup_path, class: "btn btn-large" %>
+      <span><h2>or</h2></span>
+      <%= link_to "Sign in", signin_path, class: "btn btn-large" %>
+      <h1>To Log Jogs</h1>
+    </div>
+  </div>
+  <div class="filler">
+    <h2>Info about the features of the site will go here</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla malesuada placerat urna, eget condimentum lectus. Curabitur in orci risus. Aenean id augue purus. Suspendisse sodales tempus metus eu iaculis. Etiam mattis tristique molestie. Sed pretium, lorem sit amet cursus iaculis, urna neque mollis eros, ac rhoncus dui sem in ipsum. In adipiscing sagittis eleifend. Nunc non odio dignissim, luctus ante nec, pretium justo. Praesent lacinia elit non lectus hendrerit blandit. Morbi dapibus et quam vitae ullamcorper. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut vitae aliquam augue.
+
+    Aliquam id lorem libero. Mauris at aliquet libero. Nunc a purus ornare, rhoncus tortor in, faucibus enim. Quisque eleifend a felis vitae posuere. Morbi id turpis metus. Nulla sollicitudin lobortis porttitor. In varius ante ut diam malesuada, ac cursus nibh tincidunt. Cras enim est, ultricies eu scelerisque ut, rhoncus id mauris.
+    </p>
   </div>
 <% end %>

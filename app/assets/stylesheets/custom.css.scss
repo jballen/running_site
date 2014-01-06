@@ -1,9 +1,8 @@
 @import "bootstrap";
 
-/* mixins, variables, etc. */
+@import "constants.css.scss";
 
-$grayMediumLight: #eaeaea;
-
+/* mixins */
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -17,7 +16,7 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 section {
@@ -78,14 +77,13 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
+  color: $darkGreen;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
-  &:hover { 
-    color: white;
+  &:hover {
+    background-color: $whiteBg;
+    color: $lightGreen;
     text-decoration: none;
   }
 }

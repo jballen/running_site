@@ -3,19 +3,19 @@
 <head>
   <title><%=fullTitle(yield(:title))%></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "main" %>
+
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-  <%= render 'layouts/shim' %>
 </head>
 <body>
 	<%= render 'layouts/header' %>
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
-    </div>
+  <div class="containerWrapper">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </div>
 </body>
 </html>

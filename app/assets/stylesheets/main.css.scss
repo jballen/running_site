@@ -1,0 +1,66 @@
+@import "constants.css.scss";
+
+
+body {
+    padding: 40px 0;
+}
+
+.btn-large {
+    margin: 6px 2px;
+}
+
+.btn {
+    background-color: $darkBlue;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    color: $whiteBg;
+    font-weight: lighter;
+    text-shadow: none;
+}
+
+.navbar .navbar-inner {
+    background-color: $whiteBg;
+    background-image: none;
+}
+
+.headWrapper {
+    background: image-url("running_road_bg.jpg") no-repeat center center fixed;
+    background-size: 100%;
+    border-top: 1px solid rgba(#000000, .9);
+    height: 600px;
+
+}
+
+.signupWrapper {
+    background-color: rgba($darkGreen, .7);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin:0 auto;
+    padding: 25px;
+    width:400px;
+
+    h1 {
+        color: $whiteBg;
+        font-family: "Hevetica", sans-serif;
+        letter-spacing: 1px;
+        margin: 0;
+        padding: 10px 0;
+        text-shadow: 1px 1px 1px #3D3D3D;
+    }
+
+    h2 {
+        color: $whiteBg;
+        display: inline;
+        font-family: "Hevetica", sans-serif;
+    }
+
+}
+
+.filler {
+    width: 600px;
+    margin: 0 auto;
+}
+
+
+
