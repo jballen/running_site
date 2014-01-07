@@ -1,0 +1,23 @@
+<% provide(:title, @team.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1><%= @team.name %></h1>
+      <h2>Users</h2>
+      <ul>
+        <% @team.members.each do |member| %>
+          <li><%=@team.member%></li>
+        <% end %>
+      </ul>
+    </section>
+  </aside>
+  <div class="span8">
+    <% if @user.exercises.any? %>
+      <h3>Activities (<%= @user.exercises.count %>)</h3>
+      <ol class="exercises">
+        <%= render @exercises %>
+      </ol>
+      <%= will_paginate @exercises %>
+    <% end %>
+  </div>
+</div>

@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104172819) do
+ActiveRecord::Schema.define(version: 20140107011235) do
+
+  create_table "captains", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "captains", ["team_id"], name: "index_captains_on_team_id"
+  add_index "captains", ["user_id"], name: "index_captains_on_user_id"
 
   create_table "exercises", force: true do |t|
     t.decimal  "distance"
@@ -26,6 +36,26 @@ ActiveRecord::Schema.define(version: 20140104172819) do
 
   add_index "exercises", ["user_id", "created_at"], name: "index_exercises_on_user_id_and_created_at"
 
+  create_table "team_user_relationships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "team_user_relationships", ["team_id"], name: "index_team_user_relationships_on_team_id"
+  add_index "team_user_relationships", ["user_id", "team_id"], name: "index_team_user_relationships_on_user_id_and_team_id", unique: true
+  add_index "team_user_relationships", ["user_id"], name: "index_team_user_relationships_on_user_id"
+
+  create_table "teams", force: true do |t|
+    t.integer  "captain"
+    t.integer  "team_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "description"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -35,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140104172819) do
     t.string   "remember_token"
     t.boolean  "admin",           default: false
     t.integer  "duration"
+    t.integer  "teams"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
