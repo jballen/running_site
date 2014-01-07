@@ -3,6 +3,12 @@
 
 body {
     padding: 40px 0;
+    height: 100%
+}
+
+html {
+    height: 100%;
+    width: 100%;
 }
 
 .btn-large {
@@ -61,6 +67,51 @@ body {
     width: 600px;
     margin: 0 auto;
 }
+
+/* Sign up and Sign in pages */
+
+.containerWrapper {
+    height: 100%;
+}
+
+.loginWrapper {
+    background-color: $lightGreen;
+    height: 100%;
+    overflow: auto;
+}
+
+.loginForm {
+    background-color: $whiteBg;
+    border-radius: 4px;
+    margin: 40px auto 0 auto;
+    padding: 20px;
+    width: 400px;
+
+    h1 {
+        font-family: "Hevetica", sans-serif;
+        letter-spacing: 1px;
+        margin: 0;
+    }
+
+    form {
+        width: 350px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-top: 2px;
+    }
+}
+
+.btn-login {
+    background-color: $darkGreen;
+    letter-spacing: 1px;
+
+    &:hover {
+        background-color: $lightGreen;
+    }
+}
+
 
 
 
