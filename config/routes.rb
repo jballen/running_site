@@ -1,8 +1,13 @@
 RunningSite::Application.routes.draw do
   resources :exercises, only: [:create, :destroy]
-  resources :users
+  resources :users do
+    member do
+      get :teams
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :teams
+  resources :team_user_relationships, only: [:create, :destroy]
 
   root 'static_pages#home'
   match '/signin',   to: 'sessions#new',         via: 'get'
