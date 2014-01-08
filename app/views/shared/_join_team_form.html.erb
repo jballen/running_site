@@ -1,0 +1,7 @@
+<div id="join_team_form">
+<% if current_user.on_team?(@team) %>
+  <%= render 'shared/quit_team' %>
+<% else %>
+  <%= render 'shared/join_team' %>
+<% end %>
+</div>

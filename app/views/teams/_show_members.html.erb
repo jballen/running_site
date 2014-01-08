@@ -1,0 +1,6 @@
+<% if @team.users.any? %>
+  <ul class="members">
+    <%= render partial: 'member_item', collection: @member_items %>
+  </ul>
+  <%= will_paginate @member_items %>
+<% end %>

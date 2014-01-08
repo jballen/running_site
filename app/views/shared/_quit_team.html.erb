@@ -1,0 +1,5 @@
+<%= form_for(current_user.team_user_relationships.find_by(team_id: @team),
+             html: { method: :delete },
+             remote: true) do |f| %>
+  <%= f.submit "Quit Team", class: "btn" %>
+<% end %>

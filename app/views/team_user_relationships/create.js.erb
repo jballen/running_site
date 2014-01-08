@@ -1,0 +1,2 @@
+$("#join_team_form").html("<%= escape_javascript(render('shared/quit_team')) %>")
+$(".members").append('<li id="<%= current_user.id %>"><span class="member_item"><a href="/users/<%= current_user.id %>"><%= current_user.name %></a></span></li>')
