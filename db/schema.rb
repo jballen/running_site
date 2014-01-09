@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107224643) do
-
-  create_table "captains", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "captains", ["team_id"], name: "index_captains_on_team_id"
-  add_index "captains", ["user_id"], name: "index_captains_on_user_id"
+ActiveRecord::Schema.define(version: 20140109214723) do
 
   create_table "exercises", force: true do |t|
     t.decimal  "distance"
@@ -36,6 +26,18 @@ ActiveRecord::Schema.define(version: 20140107224643) do
 
   add_index "exercises", ["user_id", "created_at"], name: "index_exercises_on_user_id_and_created_at"
 
+  create_table "notifications", force: true do |t|
+    t.integer  "team_id"
+    t.string   "what"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notifications", ["team_id"], name: "index_notifications_on_team_id"
+  add_index "notifications", ["user_id", "team_id"], name: "index_notifications_on_user_id_and_team_id", unique: true
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
+
   create_table "team_user_relationships", force: true do |t|
     t.integer  "user_id"
     t.integer  "team_id"
@@ -48,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140107224643) do
   add_index "team_user_relationships", ["user_id"], name: "index_team_user_relationships_on_user_id"
 
   create_table "teams", force: true do |t|
-    t.integer  "captain"
+    t.text     "captains"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,0 +1,13 @@
+<% if @team.team_captain?(current_user) %>
+  <section>
+    <% if @notifications.empty? %>
+      <p>No notifications.</p>
+    <% else %>
+      <strong>You have <%= pluralize(@notifications.count, 'notification') %></strong>
+      <ul class="notifications">
+        <%= render partial: 'notification', collection: @notifications, :team => @team %>
+      </ul>
+    <%= will_paginate @notifications %>
+    <% end %>
+  </section>
+<% end %>

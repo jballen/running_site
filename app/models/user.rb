@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   has_many :exercises, dependent: :destroy
-  has_many :captains
   has_many :team_user_relationships, foreign_key: :user_id,
                                      dependent:   :destroy
   has_many :teams, through: :team_user_relationships,

@@ -23,14 +23,9 @@ class ExercisesController < ApplicationController
 
   private
     def fix_params
-      # @exer = params.delete(:exercise)
       @hours = params[:exercise].delete(:duration_hours).to_i
       @minutes = params[:exercise].delete(:duration_minutes).to_i
       @seconds = params[:exercise].delete(:duration_seconds).to_i
-      
-      logger.debug 'Hours: ' + @hours.to_s
-      logger.debug 'Minutes: ' + @minutes.to_s
-      logger.debug 'Seconds: ' + @seconds.to_s
       params[:exercise][:duration] = @hours * 3600 + @minutes * 60 + @seconds
     end
     def exercise_params

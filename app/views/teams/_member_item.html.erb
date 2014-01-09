@@ -1,5 +1,14 @@
-<li id="<%= member_item.id %>">
-  <span class="member_item">
+<li class="member_item" id="<%= member_item.id %>">
+  <span id="member_name">
     <%= link_to member_item.name, member_item %>
   </span>
+  <% if (@team.team_captain?(current_user)) %>
+    <% unless member_item.id == current_user.id %>
+      <%= form_for(member_item.team_user_relationships.find_by(team_id: @team),
+               html: { method: :delete }) do |f| %>
+        <div><%= f.hidden_field :user_id, :value => member_item.id %></div>
+        <%= f.submit "Remove", class: "btn" %>
+      <% end %>
+    <% end %>
+  <% end %>
 </li>

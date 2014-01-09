@@ -1,0 +1,13 @@
+<li class="notification_item" id="notification<%=notification.id%>">
+  <span>
+    <%= User.find(notification.user_id).name + " would like to " + notification.what %>
+  </span>
+  <div>
+    <%= form_for(User.find(notification.user_id).team_user_relationships.build(team_id: @team.id,
+                                    user_id: notification.user_id)) do |f| %>
+      <div><%= f.hidden_field :team_id %></div>
+      <div><%= f.hidden_field :user_id %></div>
+      <%= f.submit "Accept", class: "btn btn-small" %>
+    <% end %>
+  </div>
+</li>

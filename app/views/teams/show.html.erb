@@ -2,7 +2,7 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1><%= @team.name %></h1>
+      <h3><%= @team.name %></h3>
     </section>
     <section>
       <%= render 'shared/team_stats', :team => @team %>
@@ -11,7 +11,10 @@
       <%= render 'show_members', :member_items => @member_items %>
     </section>
     <section>
-      <%= render 'shared/join_team_form' if signed_in? %>
+      <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
+    </section>
+    <section>
+      <%= render 'shared/join_team_form' if(signed_in? && !@team.team_captain?(current_user)) %>
     </section>
   </aside>
   <div class="span8">

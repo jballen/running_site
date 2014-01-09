@@ -1,5 +1,6 @@
-<%= form_for(current_user.team_user_relationships.build(team_id: @team.id),
-             remote: true) do |f| %>
-  <div><%= f.hidden_field :team_id %></div>
-  <%= f.submit "Join team", class: "btn btn-large btn-primary" %>
+<%= simple_form_for(@team.notifications.build) do |f| %>
+  <%= f.input :team_id, as: :hidden, input_html: { value: @team.id }%>
+  <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+  <%= f.input :what,    as: :hidden, input_html: { value: 'join' } %>
+  <%= f.submit 'Join team', class: "btn btn-large btn-primary" %>
 <% end %>

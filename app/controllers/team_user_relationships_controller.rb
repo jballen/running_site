@@ -3,19 +3,18 @@ class TeamUserRelationshipsController < ApplicationController
 
   def create
     @team = Team.find(params[:team_user_relationship][:team_id])
-    current_user.join_team!(@team)
-    respond_to do |format|
-      format.html {redirect_to @team}
-      format.js
-    end
+    @user = User.find(params[:team_user_relationship][:user_id])
+    @team.notifications.find_by(user_id: @user.id).destroy!
+    @user.join_team!(@team)
+    flash[:success] = 'Added ' + @user.name + ' to the team!'
+    redirect_to @team
   end
 
   def destroy
     @team = TeamUserRelationship.find(params[:id]).team
-    current_user.quit_team!(@team)
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js
-    end
+    @user_id = params[:team_user_relationship][:user_id] || current_user
+    @user = User.find(@user_id)
+    @user.quit_team!(@team)
+    redirect_to @team
   end
 end

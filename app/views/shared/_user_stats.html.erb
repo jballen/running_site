@@ -3,11 +3,11 @@
   <strong>
     <%= pluralize(@user.teams.count, "team") %>
   </strong>
-  <strong>
-    <% if @user.teams.count > 0 %>
-      <% @user.teams.each do |team| %>
+  <% if @user.teams.count > 0 %>
+    <% @user.teams.each do |team| %>
+      <strong>
         <%= link_to team.name, team %>
-      <% end %>
+      </strong>
     <% end %>
-  </strong>
+  <% end %>
 </div>
