@@ -1,0 +1,2 @@
+class ExerciseCommentsController < ApplicationController
+end

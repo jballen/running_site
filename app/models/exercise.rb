@@ -3,6 +3,7 @@ class Exercise < ActiveRecord::Base
   enumerize :activity, in: [:run, :bike, :swim, :elliptical, :hike, :walk]
 
   belongs_to :user
+  has_many :exercise_comments
 
   default_scope -> { order('created_at DESC') }
   validates :duration, presence: true

@@ -12,12 +12,11 @@
     </section>
   </aside>
   <div class="span8">
-    <% if @user.exercises.any? %>
-      <h3>Activities (<%= @user.exercises.count %>)</h3>
-      <ol class="exercises">
-        <%= render @exercises %>
-      </ol>
-      <%= will_paginate @exercises %>
-    <% end %>
+    <div id="calendar"></div>
+    <div id="event_popup">
+      <div class="title"></div>
+      <div class="description"></div>
+      <div class="comment"></div>
+    </div>
   </div>
 </div>

@@ -2,12 +2,27 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  respond_to :json
 
   def show
-  	@user = User.find(params[:id])
-    @exercises = @user.exercises.paginate(page: params[:page])
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.html do
+        @exercises = @user.exercises.paginate(page: params[:page])
+      end
+      format.json do
+        render json: @user.exercises
+      end
+    end
   end
-  
+  def list_exercises
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.json do
+        render json: @user.exercises
+      end
+    end
+  end
   def new
     @user = User.new
   end

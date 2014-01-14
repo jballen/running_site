@@ -7,7 +7,6 @@ class CreateNotifications < ActiveRecord::Migration
 
       t.timestamps
     end
-    drop_table :captains
   end
 
   def self.down

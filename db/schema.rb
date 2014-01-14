@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140109214723) do
+ActiveRecord::Schema.define(version: 20140114141431) do
+
+  create_table "exercise_comments", force: true do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "exercise_comments", ["exercise_id"], name: "index_exercise_comments_on_exercise_id"
 
   create_table "exercises", force: true do |t|
     t.decimal  "distance"

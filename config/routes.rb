@@ -1,5 +1,7 @@
 RunningSite::Application.routes.draw do
-  resources :exercises,               only: [:create, :destroy]
+  resources :exercises,               only: [:create, :destroy, :get_user_exercises] do
+    resources :exercise_comments
+  end
   resources :notifications,           only: [:create, :destroy]
   resources :sessions,                only: [:new, :create, :destroy]
   resources :teams
@@ -7,6 +9,7 @@ RunningSite::Application.routes.draw do
   resources :users do
     member do
       get :teams
+      get :list_exercises
     end
   end
 
