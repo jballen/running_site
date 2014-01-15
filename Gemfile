@@ -12,6 +12,7 @@ gem 'simple_form'
 gem 'enumerize'
 gem 'verbs'
 gem 'json'
+gem 'underscore-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

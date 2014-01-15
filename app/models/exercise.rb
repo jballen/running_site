@@ -16,6 +16,7 @@ class Exercise < ActiveRecord::Base
     user.teams.each do |team|
       team_member_ids << team.users.map(&:id)
     end
+    team_member_ids << user.id
     team_member_ids = team_member_ids.flatten
     team_member_ids = team_member_ids.uniq.flatten
     where("user_id IN (:team_member_ids)", 

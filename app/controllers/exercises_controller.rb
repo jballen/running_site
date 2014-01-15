@@ -8,7 +8,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = current_user.exercises.build(exercise_params)
     if @exercise.save
-      flash[:success] = "exercise saved."
+      flash[:success] = "Exercise saved."
       redirect_to root_url
     else
       @feed_items = []
@@ -28,6 +28,7 @@ class ExercisesController < ApplicationController
       @seconds = params[:exercise].delete(:duration_seconds).to_i
       params[:exercise][:duration] = @hours * 3600 + @minutes * 60 + @seconds
     end
+
     def exercise_params
       params.require(:exercise).permit(:distance, 
                                        :duration, 
