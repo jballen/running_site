@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140114141431) do
+ActiveRecord::Schema.define(version: 20140115024025) do
 
   create_table "exercise_comments", force: true do |t|
     t.string   "commenter"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20140114141431) do
     t.date     "activity_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "unit"
   end
 
   add_index "exercises", ["user_id", "created_at"], name: "index_exercises_on_user_id_and_created_at"

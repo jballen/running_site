@@ -12,11 +12,29 @@
     </section>
   </aside>
   <div class="span8">
-    <div id="calendar"></div>
-    <div id="event_popup">
-      <div class="title"></div>
-      <div class="description"></div>
-      <div class="comment"></div>
+    <div id="calendar">
+      <script type="text/template" id='calendar-template'>
+        <div class="clndr-grid">
+          <div class="days-of-the-week clearfix">
+            <%% _.each(daysOfTheWeek, function(day) { %>
+              <div class="header-day"><%%= day %></div>
+            <%% }); %>
+          </div>
+          <div class="days clearfix">
+            <%% _.each(days, function(day) { %>
+              <div class="<%%= day.classes %>" id="<%%= day.id %>">
+                <span class="day-number"><%%= day.day %></span>
+              </div>
+            <%% }); %>
+          </div>
+        </div>
+      </script>
     </div>
   </div>
 </div>
+
+<script>
+$('#calendar').clndr({
+  template: $('#calendar-template').html()
+});
+</script>
