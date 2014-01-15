@@ -1,7 +1,11 @@
 <%= simple_form_for @exercise do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-    <%= f.input :activity, :include_blank => false %>
-    <%= f.input :distance, input_html: { min: 0 } %>
+    <div class="activityType">
+      <%= f.input :activity, :include_blank => false %>
+    </div>
+    <div class="distanceForm">
+      <%= f.input :distance, input_html: { min: 0 } %>
+    </div>
     <div class="duration">
       <%= f.label :duration %>
       <%= f.input :duration, as: :string, label: false, input_html: { id:"hours", name:"exercise[duration_hours]" }%><p>hrs</p>
@@ -9,6 +13,9 @@
       <%= f.input :duration, as: :string, label: false, input_html: { id:"seconds", name:"exercise[duration_seconds]" }%><p>secs</p>
     </div>
     <%= f.input :comment %>
-    <%= f.input :activity_date %>
-    <%= f.button :submit, class: "btn btn-medium btn-primary" %>
+    <div class="dateForm">
+      <%= f.input :activity_date %>
+    </div>
+
+    <%= f.button :submit, class: "btn btn-large" %>
 <% end %>

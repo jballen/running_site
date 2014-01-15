@@ -68,13 +68,18 @@ html {
     margin: 0 auto;
 }
 
-/* Sign up and Sign in pages */
+/*
+****************************************
+        Sign-up and sign-in pages
+****************************************
+*/
 
 .containerWrapper {
     height: 100%;
 }
 
-.loginWrapper {
+.loginWrapper,
+.homeWrapper {
     background-color: $lightGreen;
     height: 100%;
     overflow: auto;
@@ -111,6 +116,68 @@ html {
         background-color: $lightGreen;
     }
 }
+
+/*
+****************************************
+        Styling for Exercise Form
+****************************************
+*/
+
+.userInformation {
+    background-color: $whiteBg;
+    border-radius: 4px;
+    margin: 40px auto 0 auto;
+    padding: 20px;
+    width: 600px;
+}
+
+.activityType, 
+.distanceForm, 
+.duration {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+}
+
+.activityType {
+    margin-left: 10px;
+    width: 90px;
+}
+
+.distanceForm {
+    margin-left: 10px;
+    width: 100px;
+}
+
+.duration {
+    float: right;
+    margin-left: 15px;
+    width: 230px;
+
+    p {
+        margin-right: 8px;
+    }
+}
+
+.controls textarea {
+    height: 150px;
+}
+
+.exercise_duration {
+    margin-right: 2px;
+}
+
+label {
+    color: $darkGreen;
+    font-family: "Hevetica", sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin: 2px 0;
+}
+
+
+
+
 
 
 

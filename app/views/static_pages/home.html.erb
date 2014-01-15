@@ -1,20 +1,22 @@
 <% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
+  <div class="homeWrapper">
+    <div class="userInformation">
+      <!-- User Information
       <section>
         <%= render 'shared/user_info' %>
       </section>
       <section>
         <%= render 'shared/user_stats' %>
       </section>
-      <section>
-        <%= render 'shared/exercise_form' %>
-      </section>
-    </aside>
-   <div class="span8">
-      <h3>Activity Feed</h3>
-      <%= render 'shared/feed' %>
+    -->
+      <%= render 'shared/exercise_form' %>
     </div>
+    <!-- 
+      <div class="activityFeed">
+        <h3>Activity Feed</h3>
+        <%= render 'shared/feed' %>
+      </div>
+    -->
   </div>
 <% else %>
   <div class="headWrapper">
