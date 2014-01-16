@@ -19,10 +19,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       format.json do
-        render json: @user.exercises
+        @formatted_exercises = []
+        @user.exercises.each do |exercise|
+          @new_exercise = {}
+          @new_exercise['duration'] = format_duration(exercise.duration)
+          @new_exercise['distance'] = exercise.distance
+          @new_exercise['activity'] = exercise.activity
+          @new_exercise['unit'] = exercise.unit
+          @new_exercise['date'] = exercise.activity_date
+          @formatted_exercises << @new_exercise
+        end
+        render json: @formatted_exercises
       end
     end
   end
+
   def new
     @user = User.new
   end

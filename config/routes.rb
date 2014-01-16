@@ -10,6 +10,7 @@ RunningSite::Application.routes.draw do
     member do
       get :teams
       get :list_exercises
+      get :summary_of_exercises
     end
   end
 

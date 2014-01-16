@@ -29,6 +29,16 @@ module ExercisesHelper
     sanitize(raw(content.split.map{ |s| wrap_long_string(s) }.join(' ')))
   end
 
+  def exercise_summary(exercise)
+    summary = conjugate_verb_to_past_tense exercise.activity 
+    if !exercise.distance.nil?
+      summary = summary + ' ' + exercise.distance.round(2).to_s + ' miles in '
+    else
+      summary = summary + ' for '
+    end 
+  summary = summary + format_duration(exercise.duration)
+  end
+
   def conjugate_verb_to_past_tense(verb)
     case verb
     when 'run'
