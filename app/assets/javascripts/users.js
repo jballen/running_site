@@ -41,6 +41,21 @@
 // function closeEventPopup(event, jsEvent, view) {
 //   $('#event_popup').css('display', 'none');
 // }
-$('#calendar').clndr({
-  template: $('#calendar-template').html()
+var events_arr = [];
+$.getJSON(document.URL + '/list_exercises', function(data) {
+  $.each(data, function(index) {
+    console.log(data[index])
+    var new_event = {};
+    var exercise = data[index]
+    new_event['activity'] = exercise.activity;
+    new_event['date'] = exercise.date;
+    new_event['duration'] = exercise.duration;
+    new_event['distance'] = exercise.distance;
+    new_event['unit'] = exercise.unit || 'miles';
+    events_arr.push(new_event);
+  });
+  $('#calendar').clndr({
+    template: $('#calendar-template').html(),
+    events: events_arr
+  });
 });

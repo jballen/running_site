@@ -1,15 +1,70 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#event_popup {
-  display:none;
-  .title {
-    background-color:#3F3F3F
+@import "constants.css.scss";
+
+.day {
+  float: left;
+  width: 14.2857%;
+  height: 66px;
+  padding: 6px 0 24px 0;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    background-color: $hoverBackground;
   }
-  .comment {
-    font-size:11px;
+}
+.header-day {
+  float: left;
+  width: 14.2857%;
+  padding: 14px 0px 14px 0px;
+  text-align: center;
+  font-size: 1.5em;
+  background-color: #6E6E6E;
+  margin-top: 10px
+}
+.day-number {
+  width:80%;
+  border-bottom: 2px solid;
+  display: inline-block;
+}
+.adjacent-month {
+  opacity:0.3;
+}
+.clndr-next-button {
+  display: inline-block;
+  width: 10%;
+  cursor: pointer;
+  float: right;
+  text-align: right;
+  height: 100%;
+  &:hover {
+    background-color: $hoverBackground; 
   }
-  .description {
-    font-size:13px;
+}
+.clndr-previous-button {
+  display: inline-block;
+  width: 15%;
+  cursor: pointer;
+  height: 100%;
+  &:hover {
+    background-color: $hoverBackground; 
+  }
+}
+.month {
+  width: 70%;
+  display:inline-block;
+  text-align: center;
+  font-size: 1.5em;
+}
+.clndr-controls {
+  height: 2.5em;
+  padding: 1.5em 0 0 0;
+}
+.event {
+  background-color: $lightGreen;
+  overflow-y:auto;
+  .day-event {
+    font-size:0.7em;
   }
 }

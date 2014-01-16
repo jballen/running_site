@@ -11,9 +11,16 @@
       <%= render 'shared/user_stats' %>
     </section>
   </aside>
-  <div class="span8">
+</div>
+<div class="row">
+  <div class="span12">
     <div id="calendar">
       <script type="text/template" id='calendar-template'>
+        <div class="clndr-controls">
+          <div class="clndr-previous-button">Previous</div>
+          <div class="month"><%%= month %></div>
+          <div class="clndr-next-button">Next</div>
+        </div>
         <div class="clndr-grid">
           <div class="days-of-the-week clearfix">
             <%% _.each(daysOfTheWeek, function(day) { %>
@@ -24,6 +31,14 @@
             <%% _.each(days, function(day) { %>
               <div class="<%%= day.classes %>" id="<%%= day.id %>">
                 <span class="day-number"><%%= day.day %></span>
+                <%% _.each(day.events, function(day_event) { %>
+                  <div class="day-event">
+                    <span class="event-type"><%%= day_event.activity %>:</span>
+                    <span class="event-duration"> <%%= day_event.duration %>, </span>
+                    <span class="event-distance"> <%%= day_event.distance %> </span>
+                    <span class="event-unit"><%%= day_event.unit%></span>
+                  </div>
+                <%% }) %>
               </div>
             <%% }); %>
           </div>
@@ -32,9 +47,3 @@
     </div>
   </div>
 </div>
-
-<script>
-$('#calendar').clndr({
-  template: $('#calendar-template').html()
-});
-</script>
