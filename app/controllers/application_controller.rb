@@ -6,4 +6,5 @@ class ApplicationController < ActionController::Base
   include ExercisesHelper
   include UsersHelper
   include TeamsHelper
+  include ApplicationHelper
 end

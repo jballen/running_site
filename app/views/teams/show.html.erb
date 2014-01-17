@@ -18,6 +18,29 @@
     </section>
   </aside>
   <div class="span8">
-    
+    <script type="text/template" id="clndr_template">
+      <div class="controls">
+        <div class="previous-btn">Prev.</div>
+        <div class="month"><%%= days[extras.currentWeek * 7].date.format('YYYY-MM-DD') %> - <%%= days[extras.currentWeek * 7 + 6].date.format('YYYY-MM-DD') %></div>
+        <div class="next-btn">Next</div>
+      </div>
+
+      <div class="days-of-the-week clearfix">
+        <%% _.each(daysOfTheWeek, function(day) { %>
+          <div class="header-day"><%%= day %></div>
+        <%% }); %>
+      </div>
+      <% @team.users.each do |user| %>
+          <div id="<%= user.id %>" class="days clearfix">
+            <div class="users_name"><%= link_to user.name, user %></div>
+            <%% for(var i = extras.currentWeek * 7; i < extras.currentWeek * 7 + 7; i++) { %>
+              <div class="<%%= days[i].classes %>" id="<%%= days[i].id %>">
+                <span class="day-number"><%%= days[i].day %></span>
+              </div>
+            <%% } %>
+          </div>
+      <% end %>
+    </script>
+    <div id="clndr"></div>
   </div>
 </div>

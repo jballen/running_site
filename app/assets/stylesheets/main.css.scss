@@ -146,7 +146,15 @@ html {
 
 .distanceForm {
     margin-left: 10px;
-    width: 100px;
+    width: 125px;
+    .exercise_distance {
+        width: 55%;
+        display: inline-block;
+    }
+    .exercise_unit {
+        width: 40%;
+        display: inline-block;
+    }
 }
 
 .duration {

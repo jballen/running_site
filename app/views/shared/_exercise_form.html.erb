@@ -1,21 +1,38 @@
-<%= simple_form_for @exercise do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-    <div class="activityType">
-      <%= f.input :activity, :include_blank => false %>
+<div class="modal fade" id="exercise-modal" tabindex="-1" aria-hidden="true">
+  <div class="modeal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Log Activity</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @exercise do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="activityType">
+          <%= f.input :activity, :include_blank => false %>
+        </div>
+        <div class="distanceForm">
+          <%= f.input :distance, input_html: { min: 0 } %>
+          <%= f.input :unit, as: :select, 
+          label: false, 
+          collection: ['mi', 'km'], 
+          selected: 'mi' %>
+        </div>
+        <div class="duration">
+          <%= f.label :duration %>
+          <%= f.input :duration, as: :string, label: false, input_html: { id:"hours", name:"exercise[duration_hours]" }%><p>hrs</p>
+          <%= f.input :duration, as: :string, label: false, input_html: { id:"minutes", name:"exercise[duration_minutes]" }%><p>mins</p>
+          <%= f.input :duration, as: :string, label: false, input_html: { id:"seconds", name:"exercise[duration_seconds]" }%><p>secs</p>
+        </div>
+        <%= f.input :comment %>
+        <div class="dateForm">
+          <%= f.input :activity_date, as: :hidden %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.button :submit, class: "btn btn-large" %>
+        <% end %>
+      </div>
     </div>
-    <div class="distanceForm">
-      <%= f.input :distance, input_html: { min: 0 } %>
-    </div>
-    <div class="duration">
-      <%= f.label :duration %>
-      <%= f.input :duration, as: :string, label: false, input_html: { id:"hours", name:"exercise[duration_hours]" }%><p>hrs</p>
-      <%= f.input :duration, as: :string, label: false, input_html: { id:"minutes", name:"exercise[duration_minutes]" }%><p>mins</p>
-      <%= f.input :duration, as: :string, label: false, input_html: { id:"seconds", name:"exercise[duration_seconds]" }%><p>secs</p>
-    </div>
-    <%= f.input :comment %>
-    <div class="dateForm">
-      <%= f.input :activity_date %>
-    </div>
-
-    <%= f.button :submit, class: "btn btn-large" %>
-<% end %>
+  </div>
+</div>

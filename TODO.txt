@@ -1,0 +1,1 @@
+-- The team week view currently loads all the user's exercises at once. Instead, it should only load the current week's exercises.

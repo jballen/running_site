@@ -31,7 +31,7 @@
 .adjacent-month {
   opacity:0.3;
 }
-.clndr-next-button {
+.next-btn {
   display: inline-block;
   width: 10%;
   cursor: pointer;
@@ -42,7 +42,7 @@
     background-color: $hoverBackground; 
   }
 }
-.clndr-previous-button {
+.previous-btn {
   display: inline-block;
   width: 15%;
   cursor: pointer;
@@ -66,5 +66,14 @@
   overflow-y:auto;
   .day-event {
     font-size:0.7em;
+    width:80%;
+    text-align:left;
+    display: inline-block;
+    &:hover {
+      background-color: #4E4E4E;
+    }
   }
+}
+#exercise-modal {
+  display:none;
 }

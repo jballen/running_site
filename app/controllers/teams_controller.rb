@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :signed_in_user, only: [:index, :create, :user_request]
   before_action :team_captain?,  only: [:destroy, :update]
+  respond_to :json
 
   def index
     @teams = Team.all
@@ -28,6 +29,21 @@ class TeamsController < ApplicationController
       redirect_to @team
     else
       render 'new'
+    end
+  end
+
+  def list_team_exercises
+    @team = this_team
+    exercise_arr = []
+    @team.users.each do |user|
+      user.exercises.each do |exercise|
+        exercise_arr << format_exercise_for_json(exercise, user)
+      end
+    end
+    respond_to do |format|
+      format.json do
+        render json: exercise_arr
+      end
     end
   end
 

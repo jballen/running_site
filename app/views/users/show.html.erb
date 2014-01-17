@@ -14,12 +14,13 @@
 </div>
 <div class="row">
   <div class="span12">
+    <%= render 'shared/exercise_form' unless current_user != @user %>
     <div id="calendar">
       <script type="text/template" id='calendar-template'>
         <div class="clndr-controls">
-          <div class="clndr-previous-button">Previous</div>
+          <div class="clndr-previous-button previous-btn">Previous</div>
           <div class="month"><%%= month %></div>
-          <div class="clndr-next-button">Next</div>
+          <div class="clndr-next-button next-btn">Next</div>
         </div>
         <div class="clndr-grid">
           <div class="days-of-the-week clearfix">
@@ -32,12 +33,7 @@
               <div class="<%%= day.classes %>" id="<%%= day.id %>">
                 <span class="day-number"><%%= day.day %></span>
                 <%% _.each(day.events, function(day_event) { %>
-                  <div class="day-event">
-                    <span class="event-type"><%%= day_event.activity %>:</span>
-                    <span class="event-duration"> <%%= day_event.duration %>, </span>
-                    <span class="event-distance"> <%%= day_event.distance %> </span>
-                    <span class="event-unit"><%%= day_event.unit%></span>
-                  </div>
+                  <%= render 'shared/day_event' %>
                 <%% }) %>
               </div>
             <%% }); %>

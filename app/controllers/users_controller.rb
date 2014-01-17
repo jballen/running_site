@@ -6,28 +6,23 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if @user.id == current_user.id
+      @exercise  = current_user.exercises.build
+    end
     respond_to do |format|
       format.html do
         @exercises = @user.exercises.paginate(page: params[:page])
       end
-      format.json do
-        render json: @user.exercises
-      end
     end
   end
+  
   def list_exercises
     @user = User.find(params[:id])
     respond_to do |format|
       format.json do
         @formatted_exercises = []
         @user.exercises.each do |exercise|
-          @new_exercise = {}
-          @new_exercise['duration'] = format_duration(exercise.duration)
-          @new_exercise['distance'] = exercise.distance
-          @new_exercise['activity'] = exercise.activity
-          @new_exercise['unit'] = exercise.unit
-          @new_exercise['date'] = exercise.activity_date
-          @formatted_exercises << @new_exercise
+          @formatted_exercises << format_exercise_for_json(exercise, @user)
         end
         render json: @formatted_exercises
       end

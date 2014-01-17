@@ -9,7 +9,7 @@ class ExercisesController < ApplicationController
     @exercise = current_user.exercises.build(exercise_params)
     if @exercise.save
       flash[:success] = "Exercise saved."
-      redirect_to root_url
+      redirect_to :back
     else
       @feed_items = []
       render 'static_pages/home'

@@ -4,7 +4,11 @@ RunningSite::Application.routes.draw do
   end
   resources :notifications,           only: [:create, :destroy]
   resources :sessions,                only: [:new, :create, :destroy]
-  resources :teams
+  resources :teams do
+    member do
+      get :list_team_exercises
+    end
+  end
   resources :team_user_relationships, only: [:create, :destroy]
   resources :users do
     member do
