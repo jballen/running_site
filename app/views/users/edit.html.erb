@@ -5,11 +5,14 @@
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <%= render 'shared/user_form', f: f %>
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <% if !@user.logged_in_with('facebook') %>
+        <%= render 'shared/user_form', f: f %>
+        <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+        <%= image_for @user %>
+        <a href="http://gravatar.com/emails">change</a>
+      <% else %>
+        <p>Currently there are no settings for you to change. </p>
+      <% end %>
     <% end %>
-
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
   </div>
 </div>

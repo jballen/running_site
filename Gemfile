@@ -13,6 +13,8 @@ gem 'enumerize'
 gem 'verbs'
 gem 'json'
 gem 'underscore-rails'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

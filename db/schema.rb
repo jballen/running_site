@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140116001540) do
+ActiveRecord::Schema.define(version: 20140118170416) do
 
   create_table "exercise_comments", force: true do |t|
     t.string   "commenter"
@@ -75,8 +75,13 @@ ActiveRecord::Schema.define(version: 20140116001540) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",            default: false
     t.integer  "duration"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.string   "provider"
+    t.string   "image_link"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

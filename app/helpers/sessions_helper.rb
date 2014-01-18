@@ -12,6 +12,7 @@ module SessionsHelper
                                   User.encrypt(User.new_remember_token))
     # Delete the old remember_token from cookies
     cookies.delete(:remember_token)
+    session[:user_id] = nil
     self.current_user = nil
   end
 
@@ -20,9 +21,13 @@ module SessionsHelper
   end
 
   def current_user
-    remember_token = User.encrypt(cookies[:remember_token])
-    # The ||= operator only performs the lookup if current_user is undefined
-    @current_user ||= User.find_by(remember_token: remember_token)
+    if !cookies[:remember_token].nil?
+      remember_token = User.encrypt(cookies[:remember_token])
+      # The ||= operator only performs the lookup if current_user is undefined
+      @current_user ||= User.find_by(remember_token: remember_token)
+    elsif !session[:user_id].nil?
+       @current_user ||= User.find(session[:user_id]) 
+    end
   end
 
   def current_user?(user)
