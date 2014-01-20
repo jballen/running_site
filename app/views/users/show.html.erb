@@ -1,45 +1,43 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= image_for @user %>
+<div class="userShowWrapper">
+  <div class="userInformation">
+    <%= image_for @user %>
+    <div class="userInformationHeader">
+      <h3>
         <%= @user.name %>
-      </h1>
-    </section>
-    <section>
+      </h3>
       <%= render 'shared/user_stats' %>
-    </section>
-  </aside>
-</div>
-<div class="row">
-  <div class="span12">
-    <%= render 'shared/exercise_form' unless current_user != @user %>
-    <div id="calendar">
-      <script type="text/template" id='calendar-template'>
-        <div class="clndr-controls">
-          <div class="clndr-previous-button previous-btn">Previous</div>
-          <div class="month"><%%= month %></div>
-          <div class="clndr-next-button next-btn">Next</div>
-        </div>
-        <div class="clndr-grid">
-          <div class="days-of-the-week clearfix">
-            <%% _.each(daysOfTheWeek, function(day) { %>
-              <div class="header-day"><%%= day %></div>
-            <%% }); %>
-          </div>
-          <div class="days clearfix">
-            <%% _.each(days, function(day) { %>
-              <div class="<%%= day.classes %>" id="<%%= day.id %>">
-                <span class="day-number"><%%= day.day %></span>
-                <%% _.each(day.events, function(day_event) { %>
-                  <%= render 'shared/day_event' %>
-                <%% }) %>
-              </div>
-            <%% }); %>
-          </div>
-        </div>
-      </script>
     </div>
+    <div class="activityFeed">
+      <h3>Activity Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+  </div>
+  <%= render 'shared/exercise_form' unless current_user != @user %>
+  <div id="calendar">
+    <script type="text/template" id='calendar-template'>
+      <div class="clndr-controls">
+        <div class="clndr-previous-button previous-btn">Previous</div>
+        <div class="month"><%%= month %></div>
+        <div class="clndr-next-button next-btn">Next</div>
+      </div>
+      <div class="clndr-grid">
+        <div class="days-of-the-week clearfix">
+          <%% _.each(daysOfTheWeek, function(day) { %>
+            <div class="header-day"><%%= day %></div>
+          <%% }); %>
+        </div>
+        <div class="days clearfix">
+          <%% _.each(days, function(day) { %>
+            <div class="<%%= day.classes %>" id="<%%= day.id %>">
+              <span class="day-number"><%%= day.day %></span>
+              <%% _.each(day.events, function(day_event) { %>
+                <%= render 'shared/day_event' %>
+              <%% }) %>
+            </div>
+          <%% }); %>
+        </div>
+      </div>
+    </script>
   </div>
 </div>
