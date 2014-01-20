@@ -143,19 +143,41 @@
         margin: 0;
     }
 
-    form {
-        width: 350px;
-    }
-
     label {
         font-weight: bold;
         margin-top: 2px;
+    }
+
+    .facebookLogin {
+      background-color: #43619b;
+      background: -webkit-linear-gradient( #5678bc, #314a7b);
+      background: linear-gradient( #5678bc, #314a7b);
+      border: 1px solid #2a4069;
+      border-top-color: #314a7b;
+      cursor: pointer;
+      height: 44px;
+      margin: 15px 0;
+      text-align: center;
+
+      form {
+        margin: 0;
+      }
+
+      a {
+        color: #ffffff;
+        font-size: 16px;
+      }
+    }
+
+    .userLogin {
+      margin-top: 45px;
     }
 }
 
 .btn-login {
     background-color: $darkGreen;
     letter-spacing: 1px;
+    font-weight: bold;
 
     &:hover {
         background-color: $lightGreen;
