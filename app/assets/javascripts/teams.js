@@ -12,6 +12,7 @@ $('document').ready(function() {
               new_event['unit'] = exercise.unit || 'miles';
               new_event['user_id'] = exercise.user_id;
               new_event['user_name'] = exercise.user_name;
+              new_event['id'] = exercise.id;
               events_arr.push(new_event);
             });
             
@@ -26,6 +27,11 @@ $('document').ready(function() {
               },
               showAdjacentMonths: true,
               doneRendering: function() {
+                  /* Event click handler */
+                  $('.day-event').on('click', function() {
+                    $('#comment-modal').modal('show');
+                    console.log('clicked');
+                  });
                   /* Next button handler */
                   $('.next-btn').on('click', function() {
                       /* Get numbers of weeks in the month */
@@ -71,13 +77,19 @@ $('document').ready(function() {
                     var new_event = events_arr[index];
                     var day_object = $('#' + new_event.user_id + '.days .calendar-day-' + new_event.date);
                     day_object.addClass('event');
-                    day_object.append('<div class="day-event">' + 
+                    day_object.append('<div class="day-event" id="exercise' + new_event.id + '">' +
                                         '<span class="event-type">'+  new_event.activity + ':</span>' + 
                                         '<span class="event-duration">' +  new_event.duration + ', </span>' +
                                         '<span class="event-distance">' +  new_event.distance + '</span>' + 
                                         '<span class="event-unit"> ' + new_event.unit + '</span>' + 
                                       '</div>');
-                  })
+                    $('.day-event#exercise' + new_event.id).on('click', function() {
+                      $('#comment-modal').modal('show');
+                      $('#exercise_comment_exercise_id').val(new_event.id);
+                      console.log('clicked');
+                    });
+              
+                  });
               }
           });
         }); 

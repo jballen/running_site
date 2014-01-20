@@ -18,6 +18,7 @@
     </section>
   </aside>
   <div class="span8">
+    <%= render 'shared/comment_modal' if current_user.on_team?(@team) %>
     <script type="text/template" id="clndr_template">
       <div class="controls">
         <div class="previous-btn">Prev.</div>

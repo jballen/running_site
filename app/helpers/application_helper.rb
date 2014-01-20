@@ -19,6 +19,7 @@ module ApplicationHelper
     @new_exercise['date'] = exercise.activity_date
     @new_exercise['user_id'] = user.id
     @new_exercise['user_name'] = user.name
+    @new_exercise['id'] = exercise.id
     return @new_exercise
   end
 end

@@ -1,0 +1,21 @@
+<div class="modal fade" id="comment-modal" tabindex="-1" aria-hidden="true">
+  <div class="modeal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">New Comment</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @exercise_comment do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.input :body, label: "Comment" %>
+        <%= f.input :commenter, as: :hidden, input_html: {value: current_user.email} %>
+        <%= f.input :exercise_id, as: :hidden %>
+      </div>
+      <div class="modal-footer">
+        <%= f.button :submit, "Create", class: "btn btn-large" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
