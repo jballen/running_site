@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20140118170416) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",            default: false
-    t.integer  "duration"
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
