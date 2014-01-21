@@ -12,7 +12,8 @@ class ExercisesController < ApplicationController
       redirect_to :back
     else
       @feed_items = []
-      render 'static_pages/home'
+      flash[:error] = "There was an error saving the exercise. Please try again."
+      redirect_to :back
     end
   end
 
@@ -34,7 +35,8 @@ class ExercisesController < ApplicationController
                                        :duration, 
                                        :comment, 
                                        :activity, 
-                                       :activity_date)
+                                       :activity_date,
+                                       :unit)
     end
 
     def correct_user

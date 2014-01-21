@@ -9,7 +9,7 @@
           new_event['date'] = exercise.date;
           new_event['duration'] = exercise.duration;
           new_event['distance'] = exercise.distance;
-          new_event['unit'] = exercise.unit || 'miles';
+          new_event['unit'] = exercise.unit;
           new_event['user_id'] = exercise.user_id;
           new_event['user_name'] = exercise.user_name;
           events_arr.push(new_event);

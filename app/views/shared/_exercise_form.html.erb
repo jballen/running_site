@@ -14,15 +14,14 @@
         <div class="distanceForm">
           <%= f.input :distance, input_html: { min: 0 } %>
           <%= f.input :unit, as: :select, 
-          label: false, 
-          collection: ['mi', 'km'], 
-          selected: 'mi' %>
+          label: false,  
+          selected: :mile %>
         </div>
         <div class="duration">
           <%= f.label :duration %>
-          <%= f.input :duration, as: :string, label: false, input_html: { id:"hours", name:"exercise[duration_hours]" }%><p>hrs</p>
-          <%= f.input :duration, as: :string, label: false, input_html: { id:"minutes", name:"exercise[duration_minutes]" }%><p>mins</p>
-          <%= f.input :duration, as: :string, label: false, input_html: { id:"seconds", name:"exercise[duration_seconds]" }%><p>secs</p>
+          <%= f.input :duration, as: :string, label: false, input_html: { id:"hours", name:"exercise[duration_hours]", placeholder: "hrs" }%>
+          <%= f.input :duration, as: :string, label: false, input_html: { id:"minutes", name:"exercise[duration_minutes]", placeholder: "mins"}%>
+          <%= f.input :duration, as: :string, label: false, input_html: { id:"seconds", name:"exercise[duration_seconds]", placeholder: "secs" }%>
         </div>
         <%= f.input :comment %>
         <div class="dateForm">

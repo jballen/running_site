@@ -1,14 +1,14 @@
 class Exercise < ActiveRecord::Base
   extend Enumerize
   enumerize :activity, in: [:run, :bike, :swim, :elliptical, :hike, :walk]
-
+  enumerize :unit, in: [:mile, :km]
   belongs_to :user
   has_many :exercise_comments
 
   default_scope -> { order('created_at DESC') }
   validates :duration, presence: true
   validates_numericality_of :duration, :greater_than => 0
-  validates_numericality_of :distance, :greater_than => 0
+  validates_numericality_of :distance, :greater_than => 0, if: :distance_present?
   validates :user_id, presence: true
 
   def self.team_member_activity(user)
@@ -22,4 +22,10 @@ class Exercise < ActiveRecord::Base
     where("user_id IN (:team_member_ids)", 
           team_member_ids: team_member_ids)
   end
+
+  private
+
+    def distance_present?
+      distance.present?
+    end
 end
