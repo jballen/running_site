@@ -18,7 +18,7 @@ RunningSite::Application.routes.draw do
     end
   end
 
-  root 'sessions#new'
+  root 'static_pages#home'
   match '/signin',                 to: 'sessions#new',         via: 'get'
   match '/signout',                to: 'sessions#destroy',     via: [:get, :post, :delete]
   match '/signup',                 to: 'users#new',            via: 'get'
