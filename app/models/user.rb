@@ -7,7 +7,13 @@ class User < ActiveRecord::Base
   belongs_to :team
 	        VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
-  validate :login_credentials
+  before_save :downcase_email
+  before_create :create_remember_token
+  validates :name,  presence: true, length: {maximum:25}, if: :site_login?  
+  validates :password, length: {minimum: 6}, if: :site_login?  
+  validates :email, presence: true, 
+      format: {with: VALID_EMAIL_REGEX}, 
+      uniqueness: {case_sensitive: false}, if: :site_login?  
   # Turn off validations for the facebook login
 	has_secure_password validations: false
   def User.new_remember_token
@@ -51,19 +57,17 @@ class User < ActiveRecord::Base
   end
 
   private
-    def login_credentials
-      if password.present?
-        before_save {self.email = email.downcase}
-        before_create :create_remember_token
-        validates :name,  presence: true, length: {maximum:25}
-        validates :password, length: {minimum: 6}
-        validates :email, presence: true, 
-            format: {with: VALID_EMAIL_REGEX}, 
-            uniqueness: {case_sensitive: false}
+    def site_login?
+      password.present?
+    end
+    def downcase_email
+      if site_login? 
+        self.email = email.downcase 
       end
     end
-
     def create_remember_token
-      self.remember_token = User.encrypt(User.new_remember_token)
+      if site_login?
+        self.remember_token = User.encrypt(User.new_remember_token)
+      end
     end
 end
