@@ -19,7 +19,7 @@
   </aside>
   <div class="calendarWrapper">
     <%= render 'shared/comment_modal' if current_user.on_team?(@team) %>
-    <div class="calendar" id="calendar-header"></div>
+    <div id="calendar-header"></div>
     <script type="text/template" id="calendar-header-template">
       <div class="controls">
         <div class="previous-btn">Prev.</div>
@@ -35,11 +35,14 @@
     </script>
 
     <% @team.users.each do |user| %>
+      <div class="user-calendar">
         <script type="text/template" id="calendar-template<%=user.id%>">
           <div id="<%= user.id %>" class="days clearfix">
-            <div class="users_name"><%= link_to user.name, user %></div>
+            <div class="clndr-box users-info"><%= link_to user.name, user %>
+              <%= image_for user %>
+            </div>
             <%% for(var i = extras.currentWeek * 7; i < extras.currentWeek * 7 + 7; i++) { %>
-              <div class="<%%= days[i].classes %>">
+              <div class="clndr-box <%%= days[i].classes %>">
                 <span class="day-number"><%%= days[i].day %></span>
                 <%% _.each(days[i].events, function(day_event) { %>
                   <%= render 'shared/day_event' %>
@@ -48,7 +51,8 @@
             <%% } %>
           </div>
         </script>
-      <div class="calendar" id="calendar<%= user.id %>"></div>
+        <div class="calendar-days" id="calendar<%= user.id %>"></div>
+      </div>
     <% end %>
   </div>
 </div>

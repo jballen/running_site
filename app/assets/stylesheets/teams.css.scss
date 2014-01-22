@@ -30,4 +30,20 @@
   right: 0;
   margin-top: 5%;
   width: 71%;
+  .users-info {
+    float: left;
+    width: 12%;
+    height: 66px;
+    display: inline-block;
+    img {
+      border-radius: 50px;
+    }
+  }
+  .calendar-days {
+    width: 100%%;
+    float: right;
+  }
+  .day {
+    width: 12% !important;
+  }
 }
