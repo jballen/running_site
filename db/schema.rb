@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118170416) do
+ActiveRecord::Schema.define(version: 20140121194805) do
 
   create_table "exercise_comments", force: true do |t|
     t.string   "commenter"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140118170416) do
     t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "exercise_comments", ["exercise_id"], name: "index_exercise_comments_on_exercise_id"
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(version: 20140118170416) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",            default: false
+    t.integer  "duration"
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"

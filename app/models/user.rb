@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
                                      dependent:   :destroy
   has_many :teams, through: :team_user_relationships,
                    source:  :team
+  has_many :exercise_comments
   belongs_to :team
 	        VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 

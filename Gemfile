@@ -15,6 +15,8 @@ gem 'json'
 gem 'underscore-rails'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
+gem 'font-awesome-sass'
+gem 'bootstrap-tooltip-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

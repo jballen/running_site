@@ -2,19 +2,20 @@ $('document').ready(function() {
     if ($('body#teams').length) {
         $.getJSON(document.URL + '/list_team_exercises', function(data) {
             var events_arr = [];
-            $.each(data, function(index) {
-              var new_event = {};
-              var exercise = data[index]
-              new_event['activity'] = exercise.activity;
-              new_event['date'] = exercise.date;
-              new_event['duration'] = exercise.duration;
-              new_event['distance'] = exercise.distance;
-              new_event['unit'] = exercise.unit || 'miles';
-              new_event['user_id'] = exercise.user_id;
-              new_event['user_name'] = exercise.user_name;
-              new_event['id'] = exercise.id;
-              events_arr.push(new_event);
-            });
+          $.each(data, function(index) {
+          var new_event = {};
+          var exercise = data[index]
+          new_event['activity'] = exercise.activity;
+          new_event['date'] = exercise.date;
+          new_event['duration'] = exercise.duration;
+          new_event['distance'] = exercise.distance;
+          new_event['unit'] = exercise.unit;
+          new_event['user_id'] = exercise.user_id;
+          new_event['user_name'] = exercise.user_name;
+          new_event['comments'] = exercise.comments;
+          new_event['id'] = exercise.id;
+          events_arr.push(new_event);
+        });
             
           function weeksInMonth(month) {
               return Math.floor((month.daysInMonth() + moment(month).startOf('month').weekday()) / 7);
@@ -27,11 +28,6 @@ $('document').ready(function() {
               },
               showAdjacentMonths: true,
               doneRendering: function() {
-                  /* Event click handler */
-                  $('.day-event').on('click', function() {
-                    $('#comment-modal').modal('show');
-                    console.log('clicked');
-                  });
                   /* Next button handler */
                   $('.next-btn').on('click', function() {
                       /* Get numbers of weeks in the month */

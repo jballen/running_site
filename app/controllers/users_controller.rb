@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @exercise_comment = ExerciseComment.new
     if @user.id == current_user.id
       @exercise  = current_user.exercises.build
       @feed_items = current_user.feed.paginate(page: params[:page])

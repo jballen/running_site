@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include ActionView::Helpers::TextHelper
 
   # Returns the full title on a per-page basis.
   def fullTitle(page_title)
@@ -15,11 +16,13 @@ module ApplicationHelper
     @new_exercise['duration'] = format_duration(exercise.duration)
     @new_exercise['distance'] = exercise.distance
     @new_exercise['activity'] = exercise.activity
-    @new_exercise['unit'] = exercise.unit
+    @unit = exercise.unit || "mile"
+    @new_exercise['unit'] = @unit.pluralize(exercise.distance.round(2)) unless exercise.distance.nil?
     @new_exercise['date'] = exercise.activity_date
     @new_exercise['user_id'] = user.id
     @new_exercise['user_name'] = user.name
     @new_exercise['id'] = exercise.id
+    @new_exercise['comments'] = exercise.exercise_comments
     return @new_exercise
   end
 end

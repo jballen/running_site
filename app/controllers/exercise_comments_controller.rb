@@ -2,7 +2,8 @@ class ExerciseCommentsController < ApplicationController
 
   def create
     @comment = ExerciseComment.new(comment_params)
-
+    @comment.user_id = current_user.id;
+    @comment.commenter = current_user.name;
     if @comment.save                
       flash[:success] = "Comment saved."
       redirect_to :back
@@ -15,8 +16,6 @@ class ExerciseCommentsController < ApplicationController
   private
 
     def comment_params
-      params.require(:exercise_comment).permit(:body,
-                                               :commenter,
-                                               :exercise_id)
+      params.require(:exercise_comment).permit(:body, :exercise_id)
     end
 end

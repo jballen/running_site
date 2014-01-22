@@ -9,7 +9,6 @@
         <%= simple_form_for @exercise_comment do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <%= f.input :body, label: "Comment" %>
-        <%= f.input :commenter, as: :hidden, input_html: {value: current_user.email} %>
         <%= f.input :exercise_id, as: :hidden %>
       </div>
       <div class="modal-footer">

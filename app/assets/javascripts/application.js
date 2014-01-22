@@ -18,3 +18,5 @@
 //= require clndr.min.js
 //= require moment.min.js
 //= require_tree .
+//= require bootstrap/bootstrap-tooltip
+

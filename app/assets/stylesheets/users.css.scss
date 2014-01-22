@@ -1,300 +1,254 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-@import "constants.css.scss";
+  // Place all the styles related to the Users controller here.
+  // They will automatically be included in application.css.
+  // You can use Sass (SCSS) here: http://sass-lang.com/
+  @import "constants.css.scss";
 
-/*********************************
-         Calendar Styling 
- ********************************/
+  /*********************************
+           Calendar Styling 
+   ********************************/
 
 
-.day {
-  float: left;
-  width: 14.2857%;
-  height: 66px;
-  padding: 6px 0 24px 0;
-  text-align: center;
-  cursor: pointer;
-  &:hover {
-    background-color: $hoverBackground;
-  }
-}
-.header-day {
-  float: left;
-  width: 14.2857%;
-  padding: 14px 0px 14px 0px;
-  text-align: center;
-  font-size: 1.5em;
-  background-color: $grayBg;
-  margin-top: 10px
-}
-.day-number {
-  width:80%;
-  border-bottom: 2px solid;
-  display: inline-block;
-}
-.adjacent-month {
-  opacity:0.3;
-}
-.next-btn {
-  display: inline-block;
-  width: 10%;
-  cursor: pointer;
-  float: right;
-  text-align: right;
-  height: 100%;
-  &:hover {
-    background-color: $hoverBackground; 
-  }
-}
-.previous-btn {
-  display: inline-block;
-  width: 15%;
-  cursor: pointer;
-  height: 100%;
-  &:hover {
-    background-color: $hoverBackground; 
-  }
-}
-.month {
-  width: 70%;
-  display:inline-block;
-  text-align: center;
-  font-size: 1.5em;
-}
-.clndr-controls {
-  height: 2.5em;
-  padding: 1.5em 0 0 0;
-}
-.event {
-  background-color: $lightGreen;
-  overflow-y:auto;
-  .day-event {
-    font-size:0.7em;
-    width:80%;
-    text-align:left;
-    display: inline-block;
+  .day {
+    float: left;
+    width: 14.2857%;
+    height: 66px;
+    padding: 6px 0 24px 0;
+    text-align: center;
+    cursor: pointer;
     &:hover {
-      background-color: #4E4E4E;
+      background-color: $hoverBackground;
+    }
+    .day-number {
+      width:80%;
+      border-bottom: 2px solid;
+      display: inline-block;
     }
   }
-}
-.modal {
-  display:none;
-}
+
+  .adjacent-month {
+    opacity:0.3;
+  }
+
+  .month {
+    width: 70%;
+    display:inline-block;
+    text-align: center;
+    font-size: 1.5em;
+  }
 
 
-/*
-****************************************
-        Sign-up and sign-in pages
-****************************************
-*/
-.signupWrapper {
-    background-color: rgba($darkGreen, .7);
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-    margin:0 auto;
-    padding: 25px;
-    width:400px;
+  /*
+  ****************************************
+          Sign-up and sign-in pages
+  ****************************************
+  */
+  .signupWrapper {
+      background-color: rgba($darkGreen, .7);
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      margin:0 auto;
+      padding: 25px;
+      width:400px;
 
-    h1 {
-        color: $whiteBg;
-        font-family: "Hevetica", sans-serif;
-        letter-spacing: 1px;
-        margin: 0;
-        padding: 10px 0;
-        text-shadow: 1px 1px 1px #3D3D3D;
-    }
+      h1 {
+          color: $whiteBg;
+          font-family: "Hevetica", sans-serif;
+          letter-spacing: 1px;
+          margin: 0;
+          padding: 10px 0;
+          text-shadow: 1px 1px 1px #3D3D3D;
+      }
 
-    h2 {
-        color: $whiteBg;
-        display: inline;
-        font-family: "Hevetica", sans-serif;
-    }
+      h2 {
+          color: $whiteBg;
+          display: inline;
+          font-family: "Hevetica", sans-serif;
+      }
 
-}
+  }
 
-.filler {
-    width: 600px;
-    margin: 0 auto;
-}
+  .filler {
+      width: 600px;
+      margin: 0 auto;
+  }
 
-.containerWrapper {
-    height: 100%;
-}
+  .containerWrapper {
+      height: 100%;
+  }
 
-.loginWrapper,
-.homeWrapper {
+  .loginWrapper,
+  .homeWrapper {
+      background-color: $lightGreen;
+      height: 100%;
+      overflow: auto;
+  }
+
+  .loginForm {
+      background-color: $whiteBg;
+      border-radius: 4px;
+      margin: 40px auto 0 auto;
+      padding: 20px;
+      width: 400px;
+
+      h1 {
+          font-family: "Hevetica", sans-serif;
+          letter-spacing: 1px;
+          margin: 0;
+      }
+
+      label {
+          font-weight: bold;
+          margin-top: 2px;
+      }
+
+      .facebookLogin {
+        background-color: #43619b;
+        background: -webkit-linear-gradient( #5678bc, #314a7b);
+        background: linear-gradient( #5678bc, #314a7b);
+        border: 1px solid #2a4069;
+        border-top-color: #314a7b;
+        cursor: pointer;
+        height: 44px;
+        margin: 15px 0;
+        text-align: center;
+
+        form {
+          margin: 0;
+        }
+
+        a {
+          color: #ffffff;
+          font-size: 16px;
+        }
+      }
+
+      .userLogin {
+        margin-top: 45px;
+      }
+  }
+
+  .btn-login {
+      background-color: $darkGreen;
+      letter-spacing: 1px;
+      font-weight: bold;
+
+      &:hover {
+          background-color: $lightGreen;
+      }
+  }
+
+  /*
+  ****************************************
+          User Profile Page
+  ****************************************
+  */
+  .userShowWrapper {
     background-color: $lightGreen;
     height: 100%;
     overflow: auto;
-}
+    position: relative;
 
-.loginForm {
-    background-color: $whiteBg;
-    border-radius: 4px;
-    margin: 40px auto 0 auto;
-    padding: 20px;
-    width: 400px;
+    #calendar {
+      background-color: $whiteBg;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      box-shadow: 0px 1px 10px rgba(0, 0, 0, .1);
 
-    h1 {
-        font-family: "Hevetica", sans-serif;
-        letter-spacing: 1px;
-        margin: 0;
+      padding: 2%;
+      position:absolute;
+      right: 0;
+      margin-top: 5%;
+      width: 71%;
     }
 
-    label {
-        font-weight: bold;
-        margin-top: 2px;
-    }
+    .userInformation {
+      background-color: $grayBg;
+      left: 0;
+      height: 100%;
+      margin-top: 8%;
+      padding: 1%;
+      position: absolute;
+      width: 24%;
 
-    .facebookLogin {
-      background-color: #43619b;
-      background: -webkit-linear-gradient( #5678bc, #314a7b);
-      background: linear-gradient( #5678bc, #314a7b);
-      border: 1px solid #2a4069;
-      border-top-color: #314a7b;
-      cursor: pointer;
-      height: 44px;
-      margin: 15px 0;
-      text-align: center;
 
-      form {
-        margin: 0;
+      img {
+        border-radius: 50px;
+        float: left;
+        width: 70px;
       }
+
+      .userInformationHeader {
+        text-align: left;
+
+        h3 {
+          margin: 12px 0 0 80px;
+        }
+
+        .stat {
+          border-left: 2px solid #C3C3C3;
+          margin-left: 90px;
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+
+  .activityFeed {
+    margin: 20px 0;
+    height: 70%;
+    overflow-y: scroll;
+    h3 {
+      font-size: 20px;
+      font-weight: lighter;
+    }
+
+    .activity_date {
+      color: gray;
+      font-size: 12px;
+      padding-left: 8px;
+      line-height: 10px;
 
       a {
-        color: #ffffff;
-        font-size: 16px;
+        margin-left: 12px;
       }
     }
 
-    .userLogin {
-      margin-top: 45px;
-    }
-}
-
-.btn-login {
-    background-color: $darkGreen;
-    letter-spacing: 1px;
-    font-weight: bold;
-
-    &:hover {
-        background-color: $lightGreen;
-    }
-}
-
-/*
-****************************************
-        User Profile Page
-****************************************
-*/
-.userShowWrapper {
-  background-color: $lightGreen;
-  height: 100%;
-  overflow: auto;
-  position: relative;
-
-  #calendar {
-    background-color: $whiteBg;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, .1);
-
-    padding: 2%;
-    position:absolute;
-    right: 0;
-    margin-top: 5%;
-    width: 71%;
-  }
-
-  .userInformation {
-    background-color: $grayBg;
-    left: 0;
-    height: 100%;
-    margin-top: 8%;
-    padding: 1%;
-    position: absolute;
-    width: 24%;
-
-
-    img {
-      border-radius: 50px;
-      float: left;
-      width: 70px;
+    .exercises {
+      list-style: none;
+      margin: 0;
     }
 
-    .userInformationHeader {
+    li {
+      border-top: 1px solid #D4D4D4;
+      padding: 10px 0;
       text-align: left;
+    }
 
-      h3 {
-        margin: 12px 0 0 80px;
-      }
+    .comment {
+      font-size: 11px;
+      padding-left: 1em
+    }
 
-      .stat {
-        border-left: 2px solid #C3C3C3;
-        margin-left: 90px;
-        padding-left: 5px;
-      }
+    .exercise_comment {
+      clear: left;
+    }
+
+    .duration p {
+      display: inline;
+      float: left;
+      margin-top: 1em;
+    }
+
+    .content {
+      display: block;
+    }
+
+    .timestamp {
+      color: $grayMediumLight;
+    }
+
+    .activityDelete {
+
     }
   }
-}
-
-.activityFeed {
-  margin: 20px 0;
-
-  h3 {
-    font-size: 20px;
-    font-weight: lighter;
-  }
-
-  .activity_date {
-    color: gray;
-    font-size: 12px;
-    padding-left: 8px;
-    line-height: 10px;
-
-    a {
-      margin-left: 12px;
-    }
-  }
-
-  .exercises {
-    list-style: none;
-    margin: 0;
-  }
-
-  li {
-    border-top: 1px solid #D4D4D4;
-    padding: 10px 0;
-    text-align: left;
-  }
-
-  .comment {
-    font-size: 11px;
-    padding-left: 1em
-  }
-
-  .exercise_comment {
-    clear: left;
-  }
-
-  .duration p {
-    display: inline;
-    float: left;
-    margin-top: 1em;
-  }
-
-  .content {
-    display: block;
-  }
-
-  .timestamp {
-    color: $grayMediumLight;
-  }
-
-  .activityDelete {
-
-  }
-}
 
