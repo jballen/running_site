@@ -17,13 +17,14 @@
       <%= render 'shared/join_team_form' if(signed_in? && !@team.team_captain?(current_user)) %>
     </section>
   </aside>
-  <div class="span8">
+  <div class="calendarWrapper">
     <%= render 'shared/comment_modal' if current_user.on_team?(@team) %>
-    <script type="text/template" id="clndr_template">
+    <div class="calendar" id="calendar-header"></div>
+    <script type="text/template" id="calendar-header-template">
       <div class="controls">
         <div class="previous-btn">Prev.</div>
         <div class="month"><%%= days[extras.currentWeek * 7].date.format('YYYY-MM-DD') %> - <%%= days[extras.currentWeek * 7 + 6].date.format('YYYY-MM-DD') %></div>
-        <div class="next-btn">Next</div>
+        <div class="next-btn">Next</div>  
       </div>
 
       <div class="days-of-the-week clearfix">
@@ -31,17 +32,23 @@
           <div class="header-day"><%%= day %></div>
         <%% }); %>
       </div>
-      <% @team.users.each do |user| %>
+    </script>
+
+    <% @team.users.each do |user| %>
+        <script type="text/template" id="calendar-template<%=user.id%>">
           <div id="<%= user.id %>" class="days clearfix">
             <div class="users_name"><%= link_to user.name, user %></div>
             <%% for(var i = extras.currentWeek * 7; i < extras.currentWeek * 7 + 7; i++) { %>
-              <div class="<%%= days[i].classes %>" id="<%%= days[i].id %>">
+              <div class="<%%= days[i].classes %>">
                 <span class="day-number"><%%= days[i].day %></span>
+                <%% _.each(days[i].events, function(day_event) { %>
+                  <%= render 'shared/day_event' %>
+                <%% }) %>
               </div>
             <%% } %>
           </div>
-      <% end %>
-    </script>
-    <div id="clndr"></div>
+        </script>
+      <div class="calendar" id="calendar<%= user.id %>"></div>
+    <% end %>
   </div>
 </div>

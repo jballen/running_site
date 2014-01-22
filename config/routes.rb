@@ -6,7 +6,7 @@ RunningSite::Application.routes.draw do
   resources :sessions,                only: [:new, :create, :destroy]
   resources :teams do
     member do
-      get :list_team_exercises
+      get :list_team_member_data
     end
   end
   resources :team_user_relationships, only: [:create, :destroy]

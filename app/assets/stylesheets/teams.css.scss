@@ -1,3 +1,33 @@
 // Place all the styles related to the Teams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "constants.css.scss";
+
+.members {
+  .member_name {
+    display:inline-block;
+  }
+  .delete-user {
+    background-color: white;
+    border: none;
+    vertical-align: baseline;
+    &:hover {
+      color: red;
+    }
+  }
+  .edit_team_user_relationship {
+    display:inline-block;
+  }
+}
+
+.calendarWrapper {
+  background-color: $whiteBg;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, .1);
+  position:absolute;
+  padding: 2%;
+  right: 0;
+  margin-top: 5%;
+  width: 71%;
+}

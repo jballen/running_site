@@ -7,24 +7,6 @@
            Calendar Styling 
    ********************************/
 
-
-  .day {
-    float: left;
-    width: 14.2857%;
-    height: 66px;
-    padding: 6px 0 24px 0;
-    text-align: center;
-    cursor: pointer;
-    &:hover {
-      background-color: $hoverBackground;
-    }
-    .day-number {
-      width:80%;
-      border-bottom: 2px solid;
-      display: inline-block;
-    }
-  }
-
   .adjacent-month {
     opacity:0.3;
   }
