@@ -5,10 +5,10 @@
       <nav>
         <ul class="nav pull-right">
           <% if signed_in? %>
-            <li><%= link_to "Home", current_user %></li>
+            <li><%= link_to "Home", current_user, :class => "header-bar-title" %></li>
             <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Teams <b class="caret"></b>
+              <a href="#" class="dropdown-toggle header-bar-title" data-toggle="dropdown">
+                Teams <b class="caret white-caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <% unless current_user.teams.nil? %>
@@ -25,8 +25,8 @@
               </ul>
             </li>
             <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
+              <a href="#" class="dropdown-toggle header-bar-title" data-toggle="dropdown">
+                Account <b class="caret white-caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Settings", edit_user_path(current_user) %></li>

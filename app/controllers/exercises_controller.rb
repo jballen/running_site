@@ -36,7 +36,8 @@ class ExercisesController < ApplicationController
                                        :comment, 
                                        :activity, 
                                        :activity_date,
-                                       :unit)
+                                       :unit,
+                                       :title)
     end
 
     def correct_user

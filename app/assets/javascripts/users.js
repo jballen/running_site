@@ -5,9 +5,12 @@
       });
 
       function userJavascript(events_arr) {
-        $('#calendar').clndr({
+        $('.calendar').clndr({
           template: $('#calendar-template').html(),
           events: events_arr,
+          extras: { 
+            days: daysOfTheWeekFull
+          },
           clickEvents: {
             click: function(target) {
               var date = target.date._i;

@@ -1,0 +1,2 @@
+module TeamBlogsHelper
+end

@@ -23,6 +23,7 @@ module ApplicationHelper
     @new_exercise['user_name'] = user.name
     @new_exercise['id'] = exercise.id
     @new_exercise['comments'] = exercise.exercise_comments
+    @new_exercise['title'] = exercise.title
     return @new_exercise
   end
 end
