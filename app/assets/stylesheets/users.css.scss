@@ -23,6 +23,11 @@
           User Profile Page
   ****************************************
   */
+  #users {
+    .containerWrapper {
+      height: 100%;
+    }
+  }
   .userShowWrapper {
     background-color: white;
     height: 100%;

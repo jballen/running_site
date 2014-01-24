@@ -16,10 +16,7 @@
   <div class="headWrapper">
     <div class="center signupWrapper">
     	<h1>Welcome</h1>
-    	<%= link_to "Sign up", signup_path, class: "btn btn-large" %>
-      <span><h2>or</h2></span>
-      <%= link_to "Sign in", signin_path, class: "btn btn-large" %>
-      <h1>To Log Jogs</h1>
+    	<%= render :template => 'sessions/new'  %>
     </div>
   </div>
   <div class="filler">

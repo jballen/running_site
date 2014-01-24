@@ -18,6 +18,7 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'font-awesome-sass'
 gem 'bootstrap-tooltip-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem "koala", "~> 1.8.0rc1"
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'
