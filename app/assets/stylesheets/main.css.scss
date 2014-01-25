@@ -50,6 +50,49 @@ html {
     background-size: cover;
     min-height:600px;
 }
+.containerWrapper {
+  height: 100%;
+}
+
+/*
+****************************************
+          Side Column Styling
+****************************************
+*/
+.asideInformation {
+  background-color: $secondaryOne;
+  left: 0;
+  height: 75%;
+  margin-top: 2%;
+  padding: 1%;
+  position: absolute;
+  width: 24%;
+  overflow-y: scroll;
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayMediumLight;
+  }
+  img {
+    border-radius: 50px;
+    float: left;
+    width: 70px;
+  }
+
+  .asideInformationHeader {
+    text-align: left;
+
+    h3 {
+      margin: 12px 0 0 80px;
+    }
+
+    .stat {
+      border-left: 2px solid #C3C3C3;
+      margin-left: 90px;
+      padding-left: 5px;
+    }
+  }
+}
+
 
 /*
 ****************************************

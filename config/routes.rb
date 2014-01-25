@@ -9,6 +9,8 @@ RunningSite::Application.routes.draw do
       get :list_team_member_data
     end
   end
+  resources :team_blogs
+  resources :blog_posts
   resources :team_user_relationships, only: [:create, :destroy]
   resources :users do
     member do

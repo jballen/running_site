@@ -1,22 +1,20 @@
 <% provide(:title, @team.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
+<div class="teamShowWrapper">
+  <div class="asideInformation">
+    <div class="asideInformationHeader">
       <h3><%= @team.name %></h3>
-    </section>
+    </div>
     <section>
       <%= render 'shared/team_stats', :team => @team %>
     </section>
     <section>
-      <%= render 'show_members', :member_items => @member_items %>
-    </section>
-    <section>
       <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
     </section>
-    <section>
+      <% if current_user.on_team?(@team) %>
+        <%= render 'shared/blog_post' %>
+      <% end %>
       <%= render 'shared/join_team_form' if(signed_in? && !@team.team_captain?(current_user)) %>
-    </section>
-  </aside>
+  </div>
   <div class="calendar">
     <%= render 'shared/comment_modal' if current_user.on_team?(@team) %>
     <div id="calendar-header"></div>

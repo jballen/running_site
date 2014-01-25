@@ -16,6 +16,8 @@ class TeamsController < ApplicationController
     @member_items = @team.users.paginate(page: params[:page])
     @notifications = @team.notifications.paginate(page: params[:page])
     @exercise_comment = ExerciseComment.new
+    @team_blog_posts = @team.blog_posts
+    @blog_post = BlogPost.new
   end
 
   def create

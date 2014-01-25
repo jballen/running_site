@@ -1,5 +1,5 @@
 class Team < ActiveRecord::Base
-  has_one :team_blog
+  has_many :blog_posts
   has_many :notifications
   has_many :users, through: :reverse_team_user_relationships, source: :user
   has_many :reverse_team_user_relationships, class_name: "TeamUserRelationship",

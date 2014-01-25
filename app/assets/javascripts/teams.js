@@ -9,7 +9,7 @@ $('document').ready(function() {
         template: $('#calendar-header-template').html(),
         extras: {
           days: daysOfTheWeekFull,
-          currentWeek: Math.ceil( weeksInMonth( moment() ) * ( moment().date() / moment().daysInMonth() ) )
+            currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
         },
         doneRendering: function() {
           $('.next-btn').on('click', function() {
@@ -31,7 +31,7 @@ $('document').ready(function() {
           template: $('#calendar-template' + user.id).html(),
           events: user.exercises,
           extras: {
-            currentWeek: Math.ceil( weeksInMonth( moment() ) * ( moment().date() / moment().daysInMonth() ) )
+            currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
           },
           showAdjacentMonths: true,
           doneRendering: function() {

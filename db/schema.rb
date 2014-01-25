@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140123234616) do
+ActiveRecord::Schema.define(version: 20140125192707) do
+
+  create_table "blog_posts", force: true do |t|
+    t.text     "body"
+    t.integer  "user"
+    t.string   "title"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "blog_posts", ["user_id"], name: "index_blog_posts_on_user_id"
 
   create_table "exercise_comments", force: true do |t|
     t.string   "commenter_email"
@@ -51,18 +63,6 @@ ActiveRecord::Schema.define(version: 20140123234616) do
   add_index "notifications", ["team_id"], name: "index_notifications_on_team_id"
   add_index "notifications", ["user_id", "team_id"], name: "index_notifications_on_user_id_and_team_id", unique: true
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
-
-  create_table "team_blogs", force: true do |t|
-    t.text     "post"
-    t.integer  "team_id"
-    t.string   "user_id"
-    t.string   "integer"
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "team_blogs", ["team_id"], name: "index_team_blogs_on_team_id"
 
   create_table "team_user_relationships", force: true do |t|
     t.integer  "user_id"
