@@ -1,8 +1,8 @@
 <% provide(:title, @user.name) %>
 <div class="userShowWrapper">
-  <div class="userInformation">
+  <div class="asideInformation">
     <%= image_for @user %>
-    <div class="userInformationHeader">
+    <div class="asideInformationHeader">
       <h3>
         <%= @user.name %>
       </h3>
@@ -15,16 +15,22 @@
   </div>
   <%= render 'shared/exercise_form' unless current_user != @user %>
   <%= render 'shared/comment_modal' %>
-  <div id="calendar">
+  <div class="calendar">
     <script type="text/template" id='calendar-template'>
       <div class="clndr-controls">
-        <div class="clndr-previous-button previous-btn">Previous</div>
+        <div class="btn-group">
+          <button class="text-left btn  clndr-previous-button previous-btn">
+          <i class="fa fa-play fa-rotate-180"> </i>
+          </button>
+          <button class="btn  clndr-next-button next-btn">
+            <i class="fa fa-play"> </i>
+          </button>
+        </div>
         <div class="month"><%%= month %></div>
-        <div class="clndr-next-button next-btn">Next</div>
       </div>
       <div class="clndr-grid">
         <div class="days-of-the-week clearfix">
-          <%% _.each(daysOfTheWeek, function(day) { %>
+          <%% _.each(extras.days, function(day) { %>
             <div class="header-day"><%%= day %></div>
           <%% }); %>
         </div>

@@ -4,6 +4,10 @@ class ExercisesController < ApplicationController
   before_filter :fix_params, :only => [:create, :update]
   before_action :signed_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
+  
+  def edit
+    
+  end
 
   def create
     @exercise = current_user.exercises.build(exercise_params)
@@ -36,7 +40,8 @@ class ExercisesController < ApplicationController
                                        :comment, 
                                        :activity, 
                                        :activity_date,
-                                       :unit)
+                                       :unit,
+                                       :title)
     end
 
     def correct_user

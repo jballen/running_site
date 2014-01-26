@@ -1,34 +1,36 @@
 <% provide(:title, @team.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
+<div class="teamShowWrapper">
+  <div class="asideInformation">
+    <div class="asideInformationHeader">
       <h3><%= @team.name %></h3>
-    </section>
+    </div>
     <section>
       <%= render 'shared/team_stats', :team => @team %>
     </section>
-    <section>
-      <%= render 'show_members', :member_items => @member_items %>
-    </section>
-    <section>
-      <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
-    </section>
-    <section>
+    <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
+      <% if current_user.on_team?(@team) %>
+        <%= render 'shared/blog_post' %>
+      <% end %>
       <%= render 'shared/join_team_form' if(signed_in? && !@team.team_captain?(current_user)) %>
-    </section>
-  </aside>
-  <div class="calendarWrapper">
+  </div>
+  <div class="calendar">
     <%= render 'shared/comment_modal' if current_user.on_team?(@team) %>
     <div id="calendar-header"></div>
     <script type="text/template" id="calendar-header-template">
-      <div class="controls">
-        <div class="previous-btn">Prev.</div>
-        <div class="month"><%%= days[extras.currentWeek * 7].date.format('YYYY-MM-DD') %> - <%%= days[extras.currentWeek * 7 + 6].date.format('YYYY-MM-DD') %></div>
-        <div class="next-btn">Next</div>  
+      <div class="clndr-controls">
+        <div class="btn-group">
+          <button class="text-left btn  clndr-previous-button previous-btn">
+          <i class="fa fa-play fa-rotate-180"> </i>
+          </button>
+          <button class="btn  clndr-next-button next-btn">
+            <i class="fa fa-play"> </i>
+          </button>
+        </div>
+        <div class="month"><%%= days[extras.currentWeek * 7].date.format('MM/DD') %> - <%%= days[extras.currentWeek * 7 + 6].date.format('MM/DD') %></div>
       </div>
 
       <div class="days-of-the-week clearfix">
-        <%% _.each(daysOfTheWeek, function(day) { %>
+        <%% _.each(extras.days, function(day) { %>
           <div class="header-day"><%%= day %></div>
         <%% }); %>
       </div>

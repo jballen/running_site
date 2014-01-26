@@ -11,15 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140121194805) do
+ActiveRecord::Schema.define(version: 20140125192707) do
+
+  create_table "blog_posts", force: true do |t|
+    t.text     "body"
+    t.integer  "user"
+    t.string   "title"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "blog_posts", ["user_id"], name: "index_blog_posts_on_user_id"
 
   create_table "exercise_comments", force: true do |t|
-    t.string   "commenter"
+    t.string   "commenter_email"
     t.text     "body"
     t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "commenter_name"
   end
 
   add_index "exercise_comments", ["exercise_id"], name: "index_exercise_comments_on_exercise_id"
@@ -34,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140121194805) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "unit",          default: "Miles"
+    t.string   "title"
   end
 
   add_index "exercises", ["user_id", "created_at"], name: "index_exercises_on_user_id_and_created_at"

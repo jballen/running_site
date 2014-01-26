@@ -8,7 +8,8 @@ $('document').ready(function() {
       var master_cal = $('#calendar-header').clndr({
         template: $('#calendar-header-template').html(),
         extras: {
-          currentWeek: Math.ceil( weeksInMonth( moment() ) * ( moment().date() / moment().daysInMonth() ) )
+          days: daysOfTheWeekFull,
+            currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
         },
         doneRendering: function() {
           $('.next-btn').on('click', function() {
@@ -23,16 +24,14 @@ $('document').ready(function() {
       /* Creates a new 'clndr' for each user on the team. */
       $.each(users, function(index) {
         generateNewCalendar(users[index]);
-        console.log(users[index]);
       });
 
       function generateNewCalendar(user) {
-        console.log(user.exercises);
         var cal = $('#calendar' + user.id).clndr({
           template: $('#calendar-template' + user.id).html(),
           events: user.exercises,
           extras: {
-            currentWeek: Math.ceil( weeksInMonth( moment() ) * ( moment().date() / moment().daysInMonth() ) )
+            currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
           },
           showAdjacentMonths: true,
           doneRendering: function() {
@@ -95,20 +94,3 @@ $('document').ready(function() {
     } 
   }
 });
-            // $.each(events_arr, function(index) {
-          //   var new_event = events_arr[index];
-          //   var day_object = $('#' + new_event.user_id + '.days .calendar-day-' + new_event.date);
-          //   day_object.addClass('event');
-          //   day_object.append('<div class="day-event" id="exercise' + new_event.id + '">' +
-          //     '<span class="event-type">'+  new_event.activity + ':</span>' + 
-          //     '<span class="event-duration">' +  new_event.duration + ', </span>' +
-          //     '<span class="event-distance">' +  new_event.distance + '</span>' + 
-          //     '<span class="event-unit"> ' + new_event.unit + '</span>' + 
-          //     '</div>');
-          //   $('.day-event#exercise' + new_event.id).on('click', function() {
-          //     $('#comment-modal').modal('show');
-          //     $('#exercise_comment_exercise_id').val(new_event.id);
-          //     console.log('clicked');
-          //   });
-
-          // });

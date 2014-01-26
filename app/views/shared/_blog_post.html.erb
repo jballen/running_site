@@ -1,0 +1,29 @@
+<div class="new-blog-post">
+  <%= simple_form_for @blog_post do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.input :body, label: "Write a Post" %>
+    <%= f.input :team_id, as: :hidden, input_html: {value: @team.id} %>
+    <%= f.button :submit, "Post", class: "btn" %>
+  <% end %>
+</div>
+<% unless @team_blog_posts.empty? %>
+  <div class="team-blog-posts">
+    <h2>Recent Posts</h2>
+    <% @team_blog_posts.each do |post| %>
+      <div class="blog-post">
+        <div class="blog-post-body">
+          <%= post.body %>
+        </div>
+        <div class="blog-post-author">
+          <%= User.find(post.user_id).name %>
+        </div>
+        <% if current_user.id == post.user_id %>
+          <%= link_to "delete", post, method: :delete,
+                                      data: { confirm: "You sure?" },
+                                      title: post.created_at,
+                                      class: "blog-post-delete" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

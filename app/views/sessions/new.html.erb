@@ -1,13 +1,13 @@
 <% provide(:title, "Sign in") %>
 <div class="loginWrapper">
   <div class="loginForm">
-    <h1>Sign in</h1>
     <div class="facebookLogin">
       <%= simple_form_for(:session) do |f| %>
         <%= f.input :provider, as: :hidden, input_html: {value: 'facebook'} %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "facebook_sign_in" %>
+        <%= link_to image_tag('fb/active_404.png'), "/auth/facebook", id: "facebook_sign_in" %>
       <% end %>
     </div>
+    <span><h2>or</h2></span>
     <div class="userLogin">
       <%= simple_form_for(:session, url: sessions_path) do |f| %>
         <%= f.input :email %>

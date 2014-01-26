@@ -1,6 +1,5 @@
-
 <div class="team_stats">
   <span class="team_description">
-    <%= @team.description %>
+      <%= raw (@team.description).gsub('/\s/', '&nbsp') %>
   </span>
 </div>

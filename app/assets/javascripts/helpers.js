@@ -1,10 +1,18 @@
+/***********************/
+/*    Variables        */
+/***********************/
+var daysOfTheWeekFull = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 
+                         'Thursday', 'Friday', 'Saturday']
+
 function getEventsArray(url) {
   var events_arr = [];
   return $.getJSON(url, function(data) {
     $.each(data, function(index) {
       var new_event = {};
       var exercise = data[index]
+      console.log(exercise);
       new_event['activity'] = exercise.activity;
+      new_event['title'] = exercise.title;
       new_event['date'] = exercise.date;
       new_event['duration'] = exercise.duration;
       new_event['distance'] = exercise.distance;
@@ -39,11 +47,12 @@ function setPopoverListeners(events_arr) {
     var e = events_arr[index];
     var comments = '';
     $.each(e.comments, function(index) {
+      console.log(e.comments[index])
+      var commenter_name = e.comments[index].commenter_name || e.comments[index].commenter_email;
       var new_comment = '<div class="popover-comment">' +
-                        e.comments[index].body + '</div>' +
+                        e.comments[index]['body'] + '</div>' +
                         '<div class="popover-comment-author">' +
-                        e.comments[index].commenter +
-                        '</div>';
+                        commenter_name + '</div>';
       comments = comments + new_comment;
     });
     if (comments !== '') {

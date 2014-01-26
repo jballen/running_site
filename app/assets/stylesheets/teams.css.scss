@@ -20,30 +20,60 @@
   }
 }
 
-.calendarWrapper {
-  background-color: $whiteBg;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, .1);
-  position:absolute;
-  padding: 2%;
-  right: 0;
-  margin-top: 5%;
-  width: 71%;
-  .users-info {
-    float: left;
-    width: 12%;
-    height: 66px;
-    display: inline-block;
-    img {
-      border-radius: 50px;
+body#teams {
+  #blog_post_body {
+    width:90%;
+  }
+  .team-blog-posts {
+    .blog-post {
+      border-top: 1px solid $grayMedium;
+      .blog-post-body {
+
+      }
+      .blog-post-author {
+        display: inline-block;
+        font-size: 0.8em;
+        opacity: 0.8;
+        margin-left: 2em;
+      }
+      .blog-post-delete {
+        display: inline-block;
+      }
     }
   }
-  .calendar-days {
-    width: 100%%;
-    float: right;
-  }
-  .day {
-    width: 12% !important;
+  .calendar {
+    background-color: white;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, .1);
+    position:absolute;
+    padding: 2%;
+    right: 0;
+    margin-top: 1%;
+    width: 71%;
+
+    .users-info {
+      float: left;
+      width: 12%;
+      height: 66px;
+      display: inline-block;
+      img {
+        border-radius: 50px;
+      }
+    }
+    #calendar-header .clndr {
+      margin-left: 12%;
+      width: 100%;
+    }
+    .calendar-days {
+      width: 100%%;
+      float: right;
+    }
+    .header-day {
+      width: 12% !important;
+    }
+    .day {
+      width: 12% !important;
+    }
   }
 }

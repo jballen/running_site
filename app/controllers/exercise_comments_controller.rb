@@ -3,7 +3,8 @@ class ExerciseCommentsController < ApplicationController
   def create
     @comment = ExerciseComment.new(comment_params)
     @comment.user_id = current_user.id;
-    @comment.commenter = current_user.name;
+    @comment.commenter_name = current_user.name;
+    @comment.commenter_email = current_user.email;
     if @comment.save                
       flash[:success] = "Comment saved."
       redirect_to :back

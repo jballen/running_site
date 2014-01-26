@@ -1,18 +1,20 @@
 <div class="day-event">
-  <span class="event-type"><%%= day_event.activity %>:</span>
-  <span class="event-info">
-    <%% if (_.isNull(day_event.distance) == false) { %>
-     <span class="event-duration"> <%%= day_event.duration%>,</span>
-      <span class="event-distance"><%%= day_event.distance %></span>
-      <span class="event-unit"><%%= day_event.unit%></span>
+  <div class="title">
+  <%% if (day_event.title != null) { %>
+    <%%= day_event.title %> 
+  <%% } else { %>
+    <%%= day_event.activity %>
+    <%% if (day_event.distance != null) { %>
+      (<%%= day_event.distance %> <%%= day_event.unit %>)
     <%% } else { %>
-    <span class="event-duration"> <%%= day_event.duration%></span>
+      (<%%= day_event.duration %>)
     <%% } %>
+  <%% } %>
+  </div>
+  <span class="comments">
+    <%% if (_.size(day_event.comments) > 0 ) { %>
+      <span class="comment-number"><%%= _.size(day_event.comments) %></span>
+    <%% } %>
+    <i class="fa fa-comment" data-placement="right" data-title="Comments" data-trigger="hover" id="exercise<%%=day_event.id%>"></i>
   </span>
 </div>
-<span class="comments">
-  <%% if (_.size(day_event.comments) > 0 ) { %>
-    <span class="comment-number"><%%= _.size(day_event.comments) %></span>
-  <%% } %>
-  <i class="fa fa-comment" data-placement="right" data-title="Comments" data-trigger="hover" id="exercise<%%=day_event.id%>"></i>
-</span>

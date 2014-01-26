@@ -8,6 +8,9 @@
       <div class="modal-body exerciseForm">
         <%= simple_form_for @exercise do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
+        <div class="title">
+          <%= f.input :title %>
+        </div>
         <div class="activityType">
           <%= f.input :activity, :include_blank => false %>
         </div>
