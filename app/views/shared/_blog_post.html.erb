@@ -6,20 +6,24 @@
     <%= f.button :submit, "Post", class: "btn" %>
   <% end %>
 </div>
-<div class="team-blog-posts">
-  <% @team_blog_posts.each do |post| %>
-    <div class="blog-post">
-      <div class="blog-post-body">
-        <%= post.body %>
+<% unless @team_blog_posts.empty? %>
+  <div class="team-blog-posts">
+    <h2>Recent Posts</h2>
+    <% @team_blog_posts.each do |post| %>
+      <div class="blog-post">
+        <div class="blog-post-body">
+          <%= post.body %>
+        </div>
+        <div class="blog-post-author">
+          <%= User.find(post.user_id).name %>
+        </div>
+        <% if current_user.id == post.user_id %>
+          <%= link_to "delete", post, method: :delete,
+                                      data: { confirm: "You sure?" },
+                                      title: post.created_at,
+                                      class: "blog-post-delete" %>
+        <% end %>
       </div>
-      <% if current_user.id == post.user_id %>
-        <%= link_to "delete", post, method: :delete,
-                                         data: { confirm: "You sure?" },
-                                         title: post.created_at %>
-      <% end %>
-      <div class="blog-post-author">
-        <%= User.find(post.user_id).name %>
-      </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% end %>

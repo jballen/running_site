@@ -70,7 +70,7 @@ html {
   overflow-y: scroll;
   section {
     padding: 10px 0;
-    border-top: 1px solid $grayMediumLight;
+    border-top: 1px solid $grayMedium;
   }
   img {
     border-radius: 50px;
@@ -80,10 +80,6 @@ html {
 
   .asideInformationHeader {
     text-align: left;
-
-    h3 {
-      margin: 12px 0 0 80px;
-    }
 
     .stat {
       border-left: 2px solid #C3C3C3;

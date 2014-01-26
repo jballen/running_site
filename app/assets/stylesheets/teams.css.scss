@@ -21,6 +21,26 @@
 }
 
 body#teams {
+  #blog_post_body {
+    width:90%;
+  }
+  .team-blog-posts {
+    .blog-post {
+      border-top: 1px solid $grayMedium;
+      .blog-post-body {
+
+      }
+      .blog-post-author {
+        display: inline-block;
+        font-size: 0.8em;
+        opacity: 0.8;
+        margin-left: 2em;
+      }
+      .blog-post-delete {
+        display: inline-block;
+      }
+    }
+  }
   .calendar {
     background-color: white;
     border-top-left-radius: 3px;

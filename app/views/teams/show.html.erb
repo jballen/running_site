@@ -7,9 +7,7 @@
     <section>
       <%= render 'shared/team_stats', :team => @team %>
     </section>
-    <section>
-      <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
-    </section>
+    <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
       <% if current_user.on_team?(@team) %>
         <%= render 'shared/blog_post' %>
       <% end %>
