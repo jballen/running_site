@@ -19,10 +19,13 @@
     display:inline-block;
   }
 }
-
+h4 {
+  opacity:0.7em;
+}
 body#teams {
-  #blog_post_body {
-    width:90%;
+  
+  .new_blog_post {
+    width: 80%;
   }
   .team-blog-posts {
     .blog-post {
@@ -39,6 +42,9 @@ body#teams {
       .blog-post-delete {
         display: inline-block;
       }
+      .blog-post-edit {
+        
+      }
     }
   }
   .calendar {
@@ -47,14 +53,15 @@ body#teams {
     border-bottom-left-radius: 3px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, .1);
     position:absolute;
-    padding: 2%;
     right: 0;
     margin-top: 1%;
-    width: 71%;
-
+    width: 100%;
+    .adjacent-month {
+      opacity: 1.0 !important;
+    }
     .users-info {
       float: left;
-      width: 12%;
+      width: 11%;
       height: 66px;
       display: inline-block;
       img {
@@ -62,18 +69,20 @@ body#teams {
       }
     }
     #calendar-header .clndr {
-      margin-left: 12%;
       width: 100%;
     }
     .calendar-days {
       width: 100%%;
       float: right;
     }
+    .other-header {
+      background-color: rgba($primaryOne, 0.3);
+    }
     .header-day {
-      width: 12% !important;
+      width: 11% !important;
     }
     .day {
-      width: 12% !important;
+      width: 11% !important;
     }
   }
 }

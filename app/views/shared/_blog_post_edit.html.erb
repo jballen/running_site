@@ -1,0 +1,20 @@
+<div class="modal fade" id="post-edit-modal" tabindex="-1" aria-hidden="true">
+  <div class="modeal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Edit Post</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @blog_post do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.input :title, :input_html => {id: "modal-title-edit", :value => @blog_post.title} %>
+        <%= f.input :body, label: "Comment", :input_html => {id: "modal-body-edit", :value => @blog_post.body} %>
+      </div>
+      <div class="modal-footer">
+        <%= f.button :submit, "Save", class: "btn btn-large" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

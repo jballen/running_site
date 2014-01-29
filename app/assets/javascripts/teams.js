@@ -1,29 +1,44 @@
 $('document').ready(function() {
   if ($('body#teams').length) {
+    $('.blog-post-edit').click(function(e) {
+      e.preventDefault();
+      $('#modal-title-edit').val($(e.target).data('post-id'))
+      $('#post-edit-modal').modal('show');
+    });
     $.when(getTeamMemberData()).done(function(users) {
       teamJavascript(users);
     });
-
     function teamJavascript(users) {
+      var user_clndrs = [];
       var master_cal = $('#calendar-header').clndr({
         template: $('#calendar-header-template').html(),
         extras: {
           days: daysOfTheWeekFull,
-            currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
+          currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
         },
         doneRendering: function() {
           $('.next-btn').on('click', function() {
             setNextBtnListener(master_cal);
+            console.log(master_cal.month)
+            var month = master_cal.month;
+            var endDay = month.add('day', master_cal.options.extras.currentWeek*7);
+            var startDay = month.add('day', master_cal.options.extras.currentWeek*7-6);
+            var user_events = getTeamDataInWeek(startDay.format('YYYY-MM-DD'), endDay.format('YYYY-MM-DD'));
+            console.log(user_events);
           });
           $('.previous-btn').on('click', function() {
             setPrevBtnListener(master_cal);
+            // var endDay = (new Date(master_cal.month.add('days', master_cal.options.extras.currentWeek*7))).toISOString();
+            // var startDay = (new Date(master_cal.month.add('days', master_cal.options.extras.currentWeek*7 - 6))).toISOString();
+            // console.log(startDay);
+            // var user_events = getTeamDataInWeek(startDay, endDay);
           });
         }
       });
 
       /* Creates a new 'clndr' for each user on the team. */
       $.each(users, function(index) {
-        generateNewCalendar(users[index]);
+        user_clndrs.push(generateNewCalendar(users[index]));
       });
 
       function generateNewCalendar(user) {
@@ -45,8 +60,13 @@ $('document').ready(function() {
               setPrevBtnListener(cal);
             });
             setUpCommentListeners(user.exercises)
+            return cal;
           }
         });
+      }
+
+      function getCurrentWeek() {
+        return Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
       }
 
       function weeksInMonth(month) {

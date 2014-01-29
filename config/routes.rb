@@ -1,15 +1,15 @@
 RunningSite::Application.routes.draw do
   resources :exercises,               only: [:create, :destroy, :get_user_exercises] 
-    resources :exercise_comments
+  resources :exercise_comments
 
   resources :notifications,           only: [:create, :destroy]
   resources :sessions,                only: [:new, :create, :destroy]
   resources :teams do
     member do
       get :list_team_member_data
+      get :get_team_data_in_week
     end
   end
-  resources :team_blogs
   resources :blog_posts
   resources :team_user_relationships, only: [:create, :destroy]
   resources :users do

@@ -264,9 +264,14 @@ html {
   border-bottom: 2px solid;
   border-bottom-color: $primaryOne;
 }
-
-.clndr-controls {
-  height: 2.5em;
+.clndr {
+  .clndr-controls {
+      text-align:center;
+      height: 2.5em;
+    }
+    .btn-group {
+      float: left;
+    }  
 }
 .clndr-grid {
   border: 1px solid transparent;

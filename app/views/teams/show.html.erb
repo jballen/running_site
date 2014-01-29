@@ -1,60 +1,72 @@
 <% provide(:title, @team.name) %>
-<div class="teamShowWrapper">
-  <div class="asideInformation">
-    <div class="asideInformationHeader">
-      <h3><%= @team.name %></h3>
+<div class="asideInformationHeader">
+  <h3><%= @team.name %></h3>
+</div>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#main" data-toggle="tab">Main</a></li>
+  <li><a href="#calendar" data-toggle="tab">Calendar</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane fade active in" id="main">
+    <div class="asideInformation">
+      <section>
+        <%= render 'shared/team_stats', :team => @team %>
+      </section>
+      <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
+        <% if current_user.on_team?(@team) %>
+          <section>
+            <%= render 'shared/blog_post' %>
+          </section>
+        <% end %>
+        <%= render 'shared/join_team_form' if(signed_in? && !@team.team_captain?(current_user)) %>
     </div>
-    <section>
-      <%= render 'shared/team_stats', :team => @team %>
-    </section>
-    <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
-      <% if current_user.on_team?(@team) %>
-        <%= render 'shared/blog_post' %>
-      <% end %>
-      <%= render 'shared/join_team_form' if(signed_in? && !@team.team_captain?(current_user)) %>
   </div>
-  <div class="calendar">
-    <%= render 'shared/comment_modal' if current_user.on_team?(@team) %>
-    <div id="calendar-header"></div>
-    <script type="text/template" id="calendar-header-template">
-      <div class="clndr-controls">
-        <div class="btn-group">
-          <button class="text-left btn  clndr-previous-button previous-btn">
-          <i class="fa fa-play fa-rotate-180"> </i>
-          </button>
-          <button class="btn  clndr-next-button next-btn">
-            <i class="fa fa-play"> </i>
-          </button>
-        </div>
-        <div class="month"><%%= days[extras.currentWeek * 7].date.format('MM/DD') %> - <%%= days[extras.currentWeek * 7 + 6].date.format('MM/DD') %></div>
-      </div>
-
-      <div class="days-of-the-week clearfix">
-        <%% _.each(extras.days, function(day) { %>
-          <div class="header-day"><%%= day %></div>
-        <%% }); %>
-      </div>
-    </script>
-
-    <% @team.users.each do |user| %>
-      <div class="user-calendar">
-        <script type="text/template" id="calendar-template<%=user.id%>">
-          <div id="<%= user.id %>" class="days clearfix">
-            <div class="clndr-box users-info"><%= link_to user.name, user %>
-              <%= image_for user %>
-            </div>
-            <%% for(var i = extras.currentWeek * 7; i < extras.currentWeek * 7 + 7; i++) { %>
-              <div class="clndr-box <%%= days[i].classes %>">
-                <span class="day-number"><%%= days[i].day %></span>
-                <%% _.each(days[i].events, function(day_event) { %>
-                  <%= render 'shared/day_event' %>
-                <%% }) %>
-              </div>
-            <%% } %>
+  <div class="tab-pane fade" id="calendar">
+    <div class="calendar">
+      <%= render 'shared/comment_modal' if current_user.on_team?(@team) %>
+      <div id="calendar-header"></div>
+      <script type="text/template" id="calendar-header-template">
+        <div class="clndr-controls">
+          <div class="btn-group">
+            <button class="text-left btn  clndr-previous-button previous-btn">
+            <i class="fa fa-play fa-rotate-180"> </i>
+            </button>
+            <button class="btn  clndr-next-button next-btn">
+              <i class="fa fa-play"> </i>
+            </button>
           </div>
-        </script>
-        <div class="calendar-days" id="calendar<%= user.id %>"></div>
-      </div>
-    <% end %>
+          <div class="month"><%%= days[extras.currentWeek * 7].date.format('MM/DD') %> - <%%= days[extras.currentWeek * 7 + 6].date.format('MM/DD') %></div>
+        </div>
+        <div class="days-of-the-week clearfix">
+          <div class="header-day other-header">User</div>
+          <%% _.each(extras.days, function(day) { %>
+            <div class="header-day"><%%= day %></div>
+          <%% }); %>
+          <div class="header-day other-header">Total</div>
+        </div>
+      </script>
+
+      <% @team.users.each do |user| %>
+        <div class="user-calendar">
+          <script type="text/template" id="calendar-template<%=user.id%>">
+            <div id="<%= user.id %>" class="days clearfix">
+              <div class="clndr-box day users-info"><%= link_to user.name, user %>
+                <%= image_for user %>
+              </div>
+              <%% for(var i = extras.currentWeek * 7; i < extras.currentWeek * 7 + 7; i++) { %>
+                <div class="clndr-box <%%= days[i].classes %>">
+                  <span class="day-number"><%%= days[i].day %></span>
+                  <%% _.each(days[i].events, function(day_event) { %>
+                    <%= render 'shared/day_event' %>
+                  <%% }) %>
+                </div>
+              <%% } %>
+              <div class="clndr-box day users-total"></div>
+            </div>
+          </script>
+          <div class="calendar-days" id="calendar<%= user.id %>"></div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
