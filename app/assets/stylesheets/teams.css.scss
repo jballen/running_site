@@ -51,18 +51,18 @@ body#teams {
     background-color: white;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, .1);
     position:absolute;
     right: 0;
     margin-top: 1%;
     width: 100%;
+    .clndr-info {
+      display: none;
+    }
     .adjacent-month {
       opacity: 1.0 !important;
     }
     .users-info {
       float: left;
-      width: 11%;
-      height: 66px;
       display: inline-block;
       img {
         border-radius: 50px;
@@ -79,10 +79,13 @@ body#teams {
       background-color: rgba($primaryOne, 0.3);
     }
     .header-day {
-      width: 11% !important;
+      width: 11.111% !important;
     }
     .day {
-      width: 11% !important;
+      width: 11.111% !important;
+    }
+    .today {
+      border-top: none;
     }
   }
 }

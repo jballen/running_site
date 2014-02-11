@@ -33,7 +33,6 @@ function getTeamDataInWeek(startDay, endDay) {
   return $.getJSON(document.URL + '/get_team_data_in_week', 
     {"startDay": startDay, "endDay": endDay},
     function(data) {
-      return data;
     });
 }
 function setUpCommentListeners(events_arr) {
@@ -61,7 +60,7 @@ function setPopoverListeners(events_arr) {
       comments = comments + new_comment;
     });
     if (comments !== '') {
-      $('#exercise' + e.id).popover({content: comments, html:true})
+      $('#exercise' + e.id).popover({placement: 'left', content: comments, html:true})
     }
   });
 }

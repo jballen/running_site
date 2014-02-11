@@ -43,10 +43,6 @@ class TeamsController < ApplicationController
       @user_info = {}
       @user_info['name'] = user.name
       @user_info['id'] = user.id
-      @user_info['exercises'] = []
-      user.exercises.each do |exercise|
-        @user_info['exercises'] << format_exercise_for_json(exercise, user)
-      end
       @user_info_arr << @user_info
     end
     respond_to do |format|
@@ -57,8 +53,11 @@ class TeamsController < ApplicationController
   end
 
   def get_team_data_in_week
-    @startDay = params[:startDay]
-    @endDay = params[:endDay]
+    @startDay = DateTime.parse(params[:startDay])
+    @endDay = DateTime.parse(params[:endDay])
+    logger.debug '*******************'
+    logger.debug @startDay
+    logger.debug @endDay
     @team = this_team
     @users = @team.users
     @user_info_arr = []

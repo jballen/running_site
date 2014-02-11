@@ -26,6 +26,8 @@
       <%= render 'shared/comment_modal' if current_user.on_team?(@team) %>
       <div id="calendar-header"></div>
       <script type="text/template" id="calendar-header-template">
+        <div class="clndr-info" data-start-day="<%%= days[extras.currentWeek * 7].date.format('YYYY-MM-DD') %>" data-end-day="<%%= days[extras.currentWeek * 7 + 6].date.format('YYYY-MM-DD') %>">
+        </div>
         <div class="clndr-controls">
           <div class="btn-group">
             <button class="text-left btn  clndr-previous-button previous-btn">
