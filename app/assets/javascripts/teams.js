@@ -1,52 +1,100 @@
 $('document').ready(function() {
   if ($('body#teams').length) {
+    $('.blog-post-edit').click(function(e) {
+      e.preventDefault();
+      $('#modal-title-edit').val($(e.target).data('post-id'))
+      $('#post-edit-modal').modal('show');
+    });
     $.when(getTeamMemberData()).done(function(users) {
       teamJavascript(users);
     });
-
     function teamJavascript(users) {
+      var user_clndrs = {};
+      var events_arr = {};
       var master_cal = $('#calendar-header').clndr({
         template: $('#calendar-header-template').html(),
         extras: {
           days: daysOfTheWeekFull,
-            currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
+          currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
         },
         doneRendering: function() {
           $('.next-btn').on('click', function() {
-            setNextBtnListener(master_cal);
+            addUserEvents();
+            setNextBtnListener(master_cal);            
           });
           $('.previous-btn').on('click', function() {
+            addUserEvents();
             setPrevBtnListener(master_cal);
           });
         }
       });
 
       /* Creates a new 'clndr' for each user on the team. */
-      $.each(users, function(index) {
-        generateNewCalendar(users[index]);
-      });
-
-      function generateNewCalendar(user) {
-        var cal = $('#calendar' + user.id).clndr({
-          template: $('#calendar-template' + user.id).html(),
-          events: user.exercises,
-          extras: {
-            currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
-          },
-          showAdjacentMonths: true,
-          doneRendering: function() {
-            /* Next button handler */
-            $('.next-btn').on('click', function() {
-              setNextBtnListener(cal);
-            });
-
-            /* Previous button handler */
-            $('.previous-btn').on('click', function() {
-              setPrevBtnListener(cal);
-            });
-            setUpCommentListeners(user.exercises)
-          }
+      generateUserCalendars();
+      
+      function addUserEvents() {
+        $.when(getTeamDataInWeek(getStartDay(), getEndDay)).done(function(user_events) {
+          $.each(user_events, function(key) {
+            var user = user_events[key];
+            events_arr[user.id] = user.exercises;
+            user_clndrs[user.id].setEvents(user.exercises);
+          });
         });
+      }
+
+      function getStartDay() {
+        var dateInfo = new Date($('.clndr-info').data('start-day'));
+        dateInfo.setDate(dateInfo.getDate()-14);
+        var day = dateInfo.getUTCDate().toString();
+        var month = (dateInfo.getUTCMonth()+1).toString();
+        var year = dateInfo.getUTCFullYear().toString();
+        return year + '-' + month + '-' + day;
+      }
+
+      function getEndDay() {
+        var dateInfo = new Date($('.clndr-info').data('end-day'));
+        dateInfo.setDate(dateInfo.getDate()+14);
+        var day = dateInfo.getUTCDate().toString();
+        var month = (dateInfo.getUTCMonth()+1).toString();
+        var year = dateInfo.getUTCFullYear().toString();
+        return year + '-' + month + '-' + day;  
+      }
+
+      function generateUserCalendars() {
+        $.when(getTeamDataInWeek(getStartDay(), getEndDay())).done(function(user_events) {
+          $.each(user_events, function(key) {
+            var user = user_events[key];
+            events_arr[user.id] = user.exercises;
+            var cal = $('#calendar' + user.id).clndr({
+              template: $('#calendar-template' + user.id).html(),
+              events: events_arr[user.id],
+              extras: {
+                currentWeek: Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
+              },
+              showAdjacentMonths: true,
+              ready: function() {
+      
+              },
+              doneRendering: function() {
+                setUpCommentListeners(events_arr[user.id]);
+                /* Next button handler */
+                $('.next-btn').on('click', function() {
+                  setNextBtnListener(cal);
+                });
+
+                /* Previous button handler */
+                $('.previous-btn').on('click', function() {
+                  setPrevBtnListener(cal);
+                });
+              }
+            });
+            user_clndrs[user.id] = cal;
+          });
+        });
+      }
+
+      function getCurrentWeek() {
+        return Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
       }
 
       function weeksInMonth(month) {

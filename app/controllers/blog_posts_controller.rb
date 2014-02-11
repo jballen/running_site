@@ -18,6 +18,19 @@ class BlogPostsController < ApplicationController
     redirect_to :back
   end
 
+  def edit
+  end
+  
+  def update
+    @blog_post = BlogPost.find(params[:id])
+    if @blog_post.update_attributes(blog_params)
+      flash[:success] = "Post updated!"
+      redirect_to :back
+    else
+      render 'edit'
+    end
+  end
+
   private
 
     def blog_params 

@@ -1,14 +1,16 @@
+<%= render 'shared/blog_post_edit' %>
 <div class="new-blog-post">
   <%= simple_form_for @blog_post do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <%= f.input :body, label: "Write a Post" %>
+    <%= f.input :title, label: false, input_html: { placeholder: "Title" } %>
+    <%= f.input :body, label: false, input_html: { placeholder: "Content" } %>
     <%= f.input :team_id, as: :hidden, input_html: {value: @team.id} %>
     <%= f.button :submit, "Post", class: "btn" %>
   <% end %>
 </div>
 <% unless @team_blog_posts.empty? %>
   <div class="team-blog-posts">
-    <h2>Recent Posts</h2>
+    <h4>Recent Posts</h4>
     <% @team_blog_posts.each do |post| %>
       <div class="blog-post">
         <div class="blog-post-body">
@@ -22,6 +24,8 @@
                                       data: { confirm: "You sure?" },
                                       title: post.created_at,
                                       class: "blog-post-delete" %>
+          <a href="#" class="blog-post-edit">edit</a>
+          <%= render "shared/blog_post_edit" %>
         <% end %>
       </div>
     <% end %>

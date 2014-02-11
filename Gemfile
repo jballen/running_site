@@ -3,7 +3,6 @@ ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.2'
-gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
@@ -16,9 +15,10 @@ gem 'underscore-rails'
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 gem 'font-awesome-sass'
-gem 'bootstrap-tooltip-rails'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem "koala", "~> 1.8.0rc1"
+gem "bootstrap-sass", "~> 2.3.2.0"
+
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

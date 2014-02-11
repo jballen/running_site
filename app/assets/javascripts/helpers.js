@@ -10,7 +10,6 @@ function getEventsArray(url) {
     $.each(data, function(index) {
       var new_event = {};
       var exercise = data[index]
-      console.log(exercise);
       new_event['activity'] = exercise.activity;
       new_event['title'] = exercise.title;
       new_event['date'] = exercise.date;
@@ -30,6 +29,12 @@ function getTeamMemberData() {
   return $.getJSON(document.URL + '/list_team_member_data', function(data) {
   });
 }
+function getTeamDataInWeek(startDay, endDay) {
+  return $.getJSON(document.URL + '/get_team_data_in_week', 
+    {"startDay": startDay, "endDay": endDay},
+    function(data) {
+    });
+}
 function setUpCommentListeners(events_arr) {
   setPopoverListeners(events_arr);
   $('.fa-comment').click(function(data) {
@@ -47,7 +52,6 @@ function setPopoverListeners(events_arr) {
     var e = events_arr[index];
     var comments = '';
     $.each(e.comments, function(index) {
-      console.log(e.comments[index])
       var commenter_name = e.comments[index].commenter_name || e.comments[index].commenter_email;
       var new_comment = '<div class="popover-comment">' +
                         e.comments[index]['body'] + '</div>' +
@@ -56,7 +60,7 @@ function setPopoverListeners(events_arr) {
       comments = comments + new_comment;
     });
     if (comments !== '') {
-      $('#exercise' + e.id).popover({content: comments, html:true})
+      $('#exercise' + e.id).popover({placement: 'left', content: comments, html:true})
     }
   });
 }
