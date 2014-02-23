@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140125192707) do
+ActiveRecord::Schema.define(version: 20140217171316) do
 
   create_table "blog_posts", force: true do |t|
     t.text     "body"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20140125192707) do
   end
 
   add_index "blog_posts", ["user_id"], name: "index_blog_posts_on_user_id"
+
+  create_table "day_items", force: true do |t|
+    t.date     "day"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "day_items", ["user_id"], name: "index_day_items_on_user_id"
 
   create_table "exercise_comments", force: true do |t|
     t.string   "commenter_email"
@@ -48,8 +58,10 @@ ActiveRecord::Schema.define(version: 20140125192707) do
     t.datetime "updated_at"
     t.string   "unit",          default: "Miles"
     t.string   "title"
+    t.integer  "day_item_id"
   end
 
+  add_index "exercises", ["day_item_id"], name: "index_exercises_on_day_item_id"
   add_index "exercises", ["user_id", "created_at"], name: "index_exercises_on_user_id_and_created_at"
 
   create_table "notifications", force: true do |t|

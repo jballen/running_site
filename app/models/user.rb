@@ -1,13 +1,14 @@
 class User < ActiveRecord::Base
+  has_many :day_items
   has_many :exercises, dependent: :destroy
+  has_many :exercise_comments
   has_many :team_user_relationships, foreign_key: :user_id,
                                      dependent:   :destroy
   has_many :teams, through: :team_user_relationships,
                    source:  :team
-  has_many :exercise_comments
   belongs_to :team
-	        VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   before_save :downcase_email
   before_create :create_remember_token
   validates :name,  presence: true, length: {maximum:25}, if: :site_login?  

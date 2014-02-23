@@ -1,4 +1,5 @@
 RunningSite::Application.routes.draw do
+  resources :day_items
   resources :exercises,               only: [:create, :destroy, :get_user_exercises] 
   resources :exercise_comments
 

@@ -1,50 +1,64 @@
 <% provide(:title, @user.name) %>
 <div class="userShowWrapper">
-  <div class="asideInformation">
-    <%= image_for @user %>
-    <div class="asideInformationHeader">
-      <h3>
-        <%= @user.name %>
-      </h3>
-      <%= render 'shared/user_stats' %>
-    </div>
-    <div class="activityFeed">
-      <h3>Activity Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
-  </div>
-  <%= render 'shared/exercise_form' unless current_user != @user %>
+  <%= render 'shared/day_item_form' unless current_user != @user %>
   <%= render 'shared/comment_modal' %>
-  <div class="calendar">
-    <script type="text/template" id='calendar-template'>
-      <div class="clndr-controls">
-        <div class="btn-group">
-          <button class="text-left btn  clndr-previous-button previous-btn">
-          <i class="fa fa-play fa-rotate-180"> </i>
-          </button>
-          <button class="btn  clndr-next-button next-btn">
-            <i class="fa fa-play"> </i>
-          </button>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#calendar-view" data-toggle="tab">Calendar</a></li>
+    <li><a href="#profile" data-toggle="tab">Profile</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="profile">
+      <div class="asideInformation">
+        <%= image_for @user %>
+        <div class="asideInformationHeader">
+          <h3>
+            <%= @user.name %>
+          </h3>
+          <%= render 'shared/user_stats' %>
         </div>
-        <div class="month"><%%= month %></div>
+        <div class="activityFeed">
+          <h3>Activity Feed</h3>
+          <%= render 'shared/feed' %>
+        </div>
       </div>
-      <div class="clndr-grid">
-        <div class="days-of-the-week clearfix">
-          <%% _.each(extras.days, function(day) { %>
-            <div class="header-day"><%%= day %></div>
-          <%% }); %>
-        </div>
-        <div class="days clearfix">
-          <%% _.each(days, function(day) { %>
-            <div class="<%%= day.classes %>" id="<%%= day.id %>">
-              <span class="day-number"><%%= day.day %></span>
-              <%% _.each(day.events, function(day_event) { %>
-                <%= render 'shared/day_event' %>
-              <%% }) %>
+    </div>
+    <div class="tab-pane fade active in" id="calendar-view">
+      <div class="calendar">
+        <script type="text/template" id='calendar-template'>
+          <div class="clndr-controls">
+            <div class="btn-group">
+              <button class="text-left btn  clndr-previous-button previous-btn">
+              <i class="fa fa-play fa-rotate-180"> </i>
+              </button>
+              <button class="btn  clndr-next-button next-btn">
+                <i class="fa fa-play"> </i>
+              </button>
             </div>
-          <%% }); %>
-        </div>
+            <div class="month"><%%= month %></div>
+          </div>
+          <div class="clndr-grid">
+            <div class="days-of-the-week clearfix">
+              <%% _.each(extras.days, function(day) { %>
+                <div class="header-day"><%%= day %></div>
+              <%% }); %>
+              <div class="header-day other-header">Total</div>
+            </div>
+            <div class="days clearfix">
+              <%% var week_num = 0; _.each(days, function(day) { %>
+                <div class="<%%= day.classes %> <%%= 'week' + week_num %>" id="<%%= day.id %>">
+                  <span class="day-number"><%%= day.day %></span>
+                  <%% _.each(day.events, function(day_event) { %>
+                    <%= render 'shared/day_event' %>
+                  <%% }) %>
+                </div>
+                <%% if (day.date.day() == 6) { %>
+                  <div class="clndr-box day users-total <%%= 'week' + week_num%>"></div>
+                <%% week_num = week_num + 1;} %>
+              <%% }); %>
+            </div>
+          </div>
+        </script>
       </div>
-    </script>
+    </div>
   </div>
 </div>

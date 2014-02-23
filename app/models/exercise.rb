@@ -3,6 +3,7 @@ class Exercise < ActiveRecord::Base
   enumerize :activity, in: [:run, :bike, :swim, :elliptical, :hike, :walk]
   enumerize :unit, in: [:mile, :km]
   belongs_to :user
+  belongs_to :day_item  
   has_many :exercise_comments
 
   default_scope -> { order('created_at DESC') }

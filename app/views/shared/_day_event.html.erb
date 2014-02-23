@@ -1,4 +1,7 @@
-<div class="day-event">
+<div class="day-event" data-activity="<%%= day_event.activity%>"
+                       data-distance="<%%= day_event.distance%>"
+                       data-duration="<%%= day_event.duration%>"
+                       data-unit="<%%= day_event.unit%>">
   <div class="title">
   <%% if (day_event.title.length > 0) { %>
     <%%= day_event.title %> 

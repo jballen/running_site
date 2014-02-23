@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @exercise_comment = ExerciseComment.new
     if @user.id == current_user.id
-      @exercise  = current_user.exercises.build
+      @day_item = current_user.day_items.build
       @feed_items = current_user.feed.paginate(page: params[:page])
     end
     respond_to do |format|

@@ -206,19 +206,20 @@ html {
     .distanceForm {
         margin-left: 10px;
         width: 155px;
-        .exercise_distance {
+        .day_item_exercise_distance {
             width: 50%;
             display: inline-block;
         }
-        .exercise_unit {
+        .day_item_exercise_unit {
             width: 45%;
             display: inline-block;
         }
     }
-
+    .pace {
+      margin-top:2em;
+      display:inline-block;
+    }
     .duration {
-        float: right;
-        margin-left: 15px;
         width: 180px;
 
         p {
@@ -230,7 +231,7 @@ html {
         height: 150px;
     }
 
-    .exercise_duration {
+    .day_item_exercise_duration {
         margin-right: 2px;
         display: inline-block;
         width:30%;
@@ -239,7 +240,7 @@ html {
     label {
         color: $primaryTwo;
         font-family: "Hevetica", sans-serif;
-        font-size: 18px;
+        font-size: 16px;
         letter-spacing: 1px;
         margin: 2px 0;
     }
@@ -252,7 +253,7 @@ html {
 */
 .header-day {
   float: left;
-  width: 14%;
+  width: 12.5%;
   padding: 14px 0px 14px 0px;
   text-align: center;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -330,10 +331,11 @@ html {
 }
 .day {
   float: left;
-  width: 14%;
+  width: 12.5%;
   height: 100px;
   padding: 6px 0 24px 0;
   cursor: pointer;
+  overflow-x: hidden;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */

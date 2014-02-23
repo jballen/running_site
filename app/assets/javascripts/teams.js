@@ -77,6 +77,7 @@ $('document').ready(function() {
               },
               doneRendering: function() {
                 setUpCommentListeners(events_arr[user.id]);
+                setTotals(user.id);
                 /* Next button handler */
                 $('.next-btn').on('click', function() {
                   setNextBtnListener(cal);
@@ -92,7 +93,26 @@ $('document').ready(function() {
           });
         });
       }
-
+      function setTotals(id) {
+        var cal = $('#calendar' + id);
+        var events = cal.find('.day-event');
+        var totals = {};
+        $.each(events, function(key) {
+          var e = $(events[key]);
+          var type = e.attr('data-activity');
+          if (totals[type] === undefined) 
+            totals[type] = 0;
+          var distance = parseFloat(e.attr('data-distance'));
+          var unit = e.attr('data-unit');
+          if (unit === 'kms' || unit === 'km')
+            distance = distance * 0.621371;
+          totals[type] = totals[type] + distance;
+        });
+        var total_div = $('.users-total' + id);
+        $.each(totals, function(key) {
+          total_div.append(key + ': ' + totals[key].toFixed(2) + ' miles<br>');
+        });
+      }
       function getCurrentWeek() {
         return Math.floor( ( ( (moment().date() + moment().startOf('month').weekday() ) - 1 ) / ( weeksInMonth(moment() ) * 7) ) * weeksInMonth( moment() ) )
       }
