@@ -1,4 +1,4 @@
-# Ignore bundler config.
+  # Ignore bundler config.
 /.bundle
 
 # Ignore the default SQLite database.
@@ -18,3 +18,4 @@ doc/
 .DS_Store
 .idea
 .secret
+.elasticbeanstalk/
