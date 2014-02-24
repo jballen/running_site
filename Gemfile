@@ -17,10 +17,10 @@ gem 'omniauth-facebook', '1.4.0'
 gem 'font-awesome-sass'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem "koala", "~> 1.8.0rc1"
-gem "bootstrap-sass", "~> 2.3.2.0"
-
+gem 'bootstrap-sass'
 
 group :development, :test do
+  gem 'rails_layout'
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
 end

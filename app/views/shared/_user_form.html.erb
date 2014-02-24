@@ -1,12 +1,17 @@
 
 <%= f.label :name %>
-<%= f.text_field :name %>
-
+<div class="new_user_input">
+  <%= f.text_field :name %>
+</div>
 <%= f.label :email %>
-<%= f.text_field :email %>
-
+<div class="new_user_input">
+  <%= f.text_field :email %>
+</div>
 <%= f.label :password %>
-<%= f.password_field :password %>
-
+<div class="new_user_input">
+  <%= f.password_field :password %>
+</div>
 <%= f.label :password_confirmation, "Confirmation" %>
-<%= f.password_field :password_confirmation %>
+<div class="new_user_input">
+  <%= f.password_field :password_confirmation %>
+</div>

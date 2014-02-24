@@ -2,17 +2,13 @@
                        data-distance="<%%= day_event.distance%>"
                        data-duration="<%%= day_event.duration%>"
                        data-unit="<%%= day_event.unit%>">
-  <div class="title">
-  <%% if (day_event.title.length > 0) { %>
-    <%%= day_event.title %> 
-  <%% } else { %>
+  <div class="event-title">
     <%%= day_event.activity %>
     <%% if (day_event.distance != null) { %>
       (<%%= day_event.distance %> <%%= day_event.unit %>)
     <%% } else { %>
       (<%%= day_event.duration %>)
     <%% } %>
-  <%% } %>
   </div>
   <span class="comments">
     <%% if (_.size(day_event.comments) > 0 ) { %>

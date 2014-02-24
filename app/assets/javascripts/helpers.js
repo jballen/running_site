@@ -9,17 +9,23 @@ function getEventsArray(url) {
   return $.getJSON(url, function(data) {
     $.each(data, function(index) {
       var new_event = {};
-      var exercise = data[index]
-      new_event['activity'] = exercise.activity;
-      new_event['title'] = exercise.title;
-      new_event['date'] = exercise.date;
-      new_event['duration'] = exercise.duration;
-      new_event['distance'] = exercise.distance;
-      new_event['unit'] = exercise.unit;
-      new_event['user_id'] = exercise.user_id;
-      new_event['user_name'] = exercise.user_name;
-      new_event['comments'] = exercise.comments;
-      new_event['id'] = exercise.id;
+      var day_item = data[index];
+      new_event['title'] = day_item.title;
+      new_event['date'] = day_item.date;
+      new_event['exercises'] = [];
+      $.each(day_item.exercises, function(ex_index) {
+        var exercise = day_item.exercises[ex_index];
+        var new_exercise = {};
+        new_exercise['activity'] = exercise.activity;
+        new_exercise['duration'] = exercise.duration;
+        new_exercise['distance'] = exercise.distance;
+        new_exercise['unit'] = exercise.unit;
+        new_exercise['user_id'] = exercise.user_id;
+        new_exercise['user_name'] = exercise.user_name;
+        new_exercise['comments'] = exercise.comments;
+        new_exercise['id'] = exercise.id;
+        new_event['exercises'].push(new_exercise);
+      });
       events_arr.push(new_event);
     });
   });
@@ -46,21 +52,24 @@ function setUpCommentListeners(events_arr) {
     $('#comment-modal').modal('show');
   });
 }
-function setPopoverListeners(events_arr) {
+function setPopoverListeners(day_items) {
   var patt1 = /[0-9]+/i;
-  $.each(events_arr, function(index) {
-    var e = events_arr[index];
-    var comments = '';
-    $.each(e.comments, function(index) {
-      var commenter_name = e.comments[index].commenter_name || e.comments[index].commenter_email;
-      var new_comment = '<div class="popover-comment">' +
-                        e.comments[index]['body'] + '</div>' +
-                        '<div class="popover-comment-author">' +
-                        commenter_name + '</div>';
-      comments = comments + new_comment;
+  $.each(day_items, function(index) {
+    var day_item = day_items[index];
+    $.each(day_item.exercises, function(di_index) {
+      var e = day_item.exercises[di_index];
+      var comments = '';
+      $.each(e.comments, function(index) {
+        var commenter_name = e.comments[index].commenter_name || e.comments[index].commenter_email;
+        var new_comment = '<div class="popover-comment">' +
+                          e.comments[index]['body'] + '</div>' +
+                          '<div class="popover-comment-author">' +
+                          commenter_name + '</div>';
+        comments = comments + new_comment;
+      });
+      if (comments !== '') {
+        $('#exercise' + e.id).popover({placement: 'left', content: comments, html:true})
+      }
     });
-    if (comments !== '') {
-      $('#exercise' + e.id).popover({placement: 'left', content: comments, html:true})
-    }
   });
 }

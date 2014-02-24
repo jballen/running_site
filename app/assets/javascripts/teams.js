@@ -36,8 +36,8 @@ $('document').ready(function() {
         $.when(getTeamDataInWeek(getStartDay(), getEndDay)).done(function(user_events) {
           $.each(user_events, function(key) {
             var user = user_events[key];
-            events_arr[user.id] = user.exercises;
-            user_clndrs[user.id].setEvents(user.exercises);
+            events_arr[user.id] = user.day_items;
+            user_clndrs[user.id].setEvents(user.day_items);
           });
         });
       }
@@ -64,7 +64,7 @@ $('document').ready(function() {
         $.when(getTeamDataInWeek(getStartDay(), getEndDay())).done(function(user_events) {
           $.each(user_events, function(key) {
             var user = user_events[key];
-            events_arr[user.id] = user.exercises;
+            events_arr[user.id] = user.day_items;
             var cal = $('#calendar' + user.id).clndr({
               template: $('#calendar-template' + user.id).html(),
               events: events_arr[user.id],

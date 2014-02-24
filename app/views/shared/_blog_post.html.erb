@@ -5,7 +5,7 @@
     <%= f.input :title, label: false, input_html: { placeholder: "Title" } %>
     <%= f.input :body, label: false, input_html: { placeholder: "Content" } %>
     <%= f.input :team_id, as: :hidden, input_html: {value: @team.id} %>
-    <%= f.button :submit, "Post", class: "btn" %>
+    <%= f.button :submit, "Post", class: "btn btn-small" %>
   <% end %>
 </div>
 <% unless @team_blog_posts.empty? %>

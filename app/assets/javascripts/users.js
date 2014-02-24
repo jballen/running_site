@@ -1,31 +1,32 @@
   $('document').ready(function() {
     if ($('body#users').length) {
-      $('#minutes').focusout(function(data) {
+      $('.duration-minutes').focusout(function(data) {
         setPace();
       });
-      $('#seconds').focusout(function(data) {
+      $('.duration-seconds').focusout(function(data) {
         setPace();
       });
-      $('#hours').focusout(function(data) {
+      $('.duration-hours').focusout(function(data) {
         setPace();
       });
-      $('#day_item_exercise_distance').focusout(function(data) {
-        if ($('#hours').val() > 0 || $('#minutes').val() > 0 || $('#seconds').val() > 0)
+      $('.distance-input').focusout(function(data) {
+        if ($('.duration-hours').val() > 0 || $('.duration-minutes').val() > 0 || $('.duration-seconds').val() > 0)
           $('.pace').html('Pace: ' + calculatePace() );
       });
 
-      $.when(getEventsArray(document.URL + '/list_exercises')).done(function(data) {
+      $.when(getEventsArray(document.URL + '/get_day_items')).done(function(data) {
         userJavascript(data);
+        console.log(data);
       });
       function setPace() {
-        if ($('#day_item_exercise_distance').val() > 0)
+        if ($('.distance-input').val() > 0)
           $('.pace').html('Pace: ' + calculatePace() );
       }
       function calculatePace() {
-        var distance = $('#day_item_exercise_distance').val();
-        var hours = parseInt($('#hours').val()) || 0;
-        var minutes = parseInt($('#minutes').val()) || 0;
-        var seconds = parseInt($('#seconds').val()) || 0;
+        var distance = $('.distance-input').val();
+        var hours = parseInt($('.duration-hours').val()) || 0;
+        var minutes = parseInt($('.duration-minutes').val()) || 0;
+        var seconds = parseInt($('.duration-seconds').val()) || 0;
         var total_seconds = hours*3600 + minutes*60 + seconds;
         var pace = total_seconds/distance;
         var pace_minutes = Math.round(pace/60);
@@ -59,22 +60,23 @@
           });
         }
       }
-      function userJavascript(events_arr) {
+      function userJavascript(day_items) {
         $('.calendar').clndr({
           template: $('#calendar-template').html(),
-          events: events_arr,
+          events: day_items,
           extras: { 
             days: daysOfTheWeekFull
           },
           clickEvents: {
             click: function(target) {
               var date = target.date._i;
-              $('#day_item_day').val(date)
-              $('#exercise-modal').modal('show')
+              console.log(target);
+              $('#day_item_day').val(date);
+              $('#exercise-modal').modal('show');
             }
           },
           doneRendering: function() {
-            setPopoverListeners(events_arr);
+            setPopoverListeners(day_items);
             calculateTotals();
             $('.day-event').click(function(data) {
               data.stopPropagation();

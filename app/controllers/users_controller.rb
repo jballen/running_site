@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @exercise_comment = ExerciseComment.new
     if @user.id == current_user.id
-      @day_item = current_user.day_items.build
+      @day_item = DayItem.new
+      @day_item.exercises.build
       @feed_items = current_user.feed.paginate(page: params[:page])
     end
     respond_to do |format|
@@ -27,6 +28,19 @@ class UsersController < ApplicationController
           @formatted_exercises << format_exercise_for_json(exercise, @user)
         end
         render json: @formatted_exercises
+      end
+    end
+  end
+
+  def get_day_items
+    @user = User.find(params[:id])
+    respond_to do |format|
+      format.json do
+        @formatted_day_items = []
+        @user.day_items.each do |day_item|
+          @formatted_day_items << format_day_item_for_json(day_item, @user)
+        end
+        render json: @formatted_day_items
       end
     end
   end

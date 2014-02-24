@@ -15,6 +15,9 @@
     display:inline-block;
     text-align: center;
     font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    width: 100%;
   }
 
   /*
@@ -22,12 +25,32 @@
           User Profile Page
   ****************************************
   */
+  .new_user {
+    text-align: center;
+    .new_user_input {
+      width: 100%;
+      display:block;
+      text-align: center;
+      input {
+        width: 15em;
+      }
+    }
+  }
   .userShowWrapper {
     background-color: white;
     height: 100%;
     overflow: auto;
     position: relative;
-
+    .user-pane {
+      background-color: $secondaryOne;
+      border-radius:10px;
+    }
+    .nav {
+      li {
+        margin-top: 1em;
+        z-index: 1000;
+      }
+    }
     .calendar {
       background-color: white;
       border-top-left-radius: 3px;
@@ -35,6 +58,22 @@
       position:absolute;
       margin-top: 1%;
       width: 100%;
+    }
+    .profile-header {
+      display: inline-block;
+      z-index:0;
+      position: absolute;
+      text-align: center;
+      top:0;
+      width: 100%;
+      left: 0;
+      .profile_picture {
+        display:inline-block;
+      }
+      h4 {
+        display: inline-block;
+        margin-left: 5px;
+      }
     }
   }
 
@@ -60,6 +99,7 @@
     .exercises {
       list-style: none;
       margin: 0;
+      padding-left: 0;
     }
 
     li {

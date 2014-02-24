@@ -1,5 +1,6 @@
 <% @user ||= current_user %>
 <div id="teams" class="stat">
+  <h4>Teams</h4>
   <strong>
     <%= pluralize(@user.teams.count, "team") %>
   </strong>

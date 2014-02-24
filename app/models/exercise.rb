@@ -5,7 +5,8 @@ class Exercise < ActiveRecord::Base
   belongs_to :user
   belongs_to :day_item  
   has_many :exercise_comments
-
+  accepts_nested_attributes_for :exercise_comments
+  
   default_scope -> { order('created_at DESC') }
   validates :duration, presence: true
   validates_numericality_of :duration, :greater_than => 0

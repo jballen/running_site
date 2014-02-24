@@ -7,5 +7,7 @@ class ExercisesController < ApplicationController
   end
 
   def destroy
+    @exercise = Exercise.find(params[:id]).destroy
+    redirect_back_or current_user
   end
 end

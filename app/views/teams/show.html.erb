@@ -8,7 +8,7 @@
 </ul>
 <div class="tab-content">
   <div class="tab-pane fade active in" id="main">
-    <div class="asideInformation">
+    <div class="asideInformation team-pane col-xs-4">
       <section>
         <%= render 'shared/team_stats', :team => @team %>
       </section>
@@ -57,10 +57,22 @@
               </div>
               <%% for(var i = extras.currentWeek * 7; i < extras.currentWeek * 7 + 7; i++) { %>
                 <div class="clndr-box <%%= days[i].classes %>">
-                  <span class="day-number"><%%= days[i].day %></span>
-                  <%% _.each(days[i].events, function(day_event) { %>
-                    <%= render 'shared/day_event' %>
-                  <%% }) %>
+                  <%% if (days[i].events.length == 0) { %>
+                    <div class="day-header">
+                      <span class="day-number"><%%= days[i].day %></span>
+                    </div>
+                  <%% } %>
+                  <%% _.each(days[i].events, function(day_item) { %>
+                    <div class="day-header">
+                      <span class="day-number"><%%= days[i].day %></span>
+                      <%% if (day_item.title != "") { %>
+                       <span class="day-title"><%%= day_item.title %></span>
+                      <%% } %>
+                    </div>
+                    <%% _.each(day_item.exercises, function(day_event) { %>
+                      <%= render 'shared/day_event' %>
+                    <%% }); %>
+                  <%% });  %>
                 </div>
               <%% } %>
               <div class="clndr-box day users-total<%= user.id%>"></div>

@@ -23,7 +23,37 @@ h4 {
   opacity:0.7em;
 }
 body#teams {
-  
+  .team-pane {
+    background-color: $secondaryOne;
+    border-radius: 10px;
+  }
+  .new_team {
+    .team_name {
+      text-align: center;
+      .controls {
+        margin-left: 15px;
+      }
+      input {
+        width: 15em;
+      }
+    }
+    .team_description {
+      text-align: center;
+      .controls {
+        margin-left: 15px;
+      }
+      textarea {
+        width: 25em;
+      }
+    }
+    .submit {
+      text-align:center;
+      width: 100%;
+      input {
+        width:10em;
+      }
+    }
+  }
   .new_blog_post {
     width: 80%;
   }

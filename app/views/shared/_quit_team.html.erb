@@ -1,5 +1,5 @@
 <%= form_for(current_user.team_user_relationships.find_by(team_id: @team),
              html: { method: :delete }) do |f| %>
   <div><%= f.hidden_field :user_id, :value => current_user.id %></div>
-  <%= f.submit "Quit Team", class: "btn" %>
+  <%= f.submit "Quit Team", class: "btn btn-small" %>
 <% end %>

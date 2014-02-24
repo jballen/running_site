@@ -2,7 +2,7 @@ RunningSite::Application.routes.draw do
   resources :day_items
   resources :exercises,               only: [:create, :destroy, :get_user_exercises] 
   resources :exercise_comments
-
+  
   resources :notifications,           only: [:create, :destroy]
   resources :sessions,                only: [:new, :create, :destroy]
   resources :teams do
@@ -18,6 +18,7 @@ RunningSite::Application.routes.draw do
       get :teams
       get :list_exercises
       get :summary_of_exercises
+      get :get_day_items
     end
   end
 

@@ -1,8 +1,7 @@
+
 @import "constants.css.scss";
 
-
 body {
-    padding: 40px 0;
     height: 100%
 }
 
@@ -10,13 +9,32 @@ html {
     height: 100%;
     width: 100%;
 }
-
-.btn-large {
-    margin: 6px 2px;
+.row {
+  margin: 0;
+}
+input, textarea, select {
+  margin: 3px 0 3px 0;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 4px #d6d6d6;
+  box-shadow: 0px 0px 4px #d6d6d6;
+  padding: 5px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+.btn-large {
+  margin: 6px 2px;
+  width:30em;
+}
+.btn-small {
+  width:7em;
+}
+.btn-medium {
+  width:10em;
+}
 .btn {
-    background-color: $secondaryTwo;
+    background-color: $primaryOne;
     background-image: none;
     border: none;
     box-shadow: none;
@@ -25,25 +43,47 @@ html {
     text-shadow: none;
 }
 
-.navbar .navbar-inner {
+.navbar {
+  margin: 0;
+  border: none;
+  border-width: 0 0 0 0;
+}
+
+.navbar-fixed-top {
     background-color: $primaryOne;
     background-image: none;
+    min-height: 38px;
 }
 .pull-right {
+  .dropdown:hover .dropdown-menu {
+    display:block;
+  }
+  .dropdown .dropdown-menu {
+    margin: 0;
+  }
   li {
+    display: inline-block;
+
     .header-bar-title {
       text-shadow: none !important;
       color: white !important;
+      &:hover {
+        background-color: $primaryOne;
+      }
     }
     ul.dropdown-menu {
       color: black;
+      .divider {
+        width: 80%;
+        margin-left: 10%;
+        text-decoration:none;
+      }
     }
   }
 }
 .headWrapper {
     background: image-url("running.jpg") no-repeat center center fixed;
     background-size: 100%;
-    border-top: 1px solid rgba(#000000, .9);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -52,6 +92,7 @@ html {
 }
 .containerWrapper {
   height: 100%;
+  margin-top: 40px
 }
 
 /*
@@ -60,20 +101,15 @@ html {
 ****************************************
 */
 .asideInformation {
-  background-color: $secondaryOne;
-  left: 0;
   height: 75%;
   margin-top: 2%;
   padding: 1%;
-  position: absolute;
-  width: 24%;
   overflow-y: scroll;
   section {
     padding: 10px 0;
     border-top: 1px solid $grayMedium;
   }
   img {
-    border-radius: 50px;
     float: left;
     width: 70px;
   }
@@ -82,8 +118,6 @@ html {
     text-align: left;
 
     .stat {
-      border-left: 2px solid #C3C3C3;
-      margin-left: 90px;
       padding-left: 5px;
     }
   }
@@ -134,7 +168,6 @@ html {
 
 .loginForm {
     border-radius: 4px;
-    width: 400px;
 
     h1 {
         font-family: "Hevetica", sans-serif;
@@ -166,10 +199,10 @@ html {
 }
 
 .btn-login {
-    background-color: $primaryTwo;
+    background-color: $primaryOne;
     letter-spacing: 1px;
     font-weight: bold;
-
+    width: 50%;
     &:hover {
         background-color: $primaryOne;
     }
@@ -198,22 +231,22 @@ html {
         display: inline-block;
         vertical-align: top;
     }
-
+    select {
+        margin: 3px 0 3px 0;
+        height: 30px;
+      }
     .activityType {
         width: 90px;
     }
 
     .distanceForm {
         margin-left: 10px;
-        width: 155px;
-        .day_item_exercise_distance {
-            width: 50%;
-            display: inline-block;
-        }
-        .day_item_exercise_unit {
-            width: 45%;
-            display: inline-block;
-        }
+        width: 80px;
+    }
+    .unit {
+      display: inline-block;
+      width: 70px;
+      margin-left: 5px;
     }
     .pace {
       margin-top:2em;
@@ -231,7 +264,7 @@ html {
         height: 150px;
     }
 
-    .day_item_exercise_duration {
+    .duration-hours, .duration-minutes, .duration-seconds {
         margin-right: 2px;
         display: inline-block;
         width:30%;
@@ -243,6 +276,7 @@ html {
         font-size: 16px;
         letter-spacing: 1px;
         margin: 2px 0;
+        display: block;
     }
 }
 
@@ -254,6 +288,7 @@ html {
 .header-day {
   float: left;
   width: 12.5%;
+  border-radius: 5%;
   padding: 14px 0px 14px 0px;
   text-align: center;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -261,7 +296,7 @@ html {
   box-sizing: border-box;         /* Opera/IE 8+ */
   background-color: $secondaryOne;
   border-right: 1px solid;
-  border-right-color: $secondaryOne;
+  border-right-color: $grayMedium;
   border-left: 1px solid;
   border-left-color: $secondaryOne;
   border-bottom: 2px solid;
@@ -288,7 +323,7 @@ html {
     width:100%;
     text-align:left;
     display: inline-block;
-    .title {
+    .event-title {
       padding: 0 0 0 3px;
       background-color: $eventColor;
       border: 1px solid transparent;
@@ -322,6 +357,11 @@ html {
     }
   }
 }
+.profile_picture {
+  -webkit-box-shadow: 0px 0px 8px #d6d6d6;
+  box-shadow: 0px 0px 8px #d6d6d6;
+  border-radius: 50%;
+}
 .modal {
   display:none;
 }
@@ -329,23 +369,34 @@ html {
   border-top-color: white !important;
   border-bottom-color: white !important;
 }
+.other-header {
+  background-color: rgba($primaryOne, 0.3);
+}
 .day {
   float: left;
   width: 12.5%;
+  border-radius: 5%;
   height: 100px;
-  padding: 6px 0 24px 0;
+  padding: 2px 0 24px 0;
   cursor: pointer;
   overflow-x: hidden;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
   border: 1px solid;
-  border-color: $secondaryOne;
-  &:hover {
+  border-color: $grayMedium;
+  &:not(.users-total):hover {
     background-color: $secondaryOne;
   }
+  .day-header {
+    .day-title {
+      width:85%;
+    }
+    .day-number {
+      width:15%;
+    }
+  }
   .day-number {
-    width:80%;
     display: inline-block;
     padding-left: 5px;
   }

@@ -65,9 +65,9 @@ class TeamsController < ApplicationController
       @user_info = {}
       @user_info['name'] = user.name
       @user_info['id'] = user.id
-      @user_info['exercises'] = []
-      user.exercises.where(:activity_date => @startDay..@endDay).each do |exercise|
-        @user_info['exercises'] << format_exercise_for_json(exercise, user)
+      @user_info['day_items'] = []
+      user.day_items.where(:day => @startDay..@endDay).each do |day_item|
+        @user_info['day_items'] << format_day_item_for_json(day_item, user)
       end
       @user_info_arr << @user_info
     end

@@ -22,6 +22,7 @@ module RunningSite
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.assets.css_compressor = :sass
     I18n.enforce_available_locales = true
-
+    # REMOVE THE LINE AFTER THIS BEFORE PRODUCTION
+    # config.assets.enabled = false
   end
 end
