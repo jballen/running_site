@@ -1,0 +1,29 @@
+<h1>Listing day_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @day_items.each do |day_item| %>
+      <tr>
+        <td><%= day_item.day %></td>
+        <td><%= day_item.title %></td>
+        <td><%= link_to 'Show', day_item %></td>
+        <td><%= link_to 'Edit', edit_day_item_path(day_item) %></td>
+        <td><%= link_to 'Destroy', day_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Day item', new_day_item_path %>

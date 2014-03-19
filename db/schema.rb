@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20140217171316) do
     t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.string   "commenter_name"
+    t.integer  "user_id"
   end
 
   add_index "exercise_comments", ["exercise_id"], name: "index_exercise_comments_on_exercise_id"
@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 20140217171316) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",            default: false
-    t.integer  "duration"
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"

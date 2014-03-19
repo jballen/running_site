@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
@@ -18,6 +18,11 @@ gem 'font-awesome-sass'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem "koala", "~> 1.8.0rc1"
 gem 'bootstrap-sass'
+gem 'open4'
+gem 'unf'
+gem "net-ssh", "~> 2.7.0"
+gem "passenger"
+
 
 group :development, :test do
   gem 'rails_layout'

@@ -1,0 +1,59 @@
+<div class="modal fade" id="exercise-modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Log Activity</h4>
+      </div>
+      <%= form_for @day_item do |f| %>
+        <div class="modal-body exerciseForm">
+          <%= render 'shared/error_messages', object: f.object %>
+          <div class="title">
+            <%= f.label :title %>
+            <%= f.text_field :title, :class => "title-input" %>
+          </div>
+          <div class="dateForm">
+            <%= f.hidden_field :day %>
+          </div>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+          <%= f.fields_for :exercises do |exercise| %>
+            <div class="activityType">
+              <%= exercise.label :activity, :class => "exercise-label" %>
+              <%= exercise.select :activity, Exercise.activity.values, {}, {:class => "exercise-input"} %>
+            </div>
+            <div class="distanceForm">
+              <%= exercise.label :distance, :class => "distance-label" %>
+              <%= exercise.text_field :distance, :min => 0, :class => "distance-input" %>
+            </div>
+            <div class="unit">
+              <%= exercise.label :unit, :class => "unit-label" %>
+              <%= exercise.select :unit, Exercise.unit.values, {}, {:class => "unit-input"} %>
+            </div>
+            <div class="duration">
+              <%= exercise.label :duration, :class => "duration-label" %>
+              <%= exercise.text_field :duration, 
+                                      :name => 'day_item[exercises_attributes][0][duration_hours]', 
+                                      :placeholder => "hrs",
+                                      :class => "duration-hours" %>
+              <%= exercise.text_field :duration, 
+                                      :name => 'day_item[exercises_attributes][0][duration_minutes]', 
+                                      :placeholder => "mins",
+                                      :class => "duration-minutes" %>
+              <%= exercise.text_field :duration, 
+                                      :name => 'day_item[exercises_attributes][0][duration_seconds]', 
+                                      :placeholder => "secs",
+                                      :class => "duration-seconds" %>
+            </div>
+            <div class="pace"></div>
+            <%= exercise.label :comment %> 
+            <%= exercise.text_area :comment %>
+            <%= exercise.hidden_field :user_id, :value => current_user.id %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
