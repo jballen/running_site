@@ -50,17 +50,17 @@
             <div class="days clearfix">
               <%% var week_num = 0; _.each(days, function(day) { %>
                 <div class="<%%= day.classes %> <%%= 'week' + week_num %>" id="<%%= day.id %>">
-                  <%% _.each(day.events, function(day_item) { %>
-                    <div class="day-header">
-                      <span class="day-number"><%%= day.day %></span>
-                      <%% if (day_item.title != "") { %>
-                        <span class="day-title"><%%= day_item.title %></span>
-                      <%% } %>
-                    </div>
-                    <%% _.each(day_item.exercises, function(day_event) { %>
-                      <%= render 'shared/day_event' %>
+                  <div class="day-header">
+                    <span class="day-number"><%%= day.day %></span>
+                    <%% _.each(day.events, function(day_item) { %>
+                        <%% if (day_item.title != "") { %>
+                          <span class="day-title"><%%= day_item.title %></span>
+                        <%% } %>
+                      <%% _.each(day_item.exercises, function(day_event) { %>
+                        <%= render 'shared/day_event' %>
+                      <%% }); %>
                     <%% }); %>
-                  <%% }); %>
+                  </div>
                 </div>
                 <%% if (day.date.day() == 6) { %>
                   <div class="clndr-box day users-total <%%= 'week' + week_num%>"></div>
