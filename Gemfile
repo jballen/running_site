@@ -21,7 +21,6 @@ gem 'bootstrap-sass'
 gem 'open4'
 gem 'unf'
 gem "net-ssh", "~> 2.7.0"
-gem "passenger"
 
 
 group :development, :test do
