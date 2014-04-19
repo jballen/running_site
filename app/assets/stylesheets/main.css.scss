@@ -410,6 +410,7 @@ input, textarea, select {
   cursor: pointer;
   text-align: right;
   height: 100%;
+  z-index: 1;
   &:hover {
     background-color: $hoverBackground; 
   }
@@ -419,6 +420,7 @@ input, textarea, select {
   width: 3em;
   cursor: pointer;
   height: 100%;
+  z-index: 1;
   &:hover {
     background-color: $hoverBackground; 
   }

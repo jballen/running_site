@@ -46,4 +46,5 @@ module ApplicationHelper
     @new_exercise['title'] = exercise.title
     return @new_exercise
   end
+    
 end

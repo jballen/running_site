@@ -1,6 +1,6 @@
 class Exercise < ActiveRecord::Base
   extend Enumerize
-  enumerize :activity, in: [:run, :bike, :swim, :elliptical, :hike, :walk]
+  enumerize :activity, in: [:run, :bike, :swim, :elliptical, :hike, :walk, :nordicskiing]
   enumerize :unit, in: [:mile, :km]
   belongs_to :user
   belongs_to :day_item  
@@ -9,8 +9,8 @@ class Exercise < ActiveRecord::Base
   
   default_scope -> { order('created_at DESC') }
   validates :duration, presence: true
-  validates_numericality_of :duration, :greater_than => 0
-  validates_numericality_of :distance, :greater_than => 0, if: :distance_present?
+  validates_numericality_of :duration, :greater_than_or_equal_to => 0
+  validates_numericality_of :distance, :greater_than_or_equal_to => 0, if: :distance_present?
   validates :user_id, presence: true
 
   def self.team_member_activity(user)

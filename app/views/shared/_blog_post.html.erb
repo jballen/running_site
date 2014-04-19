@@ -13,6 +13,9 @@
     <h4>Recent Posts</h4>
     <% @team_blog_posts.each do |post| %>
       <div class="blog-post">
+        <div class="blog-post-title">
+          <%= post.title %>
+        </div>
         <div class="blog-post-body">
           <%= post.body %>
         </div>

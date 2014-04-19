@@ -55,6 +55,9 @@ module ExercisesHelper
   end
 
   def format_activity_date(activity_date)
+    if activity_date.nil?
+      return 'unknown'
+    end
     if Date.today() - activity_date == 0
       return 'today'
     else

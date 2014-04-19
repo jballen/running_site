@@ -2,5 +2,5 @@
   <%= f.input :team_id, as: :hidden, input_html: { value: @team.id }%>
   <%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
   <%= f.input :what,    as: :hidden, input_html: { value: 'join' } %>
-  <%= f.submit 'Join team', class: "btn btn-large btn-primary" %>
+  <%= f.submit 'Join team', class: "btn btn-primary" %>
 <% end %>

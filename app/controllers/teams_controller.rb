@@ -55,9 +55,6 @@ class TeamsController < ApplicationController
   def get_team_data_in_week
     @startDay = DateTime.parse(params[:startDay])
     @endDay = DateTime.parse(params[:endDay])
-    logger.debug '*******************'
-    logger.debug @startDay
-    logger.debug @endDay
     @team = this_team
     @users = @team.users
     @user_info_arr = []

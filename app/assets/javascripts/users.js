@@ -1,5 +1,9 @@
   $('document').ready(function() {
     if ($('body#users').length) {
+      $.getJSON('http://localhost:3000/get_all_teams', function(data) {
+        console.log(data);
+      });
+
       $('.duration-minutes').focusout(function(data) {
         setPace();
       });
@@ -16,7 +20,6 @@
 
       $.when(getEventsArray(document.URL + '/get_day_items')).done(function(data) {
         userJavascript(data);
-        console.log(data);
       });
       function setPace() {
         if ($('.distance-input').val() > 0)

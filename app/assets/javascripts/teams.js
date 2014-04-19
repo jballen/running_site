@@ -20,14 +20,15 @@ $('document').ready(function() {
         doneRendering: function() {
           $('.next-btn').on('click', function() {
             addUserEvents();
-            setNextBtnListener(master_cal);            
+            setNextBtnListeners();            
           });
           $('.previous-btn').on('click', function() {
             addUserEvents();
-            setPrevBtnListener(master_cal);
+            setPrevBtnListeners();
           });
         }
       });
+      user_clndrs[0] = master_cal;
 
       /* Creates a new 'clndr' for each user on the team. */
       generateUserCalendars();
@@ -78,15 +79,6 @@ $('document').ready(function() {
               doneRendering: function() {
                 setUpCommentListeners(events_arr[user.id]);
                 setTotals(user.id);
-                /* Next button handler */
-                $('.next-btn').on('click', function() {
-                  setNextBtnListener(cal);
-                });
-
-                /* Previous button handler */
-                $('.previous-btn').on('click', function() {
-                  setPrevBtnListener(cal);
-                });
               }
             });
             user_clndrs[user.id] = cal;
@@ -121,43 +113,48 @@ $('document').ready(function() {
         return Math.floor((month.daysInMonth() + moment(month).startOf('month').weekday()) / 7);
       }
 
-      function setNextBtnListener(cal) {
-        var weeks_in_month = weeksInMonth(cal.month) - 1;
+      function setNextBtnListeners() {
+        var weeks_in_month;
+        $.each(user_clndrs, function(key, cal) {
+          weeks_in_month = weeksInMonth(cal.month) - 1;
 
-        if(cal.options.extras.currentWeek < weeks_in_month) {
-          /* Increase the week count */
-          cal.options.extras.currentWeek += 1;
-          cal.render();
-        } else if(cal.options.extras.currentWeek > weeks_in_month) {
-          /* If we started at the last week of the month, we want to skip over currentWeek = 0 */
-          cal.options.extras.currentWeek = 1;
-          cal.next();
-        } else {
-          /* Reset the week count */
-          cal.options.extras.currentWeek = 0;
+          if(cal.options.extras.currentWeek < weeks_in_month) {
+            /* Increase the week count */
+            cal.options.extras.currentWeek += 1;
+            cal.render();
+          } else if(cal.options.extras.currentWeek > weeks_in_month) {
+            /* If we started at the last week of the month, we want to skip over currentWeek = 0 */
+            cal.options.extras.currentWeek = 1;
+            cal.next();
+          } else {
+            /* Reset the week count */
+            cal.options.extras.currentWeek = 0;
 
-          /* Go to next month */
-          cal.next();
-        }
+            /* Go to next month */
+            cal.next();
+          }
+        });
       }
 
-      function setPrevBtnListener(cal) {
-        /* if we're just counting down we don't need to know the weeks in the month... */
-        if(cal.options.extras.currentWeek > 0) {
-          /* Decrease the week count */
-          cal.options.extras.currentWeek -= 1;
-          cal.render();
-        }
-        /* however if we've crossed 0, we need weeks_in_month to reflect LAST month
-        before clndr has had a chance to go back. */
-        else {
-          var weeks_in_month = weeksInMonth( moment(cal.month).subtract('month', 1) ) - 1;
-          /* Reset the week count */
-          cal.options.extras.currentWeek = weeks_in_month;
+      function setPrevBtnListeners(cal) {
+        $.each(user_clndrs, function(key, cal) {
+          /* if we're just counting down we don't need to know the weeks in the month... */
+          if(cal.options.extras.currentWeek > 0) {
+            /* Decrease the week count */
+            cal.options.extras.currentWeek -= 1;
+            cal.render();
+          }
+          /* however if we've crossed 0, we need weeks_in_month to reflect LAST month
+          before clndr has had a chance to go back. */
+          else {
+            var weeks_in_month = weeksInMonth( moment(cal.month).subtract('month', 1) ) - 1;
+            /* Reset the week count */
+            cal.options.extras.currentWeek = weeks_in_month;
 
-          /* Go to previous month */
-          cal.back();
-        }
+            /* Go to previous month */
+            cal.back();
+          }
+        });
       }
     } 
   }

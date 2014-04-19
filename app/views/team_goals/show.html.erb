@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @team_goal.team %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @team_goal.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @team_goal.end_date %>
+</p>
+
+<p>
+  <strong>Distance:</strong>
+  <%= @team_goal.distance %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @team_goal.duration %>
+</p>
+
+<p>
+  <strong>Activity:</strong>
+  <%= @team_goal.activity %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @team_goal.title %>
+</p>
+
+<%= link_to 'Edit', edit_team_goal_path(@team_goal) %> |
+<%= link_to 'Back', team_goals_path %>

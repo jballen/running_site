@@ -5,6 +5,7 @@
 <ul class="nav nav-tabs">
   <li class="active"><a href="#main" data-toggle="tab">Main</a></li>
   <li><a href="#calendar" data-toggle="tab">Calendar</a></li>
+  <li><a href="#coach" data-toggle="tab">Coach</a></li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane fade active in" id="main">
@@ -12,15 +13,21 @@
       <section>
         <%= render 'shared/team_stats', :team => @team %>
       </section>
-      <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
-        <% if current_user.on_team?(@team) %>
-          <section>
-            <%= render 'shared/blog_post' %>
-          </section>
-        <% end %>
-        <%= render 'shared/join_team_form' if(signed_in? && !@team.team_captain?(current_user)) %>
+      <% if current_user.on_team?(@team) %>
+        <section>
+          <%= render 'shared/blog_post' %>
+        </section>
+      <% end %>
+      <%= render 'shared/join_team_form' if(signed_in? && !@team.team_captain?(current_user)) %>
     </div>
   </div>
+  <% if @team.team_captain?(current_user) %>
+    <div class="tab-pane fade" id="coach">
+      <div class="col-xs-4">
+        <%= render 'show_notifications', :team => @team, :notifications => @notifications %>
+      </div>
+    </div>
+  <% end %>
   <div class="tab-pane fade" id="calendar">
     <div class="calendar">
       <%= render 'shared/comment_modal' if current_user.on_team?(@team) %>

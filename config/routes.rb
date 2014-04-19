@@ -1,4 +1,6 @@
 RunningSite::Application.routes.draw do
+  resources :team_goals
+
   resources :day_items
   resources :exercises,               only: [:create, :destroy, :get_user_exercises] 
   resources :exercise_comments
@@ -23,6 +25,10 @@ RunningSite::Application.routes.draw do
   end
 
   root :to => 'static_pages#home'
+  match '/get_user_data',          to: 'application#get_user_data', via: 'get'
+  match '/get_team_data',          to: 'application#get_team_data', via: 'get'
+  match '/get_users_teams',        to: 'application#get_users_teams', via: 'get'
+  match '/get_all_teams',          to: 'application#get_all_teams', via: 'get'
   match '/signin',                 to: 'sessions#new',         via: 'get'
   match '/signout',                to: 'sessions#destroy',     via: [:get, :post, :delete]
   match '/signup',                 to: 'users#new',            via: 'get'

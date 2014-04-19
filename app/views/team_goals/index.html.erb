@@ -1,0 +1,39 @@
+<h1>Listing team_goals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Distance</th>
+      <th>Duration</th>
+      <th>Activity</th>
+      <th>Title</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team_goals.each do |team_goal| %>
+      <tr>
+        <td><%= team_goal.team %></td>
+        <td><%= team_goal.start_date %></td>
+        <td><%= team_goal.end_date %></td>
+        <td><%= team_goal.distance %></td>
+        <td><%= team_goal.duration %></td>
+        <td><%= team_goal.activity %></td>
+        <td><%= team_goal.title %></td>
+        <td><%= link_to 'Show', team_goal %></td>
+        <td><%= link_to 'Edit', edit_team_goal_path(team_goal) %></td>
+        <td><%= link_to 'Destroy', team_goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Team goal', new_team_goal_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140217171316) do
+ActiveRecord::Schema.define(version: 20140327150536) do
 
   create_table "blog_posts", force: true do |t|
     t.text     "body"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20140217171316) do
     t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "commenter_name"
     t.integer  "user_id"
+    t.string   "commenter_name"
   end
 
   add_index "exercise_comments", ["exercise_id"], name: "index_exercise_comments_on_exercise_id"
@@ -76,6 +76,20 @@ ActiveRecord::Schema.define(version: 20140217171316) do
   add_index "notifications", ["user_id", "team_id"], name: "index_notifications_on_user_id_and_team_id", unique: true
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
+  create_table "team_goals", force: true do |t|
+    t.integer  "team_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.decimal  "distance"
+    t.integer  "duration"
+    t.string   "activity"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "team_goals", ["team_id"], name: "index_team_goals_on_team_id"
+
   create_table "team_user_relationships", force: true do |t|
     t.integer  "user_id"
     t.integer  "team_id"
@@ -103,6 +117,7 @@ ActiveRecord::Schema.define(version: 20140217171316) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",            default: false
+    t.integer  "duration"
     t.string   "uid"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
