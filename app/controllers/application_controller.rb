@@ -22,6 +22,22 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_user_data_for_month
+    month = params[:month]
+    year = params[:year]
+    date = DateTime.new(year.to_i, month.to_i)
+    user = User.find_by(:email => params[:email])
+    exercises = user.day_items.where(:day => date..date.end_of_month())
+    respond_to do |format|
+      format.json do 
+        render json: exercises
+      end
+    end
+    logger.debug '************************'
+    logger.debug date
+    # date = DateTime.strptime(year + '/' + month, '%Y')
+  end
+
   def format_user_data_for_json(user) 
     @new_user = {}
     @new_user['name'] = user.name
@@ -52,6 +68,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Return 
   def get_all_teams
     respond_to do |format|
       format.json do

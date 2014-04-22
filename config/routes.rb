@@ -29,6 +29,7 @@ RunningSite::Application.routes.draw do
   match '/get_team_data',          to: 'application#get_team_data', via: 'get'
   match '/get_users_teams',        to: 'application#get_users_teams', via: 'get'
   match '/get_all_teams',          to: 'application#get_all_teams', via: 'get'
+  match '/get_user_data_for_month', to: 'application#get_user_data_for_month', via: 'get'
   match '/signin',                 to: 'sessions#new',         via: 'get'
   match '/signout',                to: 'sessions#destroy',     via: [:get, :post, :delete]
   match '/signup',                 to: 'users#new',            via: 'get'
