@@ -25,7 +25,6 @@ RunningSite::Application.routes.draw do
   end
 
   root :to => 'static_pages#home'
-  match "*all" => "application#cors_preflight_check", via: [:get, :post]
   match '/get_user_data',          to: 'application#get_user_data', via: 'get'
   match '/get_team_data',          to: 'application#get_team_data', via: 'get'
   match '/get_users_teams',        to: 'application#get_users_teams', via: 'get'
