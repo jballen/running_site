@@ -1,6 +1,6 @@
   $('document').ready(function() {
     if ($('body#users').length) {
-      $.getJSON('http://ec2-54-85-55-223.compute-1.amazonaws.com/get_users_teams?email=bachus14@gmail.com', function(data) {
+      $.getJSON('http://localhost:3000/get_user_data_for_month?month=3&year=2014&email=bachus14@gmail.com', function(data) {
         console.log(data);
       });
       $('.duration-minutes').focusout(function(data) {

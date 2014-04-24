@@ -84,12 +84,4 @@ RunningSite::Application.configure do
   config.serve_static_assets = true
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
   config.assets.compile = true
-  config.middleware.use Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', 
-            :headers => :any, 
-            :methods => [:get, :post, :delete, :put, :options]
-      end
-    en
 end
