@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     year = params[:year]
     date = DateTime.new(year.to_i, month.to_i)
     user = User.find_by(:email => params[:email])
-    exercises = user.exercises.where(:day => date..date.end_of_month())
+    exercises = user.exercises.where(:activity_date => date..date.end_of_month())
     respond_to do |format|
       format.json do 
         render json: exercises
