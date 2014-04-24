@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  before_filter :cors_preflight_check
+  before_filter :cors_set_access_control_headers
+
   protect_from_forgery with: :exception
   include SessionsHelper
   include ExercisesHelper
@@ -59,6 +62,23 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def cors_preflight_check
+    if request.method == :options
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+      headers['Access-Control-Allow-Headers'] = '*'
+      headers['Access-Control-Max-Age'] = '1728000'
+      render :text => '', :content_type => 'text/plain'
+    end
+  end
+
+  def cors_set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+    headers['Access-Control-Allow-Headers'] = '*'
+    headers['Access-Control-Max-Age'] = "1728000"
+  end
+  
   def get_users_teams
     @user = User.find_by(:email => params[:email])
     respond_to do |format|
@@ -81,6 +101,6 @@ class ApplicationController < ActionController::Base
     user = User.find_by(:email => params[:email])
     distance = params[:distance]
     duration = params[:duration]
-    
+
   end
 end
