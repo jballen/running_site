@@ -21,7 +21,7 @@ gem 'bootstrap-sass'
 gem 'open4'
 gem 'unf'
 gem "net-ssh", "~> 2.7.0"
-
+gem 'rack-cors'
 
 group :development, :test do
   gem 'rails_layout'

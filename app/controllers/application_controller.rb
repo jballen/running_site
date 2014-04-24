@@ -76,4 +76,11 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def post_user_activity
+    user = User.find_by(:email => params[:email])
+    distance = params[:distance]
+    duration = params[:duration]
+    
+  end
 end
