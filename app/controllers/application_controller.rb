@@ -85,21 +85,21 @@ class ApplicationController < ActionController::Base
     if @day_item == nil
       # create a new day item
       logger.debug 'Creating new day item'
-      @day_item = DayItem.create(:day => params[:day],
-                                 :title => params[:title])
-                                 :user_id => @user.id,
-                                 exercises_attributes: [
-                                    :distance => params[:distance],
-                                    :duration => params[:duration],
-                                    :comment => params[:comment],
-                                    :activity => params[:activity_type],
-                                    :activity_date => params[:day],
-                                    :unit => :mile,
-                                    :user_id => @user.id])
+      @day_item = DayItem.create(day_item_params)
 
     else
       logger.debug 'Day item already existed'
-      @day_item.update(:day => params[:day],
+      @day_item.update(day_item_params)
+    end
+    if @day_item.save
+      logger.debug "\n\nSuccessfully saved the activity!\n\n"
+    else
+      logger.debug "\n\nCould not save the activity :(\n\n"
+    render json: "1"
+  end
+
+  def day_item_params
+    params.require(:day_item).permit(:day => params[:day],
                                  :title => params[:title])
                                  :user_id => @user.id,
                                  exercises_attributes: [
@@ -110,7 +110,5 @@ class ApplicationController < ActionController::Base
                                     :activity_date => params[:day],
                                     :unit => :mile,
                                     :user_id => @user.id])
-    end
-    render json: "1"
   end
 end
