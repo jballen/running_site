@@ -100,7 +100,7 @@ class ApplicationController < ActionController::Base
 
   def day_item_params
     params.require(:day_item).permit(:day => params[:day],
-                                 :title => params[:title])
+                                 :title => params[:title],
                                  :user_id => @user.id,
                                  exercises_attributes: [
                                     :distance => params[:distance],
