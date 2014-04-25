@@ -78,14 +78,39 @@ class ApplicationController < ActionController::Base
   end
 
   def post_user_activity
+    @user = User.find_by(:email => params[:email])
     @day_item = DayItem.find_by(:day => params[:day])
     logger.debug '$$$$$$$$$$$%%%%%%%%%%%%%%'
     logger.debug params
     if @day_item == nil
       # create a new day item
+      logger.debug 'Creating new day item'
+      @day_item = DayItem.create(:day => params[:day],
+                                 :title => params[:title])
+                                 :user_id => @user.id,
+                                 exercises_attributes: [
+                                    :distance => params[:distance],
+                                    :duration => params[:duration],
+                                    :comment => params[:comment],
+                                    :activity => params[:activity_type],
+                                    :activity_date => params[:day],
+                                    :unit => :mile,
+                                    :user_id => @user.id])
 
     else
-
+      logger.debug 'Day item already existed'
+      @day_item.update(:day => params[:day],
+                                 :title => params[:title])
+                                 :user_id => @user.id,
+                                 exercises_attributes: [
+                                    :distance => params[:distance],
+                                    :duration => params[:duration],
+                                    :comment => params[:comment],
+                                    :activity => params[:activity_type],
+                                    :activity_date => params[:day],
+                                    :unit => :mile,
+                                    :user_id => @user.id])
     end
+    render json: "1"
   end
 end
