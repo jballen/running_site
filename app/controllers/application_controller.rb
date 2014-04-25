@@ -76,4 +76,16 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def post_user_activity
+    @day_item = DayItem.find_by(:day => params[:day])
+    logger.debug '$$$$$$$$$$$%%%%%%%%%%%%%%'
+    logger.debug params
+    if @day_item == nil
+      # create a new day item
+
+    else
+
+    end
+  end
 end
