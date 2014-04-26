@@ -79,9 +79,7 @@ class ApplicationController < ActionController::Base
 
   def post_user_activity
     @user = User.find_by(:email => params[:email])
-    @day_item = DayItem.find_by(:day => params[:day])
-    logger.debug '$$$$$$$$$$$%%%%%%%%%%%%%%'
-    logger.debug params
+    @day_item = DayItem.find_by(:day => params[:day_item][:day])
     if @day_item == nil
       # create a new day item
       logger.debug 'Creating new day item'
@@ -95,20 +93,21 @@ class ApplicationController < ActionController::Base
       logger.debug "\n\nSuccessfully saved the activity!\n\n"
     else
       logger.debug "\n\nCould not save the activity :(\n\n"
+    end
     render json: "1"
   end
 
   def day_item_params
-    params.require(:day_item).permit(:day => params[:day],
-                                 :title => params[:title],
-                                 :user_id => @user.id,
+    params.require(:day_item).permit(:day,
+                                 :title,
+                                 :user_id,
                                  exercises_attributes: [
-                                    :distance => params[:distance],
-                                    :duration => params[:duration],
-                                    :comment => params[:comment],
-                                    :activity => params[:activity_type],
-                                    :activity_date => params[:day],
-                                    :unit => :mile,
-                                    :user_id => @user.id])
+                                    :distance,
+                                    :duration,
+                                    :comment,
+                                    :activity,
+                                    :activity_date,
+                                    :unit,
+                                    :user_id])
   end
 end
