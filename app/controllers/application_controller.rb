@@ -77,6 +77,24 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_user_data_for_day
+    @user = User.find_by(:email => params[:email])
+    if !@user.nil?
+      day_item = @user.day_items.where(:day => params[:day])
+      respond_to do |format|
+        format.json do
+          render json: day_item
+        end
+      end
+    else
+      respond_to do |format|
+        format.json do 
+          render json: {:error => "Could not find user"}
+        end
+      end
+    end
+  end
+
   def post_user_activity
     @user = User.find_by(:email => params[:email])
     @day_item = DayItem.find_by(:day => params[:day_item][:day])
