@@ -44,8 +44,13 @@ class ApplicationController < ActionController::Base
   end
 
   def calculate_monthly_mileage(user) 
-    date = Time.now.strftime("%Y-%m-%d")
-    exercises = user.exercises.where(:activity_date => date.beginning_of_month()..date.end_of_month())
+    date = Time.now
+    bog= date.beginning_of_month().strftime("%Y-%m-%d")
+    eom = date.end_of_month().strftime("%Y-%m-%d")
+    logger.debug "*********************"
+    logger.debug bog
+    logger.debug eom
+    exercises = user.exercises.where(:activity_date => bog..eom)
     total_mileages = {}
     exercises.each do |exercise|
       mileage_key = exercise.activity + 'total_mileage'
