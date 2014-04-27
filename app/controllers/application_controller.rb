@@ -115,11 +115,29 @@ class ApplicationController < ActionController::Base
       @day_item.update(day_item_params)
     end
     if @day_item.save
-      logger.debug "\n\nSuccessfully saved the activity!\n\n"
-    else
-      logger.debug "\n\nCould not save the activity :(\n\n"
+      @exercise_comment = ExerciseComment.new(:body => params[:day_item][:exercises_attributes]["0"][:comment],
+                                            :commenter_email => @user.email,
+                                            :user_id => @user.id,
+                                            :commenter_name => @user.name,
+                                            :exercise_id => @day_item.exercises.last.id)
+      @exercise_comment.save!
     end
     render json: "1"
+  end
+ 
+  def post_activity_comment
+    @commenter = User.find_by(:email => params[:commenter])
+    @receiver = User.find_by(:email => params[:receiver])
+    @exercise_comment = ExerciseComment.new(:body => params[:text],
+                                            :commenter_email => @commenter.email,
+                                            :user_id => @receiver.id,
+                                            :commenter_name => @commenter.name,
+                                            :exercise_id => params[:exercise_id])
+    if @exercise_comment.save
+      render json: 'success' => 'the comment was saved successfully'
+    else
+      render json: 'error' => 'the exercise comment could not be saved'
+    end
   end
 
   def day_item_params
