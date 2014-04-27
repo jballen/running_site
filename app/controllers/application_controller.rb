@@ -81,10 +81,15 @@ class ApplicationController < ActionController::Base
     @user = User.find_by(:email => params[:email])
     if !@user.nil?
       day_item = @user.day_items.where(:day => params[:day])
-      respond_to do |format|
-        format.json do
-          render json: day_item
+      if !day_item.nil?
+	day_item = day_item.first
+        respond_to do |format|
+          format.json do
+            render json: day_item.exercises
+          end
         end
+      else
+	render json: {"response" => "no data to display"}
       end
     else
       respond_to do |format|
@@ -97,6 +102,8 @@ class ApplicationController < ActionController::Base
 
   def post_user_activity
     @user = User.find_by(:email => params[:email])
+    params[:day_item][:exercises_attributes]["0"].merge!("user_id" => @user.id)
+    params[:day_item].merge!("user_id" =>  @user.id)
     @day_item = DayItem.find_by(:day => params[:day_item][:day])
     if @day_item == nil
       # create a new day item

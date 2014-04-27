@@ -90,6 +90,8 @@ class DayItemsController < ApplicationController
     end
 
     def get_or_init_day_item
+      logger.debug '!!!!!!!!!!!!!!!!!!!!!!!'
+      logger.debug params[:day_item]
       @day_item = DayItem.find_by(:day => params[:day_item][:day])
       if @day_item == nil
         logger.debug 'New day item created'

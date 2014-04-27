@@ -1,6 +1,6 @@
   $('document').ready(function() {
     if ($('body#users').length) {
-      $.getJSON('http://localhost:3000/get_user_data_for_day?day=2014-04-13&email=kmmurphy@gmail.com', function(data) {
+      $.getJSON('http://ec2-54-85-55-223.compute-1.amazonaws.com/get_user_data_for_day?day=2014-04-13&email=kmmurphy@gmail.com', function(data) {
         console.log(data);
       });
       $('.duration-minutes').focusout(function(data) {
