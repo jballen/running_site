@@ -134,9 +134,9 @@ class ApplicationController < ActionController::Base
                                             :commenter_name => @commenter.name,
                                             :exercise_id => params[:exercise_id])
     if @exercise_comment.save
-      render json: 'success' => 'the comment was saved successfully'
+      render json: {'success' => 'the comment was saved successfully' }
     else
-      render json: 'error' => 'the exercise comment could not be saved'
+      render json: {'error' => 'the exercise comment could not be saved'}
     end
   end
 
