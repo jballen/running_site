@@ -33,17 +33,28 @@ class ApplicationController < ActionController::Base
         render json: exercises
       end
     end
-    logger.debug '************************'
-    logger.debug date
-    # date = DateTime.strptime(year + '/' + month, '%Y')
   end
 
   def format_user_data_for_json(user) 
     @new_user = {}
     @new_user['name'] = user.name
     @new_user['email'] = user.email
-    @new_user['exercises'] = user.exercises
+    @new_user['total_mileages'] = calculate_monthly_mileage(user)
     return @new_user
+  end
+
+  def calculate_monthly_mileage(user) 
+    date = Time.now.strftime("%Y-%m-%d")
+    exercises = user.exercises.where(:activity_date => date.beginning_of_month()..date.end_of_month())
+    total_mileages = {}
+    exercises.each do |exercise|
+      mileage_key = exercise.activity + 'total_mileage'
+      if total_mileages[mileage_key].nil?
+        total_mileages[mileage_key] = 0
+      end
+      total_mileages[mileage_key] = total_mileages[mileage_key] + exercise.distance
+    end
+    return total_mileages
   end
 
   def get_team_data
@@ -81,15 +92,15 @@ class ApplicationController < ActionController::Base
     @user = User.find_by(:email => params[:email])
     if !@user.nil?
       day_item = @user.day_items.where(:day => params[:day])
-      if !day_item.nil?
-	day_item = day_item.first
+      if !day_item.empty?
+	      day_item = day_item.first
         respond_to do |format|
           format.json do
             render json: day_item.exercises
           end
         end
       else
-	render json: {"response" => "no data to display"}
+	      render json: {"response" => "no data to display"}
       end
     else
       respond_to do |format|
