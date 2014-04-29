@@ -33,7 +33,7 @@ RunningSite::Application.routes.draw do
   match '/get_user_data_for_day',  to: 'application#get_user_data_for_day', via: 'get'
   match '/post_user_activity',     to: 'application#post_user_activity', via: 'post'
   match '/post_activity_comment',  to: 'application#post_activity_comment', via: 'post'
-  match '/calculate_monthly_mileage' to: 'application#calculate_monthly_mileage', via: 'get'
+  match '/join_team',              to: 'application#join_team',via: 'post'
   match '/signin',                 to: 'sessions#new',         via: 'get'
   match '/signout',                to: 'sessions#destroy',     via: [:get, :post, :delete]
   match '/signup',                 to: 'users#new',            via: 'get'

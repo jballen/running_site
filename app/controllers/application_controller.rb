@@ -151,17 +151,35 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def day_item_params
-    params.require(:day_item).permit(:day,
-                                 :title,
-                                 :user_id,
-                                 exercises_attributes: [
-                                    :distance,
-                                    :duration,
-                                    :comment,
-                                    :activity,
-                                    :activity_date,
-                                    :unit,
-                                    :user_id])
+  def join_team
+    @user = User.find_by(:email => params[:email])
+    @team = Team.find_by(:id => params[:team_id])
+    if !Notification.where(team_id: @team.id, user_id: @user.id).empty?
+      render json: {"response" : "0"}
+    end
+    @notification = Notification.new(:user_id => @user.id,
+                                     :team_id => @team.id,
+                                     :what => "join")
+    if @notification.save
+      render json: {"response" : "1"}
+    else
+      render json: {"response" : "1"}
+    end
   end
+
+  private 
+
+    def day_item_params
+      params.require(:day_item).permit(:day,
+                                   :title,
+                                   :user_id,
+                                   exercises_attributes: [
+                                      :distance,
+                                      :duration,
+                                      :comment,
+                                      :activity,
+                                      :activity_date,
+                                      :unit,
+                                      :user_id])
+    end
 end
