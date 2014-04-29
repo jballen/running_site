@@ -53,13 +53,26 @@ class ApplicationController < ActionController::Base
     exercises = user.exercises.where(:activity_date => bog..eom)
     total_mileages = {}
     exercises.each do |exercise|
-      mileage_key = exercise.activity + 'total_mileage'
+      mileage_key = exercise.activity + '_total_mileage'
       if total_mileages[mileage_key].nil?
         total_mileages[mileage_key] = 0
       end
       total_mileages[mileage_key] = total_mileages[mileage_key] + exercise.distance
     end
+    if total_mileages["run_total_mileage"].nil?
+      total_mileages["run_total_mileage"] = 0
+    end
     return total_mileages
+  end
+
+  def calculate_team_rankings team_data
+   team_data = team_data.sort_by { |x| -x["total_mileages"]["run_total_mileage"] } 
+   count = 1
+   team_data.each do |member|
+     member["rank"] = count
+     count = count + 1
+   end    
+   return team_data
   end
 
   def get_team_data
@@ -70,7 +83,8 @@ class ApplicationController < ActionController::Base
         @team.users.each do |user|
           @formatted_user_data << format_user_data_for_json(user)
         end
-        render json: @formatted_user_data
+	@ordered_data = calculate_team_rankings @formatted_user_data
+        render json: @ordered_data
       end
     end
   end
@@ -105,7 +119,7 @@ class ApplicationController < ActionController::Base
           end
         end
       else
-	      render json: {"response" => "no data to display"}
+	render json: {}
       end
     else
       respond_to do |format|
