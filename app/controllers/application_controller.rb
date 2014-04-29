@@ -172,6 +172,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def register_user
+    @user = User.find_by(:email => params[:email])
+    if @user.nil?
+      @new_user = User.new(:email => params[:email],
+                           :name => params[:name])
+      render json: {"success" => "created user"}
+    else
+      render json: {"error" => "user exists"}
+    end
+  end
+
   private 
 
     def day_item_params
