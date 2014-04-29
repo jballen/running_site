@@ -25,4 +25,20 @@ class NotificationsController < ApplicationController
   def destroy
     @notification.destroy
   end
+    def join_team
+    @user = User.find_by(:email => params[:email])
+    @team = Team.find_by(:id => params[:team_id])
+    if !Notification.where(team_id: @team.id, user_id: @user.id).empty?
+      render json: {"response" : "0"}
+    end
+    @notification = Notification.new(:user_id => @user.id,
+                                     :team_id => @team.id,
+                                     :what => "join")
+    if @notification.save
+      render json: {"response" : "1"}
+    else
+      render json: {"response" : "1"}
+    end
+  end
+
 end
